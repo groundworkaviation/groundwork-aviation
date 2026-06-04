@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groundwork Aviation — Master the theory flight school rushes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f141c;          /* instrument panel night */
+    --ink-2:#161d28;
+    --paper:#f4efe4;        /* chart paper */
+    --paper-2:#ece4d3;
+    --amber:#e8a23a;        /* runway / caution amber */
+    --amber-deep:#c9831f;
+    --teal:#5fb0a6;         /* instrument glow, used sparingly */
+    --cream:#f7f3ea;
+    --muted:#8a93a3;
+    --line:rgba(244,239,228,.14);
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Archivo',-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--ink);color:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+
+  /* grain overlay */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* eyebrow / technical label */
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:500}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);background:rgba(15,20,28,.72);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em}
+  .logo .mark{width:30px;height:30px;flex:none;display:grid;place-items:center;border:1.5px solid var(--amber);border-radius:50%;color:var(--amber)}
+  .logo .mark svg{width:16px;height:16px}
+  .navlinks{display:flex;gap:30px;align-items:center;font-size:14.5px;font-weight:500;color:#cdd3dc}
+  .navlinks a:hover{color:var(--amber)}
+  .nav-cta{font-family:var(--sans);font-weight:600;font-size:14px;background:var(--amber);color:var(--ink);padding:9px 17px;border-radius:7px;transition:transform .2s,background .2s}
+  .nav-cta:hover{background:var(--cream);transform:translateY(-1px)}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:96px 0 90px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 520px at 78% -8%, rgba(232,162,58,.20), transparent 60%),
+      radial-gradient(700px 600px at 12% 12%, rgba(95,176,166,.10), transparent 55%),
+      linear-gradient(180deg,#0f141c 0%,#121925 100%)}
+  /* faint sectional grid */
+  .hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(circle at 70% 30%,black,transparent 78%)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px}}
+
+  .h-eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:24px}
+  .h-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(232,162,58,.18)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.4vw,62px);line-height:1.02;letter-spacing:-.02em;color:#fff}
+  h1 em{font-style:italic;color:var(--amber)}
+  .sub{margin-top:24px;font-size:18px;line-height:1.6;color:#c2c9d3;max-width:520px}
+  .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-primary{font-weight:600;font-size:15px;background:var(--amber);color:var(--ink);padding:14px 24px;border-radius:9px;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 30px rgba(232,162,58,.22)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(232,162,58,.34)}
+  .btn-ghost{font-weight:600;font-size:15px;color:#cdd3dc;padding:14px 8px;border-bottom:1px solid transparent;transition:.2s}
+  .btn-ghost:hover{color:#fff;border-color:var(--amber)}
+  .trust-line{margin-top:30px;display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--muted)}
+  .trust-line strong{color:#dfe4ec;font-weight:600}
+  .trust-line .pin{width:18px;height:18px;color:var(--teal);flex:none}
+
+  /* METAR card */
+  .metar{position:relative;background:linear-gradient(160deg,#10171f,#0c1118);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+  .metar .tag{position:absolute;top:-12px;left:22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--amber);color:var(--ink);padding:4px 11px;border-radius:20px;font-weight:600}
+  .metar h4{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:500;letter-spacing:.04em;margin-bottom:14px}
+  .metar .raw{font-family:var(--mono);font-size:clamp(14px,2.1vw,17px);line-height:1.9;color:#eef2f7;letter-spacing:.02em;word-spacing:.1em}
+  .tok{position:relative;padding:1px 3px;border-radius:4px;cursor:default;transition:background .2s}
+  .tok:hover{background:rgba(232,162,58,.16)}
+  .tok-a{color:var(--amber);font-weight:600}
+  .tok-t{color:var(--teal);font-weight:600}
+  .metar .divide{height:1px;background:var(--line);margin:18px 0}
+  .decode{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:13.5px}
+  .decode .k{font-family:var(--mono);color:var(--amber);font-weight:500;white-space:nowrap}
+  .decode .v{color:#c8cfd9}
+  .metar .foot{margin-top:18px;font-size:12.5px;color:var(--muted);font-style:italic;font-family:var(--serif)}
+
+  /* MARQUEE strip */
+  .strip{background:var(--amber);color:var(--ink);overflow:hidden;border-top:1px solid var(--amber-deep);border-bottom:1px solid var(--amber-deep)}
+  .strip .track{display:flex;gap:48px;padding:13px 0;white-space:nowrap;animation:scroll 28s linear infinite;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  .strip .track span{display:flex;align-items:center;gap:48px}
+  .strip .track b{font-weight:600}
+  .strip .track i{font-style:normal;opacity:.55}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* SECTION base */
+  section.block{padding:96px 0}
+  .paper{background:var(--paper);color:var(--ink)}
+  .sec-head{max-width:720px;margin-bottom:54px}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.02em;margin-top:16px}
+  .sec-head .lead{margin-top:18px;font-size:18px;color:#3c4654;line-height:1.6}
+  .paper .eyebrow{color:var(--amber-deep)}
+
+  /* PROBLEM split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:36px}}
+  .problem-list{list-style:none;display:flex;flex-direction:column;gap:20px}
+  .problem-list li{display:flex;gap:16px;align-items:flex-start}
+  .problem-list .num{font-family:var(--mono);font-size:13px;color:var(--amber-deep);font-weight:600;padding-top:3px;flex:none}
+  .problem-list h5{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:3px}
+  .problem-list p{font-size:14.5px;color:#4a5563;line-height:1.55}
+  .quote-card{background:var(--ink);color:var(--cream);border-radius:18px;padding:38px;position:relative}
+  .quote-card .qmark{font-family:var(--serif);font-size:80px;line-height:.6;color:var(--amber);opacity:.5}
+  .quote-card blockquote{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;margin:14px 0 22px}
+  .quote-card cite{font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+  /* PILLARS grid */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  @media(max-width:820px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:var(--ink-2);padding:30px 26px;transition:background .25s}
+  .pillar:hover{background:#1c2531}
+  .pillar .pico{width:34px;height:34px;color:var(--amber);margin-bottom:16px}
+  .pillar h5{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px;color:#fff}
+  .pillar p{font-size:14px;color:#aab2bf;line-height:1.55}
+  .pillar .miss{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+
+  /* PRODUCT feature */
+  .product{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+  @media(max-width:860px){.product{grid-template-columns:1fr;gap:34px}}
+  .prod-visual{background:linear-gradient(155deg,#12303a,#0e1a22);border-radius:18px;padding:40px 34px;border:1px solid rgba(95,176,166,.2);position:relative;overflow:hidden}
+  .prod-visual::before{content:"";position:absolute;width:240px;height:240px;background:radial-gradient(circle,rgba(232,162,58,.22),transparent 70%);top:-60px;right:-60px}
+  .prod-visual .badge{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .prod-visual h3{font-family:var(--serif);font-size:30px;font-weight:600;color:#fff;margin:12px 0 6px;line-height:1.1;position:relative}
+  .prod-visual .price{font-family:var(--serif);font-size:15px;color:var(--amber);margin-bottom:20px}
+  .prod-visual ul{list-style:none;display:flex;flex-direction:column;gap:11px;position:relative}
+  .prod-visual li{display:flex;gap:11px;font-size:14px;color:#d4dae2;align-items:flex-start}
+  .prod-visual li svg{width:17px;height:17px;color:var(--amber);flex:none;margin-top:2px}
+  .product .copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.08;letter-spacing:-.02em;color:#fff}
+  .product .copy p{margin-top:18px;font-size:16.5px;color:#bcc4cf;line-height:1.6}
+
+  /* EMAIL capture */
+  .capture{text-align:center;max-width:600px;margin:0 auto}
+  .capture h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,44px);line-height:1.06;letter-spacing:-.02em;color:#fff}
+  .capture p{margin-top:16px;font-size:17px;color:#bcc4cf}
+  form.signup{margin-top:30px;display:flex;gap:10px;max-width:460px;margin-left:auto;margin-right:auto}
+  @media(max-width:480px){form.signup{flex-direction:column}}
+  form.signup input{flex:1;font-family:var(--sans);font-size:15px;padding:15px 18px;border-radius:9px;border:1px solid var(--line);background:#0c1118;color:#fff;outline:none;transition:border .2s}
+  form.signup input:focus{border-color:var(--amber)}
+  form.signup input::placeholder{color:var(--muted)}
+  form.signup button{font-family:var(--sans);font-weight:600;font-size:15px;background:var(--amber);color:var(--ink);padding:15px 26px;border-radius:9px;border:none;cursor:pointer;transition:transform .2s,background .2s;white-space:nowrap}
+  form.signup button:hover{background:var(--cream);transform:translateY(-2px)}
+  .form-note{margin-top:14px;font-size:12.5px;color:var(--muted)}
+  .thanks{display:none;margin-top:26px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--amber)}
+  .thanks.show{display:block;animation:fadeup .5s ease}
+
+  /* FOOTER */
+  footer{background:#0b1016;border-top:1px solid var(--line);padding:64px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  .foot-brand p{margin-top:16px;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:300px}
+  .foot-col h6{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;font-weight:600}
+  .foot-col a{display:block;font-size:14px;color:#aab2bf;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+  .disclaimer{max-width:760px;line-height:1.6}
+
+  @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;animation:fadeup .7s ease forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}
+  @media(prefers-reduced-motion:reduce){.reveal,.strip .track{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg>
+      </span>
+      Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
+    </a>
+    <div class="navlinks">
+      <a href="#cover">What we cover</a>
+      <a href="#guides">Guides</a>
+      <a href="#why">Why us</a>
+      <a href="#join">Free weather guide</a>
+    </div>
+    <a class="nav-cta" href="#join">Start free</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="h-eyebrow reveal d1"><span class="dot"></span><span class="eyebrow">Ground theory · demystified</span></div>
+      <h1 class="reveal d2">Flight school teaches you to fly.<br>We teach you to <em>understand it.</em></h1>
+      <p class="sub reveal d3">Plain-English ground school for the topics that actually fail people — weather, airspace, performance, the checkride oral. Written and vetted by a current airline pilot with 20 years on the flight deck. No jargon walls. No AI filler.</p>
+      <div class="cta-row reveal d4">
+        <a class="btn-primary" href="#join">Get the free weather decoder →</a>
+        <a class="btn-ghost" href="#cover">See what we cover</a>
+      </div>
+      <div class="trust-line reveal d5">
+        <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Built on <strong>20,000+ hours</strong> and the questions students miss most.</span>
+      </div>
+    </div>
+
+    <!-- METAR decode card -->
+    <div class="metar reveal d4" aria-label="Example METAR decoded">
+      <span class="tag">The #1 thing students fail</span>
+      <h4>// DECODE THE SCARY STRING</h4>
+      <div class="raw">
+        <span class="tok tok-a">KSFO</span>
+        <span class="tok">301853Z</span>
+        <span class="tok tok-a">28012KT</span>
+        <span class="tok">10SM</span>
+        <span class="tok tok-t">FEW015</span>
+        <span class="tok">18/12</span>
+        <span class="tok tok-a">A3001</span>
+      </div>
+      <div class="divide"></div>
+      <div class="decode">
+        <span class="k">KSFO</span><span class="v">San Francisco Intl — the reporting station</span>
+        <span class="k">301853Z</span><span class="v">30th, 18:53 UTC (“Zulu”)</span>
+        <span class="k">28012KT</span><span class="v">Wind from 280° at 12 knots</span>
+        <span class="k">10SM</span><span class="v">Visibility 10 statute miles</span>
+        <span class="k">FEW015</span><span class="v">Few clouds at 1,500 ft AGL</span>
+        <span class="k">18/12</span><span class="v">Temp 18°C / dewpoint 12°C</span>
+        <span class="k">A3001</span><span class="v">Altimeter 30.01 inHg</span>
+      </div>
+      <p class="foot">Once you can read one, you can read them all. That's the whole free guide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    <span><b>METARs &amp; TAFs</b><i>✦</i><b>Airspace &amp; Sectionals</b><i>✦</i><b>Weight &amp; Balance</b><i>✦</i><b>Density Altitude</b><i>✦</i><b>VFR Minimums</b><i>✦</i><b>The Checkride Oral</b><i>✦</i></span>
+    <span><b>METARs &amp; TAFs</b><i>✦</i><b>Airspace &amp; Sectionals</b><i>✦</i><b>Weight &amp; Balance</b><i>✦</i><b>Density Altitude</b><i>✦</i><b>VFR Minimums</b><i>✦</i><b>The Checkride Oral</b><i>✦</i></span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="block paper" id="why">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">The gap nobody fixes</span>
+      <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,44px);line-height:1.06;letter-spacing:-.02em;margin-top:16px;color:var(--ink)">You can pass the written and still freeze at the oral.</h2>
+      <p style="margin-top:18px;font-size:17px;color:#3c4654;line-height:1.6;margin-bottom:30px">Most courses drill you to recognise the right answer out of A, B and C. But the examiner doesn't give you three options — they ask you to <em>explain it</em>. That's where shallow prep falls apart. We teach the <em>why</em>, so it holds under pressure.</p>
+      <ul class="problem-list">
+        <li><span class="num">01</span><div><h5>Weather, learned too thinly</h5><p>METAR and TAF questions are the most-missed on the test — because students memorise instead of understanding the system behind them.</p></div></li>
+        <li><span class="num">02</span><div><h5>Airspace that won't stick</h5><p>Sectional charts and class boundaries are crammed for the test, then forgotten the moment a real cross-country starts.</p></div></li>
+        <li><span class="num">03</span><div><h5>Recognising ≠ explaining</h5><p>Examiners report poor ground knowledge is a leading reason checkrides get postponed or failed. We close that gap.</p></div></li>
+      </ul>
+    </div>
+    <div class="quote-card">
+      <div class="qmark">“</div>
+      <blockquote>The written tests what you can recognise. The checkride tests what you can explain and apply. Your prep should reflect that.</blockquote>
+      <cite>— What examiners keep saying</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="block" id="cover">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The syllabus</span>
+      <h2>Six topics. Taught until they're obvious.</h2>
+      <p class="lead">We go deep on the areas that cost real students real points — and real confidence in the cockpit.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17.5 19a4.5 4.5 0 1 0 0-9h-1.8A7 7 0 1 0 4 16.9"/></svg>
+        <h5>Aviation Weather</h5><p>METARs, TAFs, fronts, density altitude and the go/no-go judgement behind them.</p>
+        <div class="miss">Most-missed on the exam</div>
+      </div>
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+        <h5>Airspace &amp; Charts</h5><p>Read any sectional with confidence. Class A through G, decoded for good.</p>
+        <div class="miss">High-failure topic</div>
+      </div>
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 7l10 5 10-5M5 12v6M19 12v6"/></svg>
+        <h5>Aerodynamics</h5><p>Lift, load factor, stalls and the basics examiners say are most misunderstood.</p>
+        <div class="miss">Examiner favourite</div>
+      </div>
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12l5-3"/><circle cx="12" cy="12" r="1.6"/></svg>
+        <h5>Performance &amp; W&amp;B</h5><p>Weight and balance, takeoff distance and density altitude without the panic.</p>
+        <div class="miss">Calculation-heavy</div>
+      </div>
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+        <h5>Regulations</h5><p>The rules that matter, in plain English — VFR minimums, currency, the lot.</p>
+        <div class="miss">Easy points lost</div>
+      </div>
+      <div class="pillar">
+        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+        <h5>The Checkride Oral</h5><p>How to answer like a pilot, not a flashcard. Practice scenarios that build judgement.</p>
+        <div class="miss">Where prep breaks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="block paper" id="guides">
+  <div class="wrap product">
+    <div class="prod-visual">
+      <span class="badge">Free · Start here</span>
+      <h3>Decode Any METAR &amp; TAF</h3>
+      <div class="price">The 20-minute guide that ends the guessing</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Every code group, in order, with plain-English meaning</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>The 6 traps the exam sets — and how to dodge them</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>A one-page printable kneeboard cheat sheet</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>10 practice strings, decoded line by line</li>
+      </ul>
+    </div>
+    <div class="copy">
+      <h2>Start with the thing that fails the most people.</h2>
+      <p>Weather interpretation is the single most-missed area on the knowledge test — so that's where we start, free. Hand us your email and we'll send the guide that makes the scary string boring. If it's the clearest weather explainer you've read, the deeper guides are waiting.</p>
+      <p style="font-size:14.5px;color:#99a1ad;margin-top:14px">Coming next: the full <strong style="color:var(--cream)">Checkride Oral Playbook</strong> and topic deep-dives on airspace and performance.</p>
+      <a class="btn-primary" href="#join" style="margin-top:26px;display:inline-block">Send me the free guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURE -->
+<section class="block" id="join">
+  <div class="wrap">
+    <div class="capture">
+      <span class="eyebrow">No spam. Just the good stuff.</span>
+      <h2 style="margin-top:16px">Get the free weather decoder.</h2>
+      <p>Drop your email. We'll send the METAR/TAF guide straight away, then occasional plain-English breakdowns of the topics students dread.</p>
+      <form class="signup" id="signupForm" novalidate>
+        <input type="email" id="email" placeholder="you@email.com" aria-label="Email address" required>
+        <button type="submit">Send it →</button>
+      </form>
+      <p class="form-note">Free forever. Unsubscribe anytime. We'll never share your address.</p>
+      <p class="thanks" id="thanks">Cleared for departure — check your inbox for the guide. ✈</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#" style="color:var(--cream)">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+          Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
+        </a>
+        <p>Plain-English ground school for student pilots. Written and vetted by a working airline pilot — because the theory deserves better than a wall of jargon.</p>
+      </div>
+      <div class="foot-col">
+        <h6>Learn</h6>
+        <a href="#cover">Aviation Weather</a>
+        <a href="#cover">Airspace &amp; Charts</a>
+        <a href="#cover">Aerodynamics</a>
+        <a href="#cover">The Checkride Oral</a>
+      </div>
+      <div class="foot-col">
+        <h6>Guides</h6>
+        <a href="#join">Free weather decoder</a>
+        <a href="#guides">Checkride Oral Playbook</a>
+        <a href="#guides">Topic deep-dives</a>
+      </div>
+      <div class="foot-col">
+        <h6>About</h6>
+        <a href="#why">Why Groundwork</a>
+        <a href="#join">Newsletter</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Groundwork Aviation. All rights reserved.</span>
+      <span class="disclaimer">An independent aviation education resource. Not affiliated with, or endorsed by, any airline, flight school, or regulator. Our material supports — and never replaces — instruction from your certified flight instructor and official regulatory sources.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(!ok){ document.getElementById('email').focus(); document.getElementById('email').style.borderColor = '#e06a5a'; return; }
+    // NOTE: front-end only. Wire this to an email tool (MailerLite / ConvertKit / Kit) to actually capture addresses.
+    document.getElementById('signupForm').style.display = 'none';
+    document.querySelector('.form-note').style.display = 'none';
+    document.getElementById('thanks').classList.add('show');
+  });
+</script>
+</body>
+</html>
