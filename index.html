@@ -344,12 +344,9 @@
       <span class="eyebrow">No spam. Just the good stuff.</span>
       <h2 style="margin-top:16px">Get the free weather decoder.</h2>
       <p>Drop your email. We'll send the METAR/TAF guide straight away, then occasional plain-English breakdowns of the topics students dread.</p>
-      <form class="signup" id="signupForm" novalidate>
-        <input type="email" id="email" placeholder="you@email.com" aria-label="Email address" required>
-        <button type="submit">Send it →</button>
-      </form>
+      <!-- MailerLite embedded signup form -->
+      <div class="ml-embedded" data-form="CZnvUI" style="max-width:460px;margin:30px auto 0"></div>
       <p class="form-note">Free forever. Unsubscribe anytime. We'll never share your address.</p>
-      <p class="thanks" id="thanks">Cleared for departure — check your inbox for the guide. ✈</p>
     </div>
   </div>
 </section>
@@ -392,17 +389,14 @@
   </div>
 </footer>
 
+<!-- MailerLite Universal -->
 <script>
-  document.getElementById('signupForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = document.getElementById('email').value.trim();
-    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if(!ok){ document.getElementById('email').focus(); document.getElementById('email').style.borderColor = '#e06a5a'; return; }
-    // NOTE: front-end only. Wire this to an email tool (MailerLite / ConvertKit / Kit) to actually capture addresses.
-    document.getElementById('signupForm').style.display = 'none';
-    document.querySelector('.form-note').style.display = 'none';
-    document.getElementById('thanks').classList.add('show');
-  });
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2408888');
 </script>
+<!-- End MailerLite Universal -->
 </body>
 </html>
