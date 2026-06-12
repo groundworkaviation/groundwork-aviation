@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilot Training Guides — Weather, Airspace & Checkride Prep | Groundwork Aviation</title>
+  <meta name="description" content="Plain-English pilot training guides: METAR/TAF decoding, VFR weather minimums, airspace classes, required equipment, and FAA checkride oral prep — written by a working airline pilot.">
+  <link rel="canonical" href="https://groundworkaviation.com/guides.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pilot Training Guides | Groundwork Aviation">
+  <meta property="og:description" content="Plain-English pilot training guides: METAR/TAF decoding, VFR weather minimums, airspace classes, required equipment, and FAA checkride oral prep — written by a working airline pilot.">
+  <meta property="og:url" content="https://groundworkaviation.com/guides.html">
+  <meta property="og:site_name" content="Groundwork Aviation">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f141c;
+      --ink-raise: #161d28;
+      --amber: #e8a23a;
+      --teal: #5fb0a6;
+      --cream: #f7f3ea;
+      --cream-dim: rgba(247,243,234,0.68);
+      --rule: rgba(247,243,234,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Archivo', sans-serif;
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+    a { color: var(--teal); text-decoration-color: rgba(95,176,166,0.4); text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+
+    header.site {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1060px; margin: 0 auto; padding: 1.4rem 1.5rem;
+    }
+    .wordmark { display: flex; align-items: center; gap: .7rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: .18em; font-size: .82rem; color: var(--cream); text-decoration: none; }
+    .nav a { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .14em; margin-left: 1.6rem; text-decoration: none; color: var(--cream-dim); }
+    .nav a:hover { color: var(--amber); }
+
+    .hero {
+      max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .eyebrow { font-family: 'IBM Plex Mono', monospace; color: var(--amber); letter-spacing: .3em; font-size: .78rem; text-transform: uppercase; }
+    h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.15;
+      margin: 1.2rem 0 1.4rem; letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: var(--amber); }
+    .standfirst { color: var(--cream-dim); font-size: 1.15rem; max-width: 620px; }
+    .meta { margin-top: 1.6rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em; color: rgba(247,243,234,0.4); }
+
+    article { max-width: 700px; margin: 0 auto; padding: 2.8rem 1.5rem 3rem; }
+    article h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: 1.7rem; margin: 2.8rem 0 1rem; line-height: 1.25;
+    }
+    article h2 .num { font-family: 'IBM Plex Mono', monospace; font-size: 1rem; color: var(--teal); margin-right: .8rem; letter-spacing: .1em; }
+    article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; margin: 2rem 0 .7rem; }
+    article p { margin-bottom: 1.2rem; color: var(--cream-dim); }
+    article p strong { color: var(--cream); font-weight: 600; }
+    article ul, article ol { margin: 0 0 1.4rem 1.3rem; color: var(--cream-dim); }
+    article li { margin-bottom: .55rem; }
+    article li strong { color: var(--cream); }
+
+    .reg-tag {
+      font-family: 'IBM Plex Mono', monospace; font-size: .78rem;
+      color: var(--teal); border: 1px solid rgba(95,176,166,0.35);
+      border-radius: 5px; padding: .1rem .5rem; white-space: nowrap;
+    }
+    .callout {
+      border-left: 4px solid var(--amber);
+      background: var(--ink-raise);
+      padding: 1.3rem 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+    }
+    .callout p { margin-bottom: 0; color: var(--cream); }
+    .callout .label { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .22em; color: var(--amber); display: block; margin-bottom: .6rem; }
+
+    .cta-panel {
+      margin: 3.2rem 0; padding: 2.4rem 2.2rem;
+      background: linear-gradient(160deg, var(--ink-raise), #121925);
+      border: 1px solid rgba(232,162,58,0.35); border-radius: 12px;
+    }
+    .cta-panel h2 { margin-top: 0; }
+    .cta-panel p { color: var(--cream-dim); }
+    .btn {
+      display: inline-block; margin-top: .8rem;
+      background: var(--amber); color: var(--ink);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: .12em; font-size: .85rem;
+      padding: .9rem 1.6rem; border-radius: 8px; text-decoration: none; font-weight: 500;
+    }
+    .btn:hover { background: #f0b258; color: var(--ink); }
+    .price-note { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; color: rgba(247,243,234,0.45); margin-left: 1rem; letter-spacing: .1em; }
+
+    .faq h3 { color: var(--cream); }
+    footer.site {
+      border-top: 1px solid var(--rule);
+      max-width: 1060px; margin: 2rem auto 0; padding: 2rem 1.5rem 3rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em;
+      color: rgba(247,243,234,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer.site a { color: rgba(247,243,234,0.55); text-decoration: none; }
+    footer.site a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+<header class="site">
+  <a class="wordmark" href="/">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12 L22 3 L14 21 L11.2 13.6 L2 12 Z" fill="#e8a23a"/>
+      <path d="M11.2 13.6 L22 3" stroke="#0f141c" stroke-width="1.4"/>
+    </svg>
+    GROUNDWORK AVIATION
+  </a>
+  <nav class="nav">
+    <a href="/">HOME</a>
+    <a href="/guides.html">GUIDES</a>
+    <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">PLAYBOOK</a>
+  </nav>
+</header>
+<style>
+  .lib { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 3rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.4rem; margin-top: 2.4rem; }
+  .card {
+    display: block; text-decoration: none; color: var(--cream);
+    background: var(--ink-raise); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 1.8rem 1.8rem 1.6rem; transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: rgba(232,162,58,0.5); transform: translateY(-3px); color: var(--cream); }
+  .card .tag { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .22em; color: var(--teal); }
+  .card .tag.paid { color: var(--amber); }
+  .card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem; line-height: 1.3; margin: .8rem 0 .6rem; }
+  .card p { color: var(--cream-dim); font-size: .95rem; line-height: 1.65; margin: 0; }
+  .card .go { display: inline-block; margin-top: 1.1rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .14em; color: var(--amber); }
+</style><section class="hero">
+  <span class="eyebrow">The Library</span>
+  <h1>Guides That Make the Theory <em>Click</em></h1>
+  <p class="standfirst">Plain-English deep-dives on the topics that actually fail people — written and vetted by a working airline pilot. New guides land regularly; the free weather decoder is the best place to start.</p>
+</section>
+
+<div class="lib">
+  <div class="grid">
+    <a class="card" href="/#join">
+      <span class="tag">FREE · EMAIL GUIDE</span>
+      <h3>Decode Any METAR &amp; TAF</h3>
+      <p>The 20-minute guide that ends the guessing: every code group in order, the six traps the exam sets, a printable kneeboard sheet, and ten practice strings decoded line by line.</p>
+      <span class="go">GET IT FREE →</span>
+    </a>
+    <a class="card" href="/vfr-weather-minimums.html">
+      <span class="tag">FREE · ARTICLE</span>
+      <h3>VFR Weather Minimums, Explained</h3>
+      <p>Cloud clearances and visibility for every airspace class — and a way of understanding the pattern that means you never have to brute-force the table again.</p>
+      <span class="go">READ THE GUIDE →</span>
+    </a>
+    <a class="card" href="/checkride-oral-exam-guide.html">
+      <span class="tag">FREE · ARTICLE</span>
+      <h3>The Checkride Oral: What DPEs Actually Ask</h3>
+      <p>The predictable first ten minutes, the cross-country interrogation, and the three words that save orals. How the exam really works, from the examiner's side of the table.</p>
+      <span class="go">READ THE GUIDE →</span>
+    </a>
+    <a class="card" href="/airspace-classes-explained.html">
+      <span class="tag">FREE · ARTICLE</span>
+      <h3>US Airspace Classes, Finally Explained</h3>
+      <p>The whole wedding cake in plain English — Bravo clearances, the Charlie callsign rule, Echo's quiet significance, and the two traps the oral sets.</p>
+      <span class="go">READ THE GUIDE →</span>
+    </a>
+    <a class="card" href="/required-equipment-atomatoflames.html">
+      <span class="tag">FREE · ARTICLE</span>
+      <h3>ATOMATOFLAMES, Decoded</h3>
+      <p>Every 91.205 required-equipment item with the qualifiers examiners probe — plus the 91.213 inoperative-equipment flow that's the real question behind the question.</p>
+      <span class="go">READ THE GUIDE →</span>
+    </a>
+    <a class="card" href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">
+      <span class="tag paid">$29 · PAID GUIDE</span>
+      <h3>The Checkride Oral Playbook</h3>
+      <p>Walk into your FAA private-pilot oral calm, structured, and ready. How examiners think, the 7 rules for answering under pressure, every mnemonic decoded, six worked mock-oral scenarios.</p>
+      <span class="go">GET THE PLAYBOOK →</span>
+    </a>
+  </div>
+</div>
+<footer class="site">
+  <span>© 2026 GROUNDWORK AVIATION</span>
+  <span><a href="/">HOME</a> · <a href="/guides.html">ALL GUIDES</a> · <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">CHECKRIDE ORAL PLAYBOOK</a></span>
+</footer>
+</body>
+</html>
