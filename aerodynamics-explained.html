@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerodynamics for the Checkride: Stalls, Load Factor & Left Turning Tendencies | Groundwork Aviation</title>
+  <meta name="description" content="Private pilot aerodynamics in plain English: why a wing stalls at the critical angle of attack not a fixed airspeed, load factor and accelerated stalls, the four left turning tendencies, and ground effect.">
+  <link rel="canonical" href="https://groundworkaviation.com/aerodynamics-explained.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Aerodynamics for the Checkride, Without the Physics Degree">
+  <meta property="og:description" content="Private pilot aerodynamics in plain English: why a wing stalls at the critical angle of attack not a fixed airspeed, load factor and accelerated stalls, the four left turning tendencies, and ground effect.">
+  <meta property="og:url" content="https://groundworkaviation.com/aerodynamics-explained.html">
+  <meta property="og:site_name" content="Groundwork Aviation">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Aerodynamics for the Checkride, Without the Physics Degree",
+    "description": "Private pilot aerodynamics explained simply: angle of attack and stalls, load factor, the four left turning tendencies, and ground effect.",
+    "author": { "@type": "Organization", "name": "Groundwork Aviation" },
+    "publisher": { "@type": "Organization", "name": "Groundwork Aviation", "url": "https://groundworkaviation.com" },
+    "mainEntityOfPage": "https://groundworkaviation.com/aerodynamics-explained.html",
+    "datePublished": "2026-06-16",
+    "dateModified": "2026-06-16"
+  }
+  </script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "At what airspeed does a wing stall?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A wing does not stall at a fixed airspeed. It stalls when it exceeds its critical angle of attack, which can happen at any airspeed, any attitude, and any power setting. The published stall speed in the POH assumes one G, maximum gross weight, and unaccelerated flight." } },
+      { "@type": "Question", "name": "Why does a single-engine airplane turn left on takeoff?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Four left turning tendencies act together: torque reaction, spiraling slipstream, P-factor, and gyroscopic precession. At the high power and high angle of attack of a takeoff climb, P-factor and spiraling slipstream are the strongest contributors, which is why right rudder is needed." } },
+      { "@type": "Question", "name": "What is load factor and how does it affect stall speed?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Load factor is the ratio of total lift to aircraft weight, expressed in G. In a level 60 degree banked turn it is about 2 G. Stall speed increases with the square root of load factor, so at 2 G the stall speed rises by roughly 41 percent." } },
+      { "@type": "Question", "name": "What is ground effect?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ground effect is the reduction in induced drag that occurs within about one wingspan of the surface, because the ground interferes with the wingtip vortices and downwash. It can allow an aircraft to become airborne below a safe climb speed and then settle back if that speed is not achieved." } }
+    ]
+  }
+  </script><style>
+    :root {
+      --ink: #0f141c;
+      --ink-raise: #161d28;
+      --amber: #e8a23a;
+      --teal: #5fb0a6;
+      --cream: #f7f3ea;
+      --cream-dim: rgba(247,243,234,0.68);
+      --rule: rgba(247,243,234,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Archivo', sans-serif;
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+    a { color: var(--teal); text-decoration-color: rgba(95,176,166,0.4); text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+
+    header.site {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1060px; margin: 0 auto; padding: 1.4rem 1.5rem;
+    }
+    .wordmark { display: flex; align-items: center; gap: .7rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: .18em; font-size: .82rem; color: var(--cream); text-decoration: none; }
+    .nav a { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .14em; margin-left: 1.6rem; text-decoration: none; color: var(--cream-dim); }
+    .nav a:hover { color: var(--amber); }
+
+    .hero {
+      max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .eyebrow { font-family: 'IBM Plex Mono', monospace; color: var(--amber); letter-spacing: .3em; font-size: .78rem; text-transform: uppercase; }
+    h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.15;
+      margin: 1.2rem 0 1.4rem; letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: var(--amber); }
+    .standfirst { color: var(--cream-dim); font-size: 1.15rem; max-width: 620px; }
+    .meta { margin-top: 1.6rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em; color: rgba(247,243,234,0.4); }
+
+    article { max-width: 700px; margin: 0 auto; padding: 2.8rem 1.5rem 3rem; }
+    article h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: 1.7rem; margin: 2.8rem 0 1rem; line-height: 1.25;
+    }
+    article h2 .num { font-family: 'IBM Plex Mono', monospace; font-size: 1rem; color: var(--teal); margin-right: .8rem; letter-spacing: .1em; }
+    article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; margin: 2rem 0 .7rem; }
+    article p { margin-bottom: 1.2rem; color: var(--cream-dim); }
+    article p strong { color: var(--cream); font-weight: 600; }
+    article ul, article ol { margin: 0 0 1.4rem 1.3rem; color: var(--cream-dim); }
+    article li { margin-bottom: .55rem; }
+    article li strong { color: var(--cream); }
+
+    .reg-tag {
+      font-family: 'IBM Plex Mono', monospace; font-size: .78rem;
+      color: var(--teal); border: 1px solid rgba(95,176,166,0.35);
+      border-radius: 5px; padding: .1rem .5rem; white-space: nowrap;
+    }
+    .callout {
+      border-left: 4px solid var(--amber);
+      background: var(--ink-raise);
+      padding: 1.3rem 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+    }
+    .callout p { margin-bottom: 0; color: var(--cream); }
+    .callout .label { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .22em; color: var(--amber); display: block; margin-bottom: .6rem; }
+
+    .cta-panel {
+      margin: 3.2rem 0; padding: 2.4rem 2.2rem;
+      background: linear-gradient(160deg, var(--ink-raise), #121925);
+      border: 1px solid rgba(232,162,58,0.35); border-radius: 12px;
+    }
+    .cta-panel h2 { margin-top: 0; }
+    .cta-panel p { color: var(--cream-dim); }
+    .btn {
+      display: inline-block; margin-top: .8rem;
+      background: var(--amber); color: var(--ink);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: .12em; font-size: .85rem;
+      padding: .9rem 1.6rem; border-radius: 8px; text-decoration: none; font-weight: 500;
+    }
+    .btn:hover { background: #f0b258; color: var(--ink); }
+    .price-note { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; color: rgba(247,243,234,0.45); margin-left: 1rem; letter-spacing: .1em; }
+
+    .faq h3 { color: var(--cream); }
+    footer.site {
+      border-top: 1px solid var(--rule);
+      max-width: 1060px; margin: 2rem auto 0; padding: 2rem 1.5rem 3rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em;
+      color: rgba(247,243,234,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer.site a { color: rgba(247,243,234,0.55); text-decoration: none; }
+    footer.site a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+<header class="site">
+  <a class="wordmark" href="/">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12 L22 3 L14 21 L11.2 13.6 L2 12 Z" fill="#e8a23a"/>
+      <path d="M11.2 13.6 L22 3" stroke="#0f141c" stroke-width="1.4"/>
+    </svg>
+    GROUNDWORK AVIATION
+  </a>
+  <nav class="nav">
+    <a href="/">HOME</a>
+    <a href="/guides.html">GUIDES</a>
+    <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">PLAYBOOK</a>
+  </nav>
+</header>
+<section class="hero">
+  <span class="eyebrow">PPL Theory · Aerodynamics</span>
+  <h1>Aerodynamics for the Checkride, <em>Without</em> the Physics Degree</h1>
+  <p class="standfirst">Lift, load factor, stalls, and the left turning tendencies. The handful of ideas examiners say students misunderstand most, explained the way a working pilot actually thinks about them.</p>
+  <p class="meta">GROUNDWORK AVIATION · UPDATED JUN 2026 · 9 MIN READ</p>
+</section>
+
+<article>
+  <p>Aerodynamics intimidates students because it gets taught as physics. On a checkride it is not a physics exam. The examiner wants to know that you understand why the aircraft does what it does, well enough to stay ahead of it. That takes a few core ideas, not a textbook. Get these right and most of the others fall into place.</p>
+
+  <h2><span class="num">01</span>The four forces, and the one that matters most</h2>
+  <p>In steady flight, four forces act on your aircraft. Lift opposes weight. Thrust opposes drag. When they balance, the aircraft holds altitude and speed. That much every student knows. The useful insight is that these forces are constantly traded, not fixed. Pitch up and you trade airspeed for a higher angle of attack. Add power and you trade fuel for thrust that the aircraft turns into climb or speed. Flying well is mostly the management of those trades.</p>
+  <p>Lift itself comes from the wing deflecting air downward, and the amount depends on a short list of factors: the shape of the wing, the density of the air, the speed of the airflow, and above all the angle at which the wing meets that air. That last one, the angle of attack, is the variable you control most directly, and it is the key to understanding stalls.</p>
+
+  <h2><span class="num">02</span>The stall, properly understood</h2>
+  <p>Here is the single most important sentence in this article. <strong>A wing stalls when it exceeds its critical angle of attack, and it will do that at any airspeed, in any attitude, at any power setting.</strong></p>
+  <p>Students learn a stall speed from the POH and conclude that the wing stalls at that speed. It does not. The published number assumes one specific situation: one G, maximum gross weight, wings level, no acceleration. Change any of those and the airspeed at which the wing reaches its critical angle changes too. Pull hard in a steep turn and the wing can stall well above the book number. Hang on the propeller in a nose high climb and it can stall there as well. The angle of attack is what stalls the wing. The airspeed is just a convenient proxy that is only accurate in the one condition the book assumed.</p>
+  <p>This is the distinction examiners probe, because it is the difference between a pilot who watches a number and a pilot who understands the wing. Recover by reducing the angle of attack, which means lowering the nose to reduce the angle between the wing and the relative wind. Adding power helps the recovery but the angle of attack is what ends the stall.</p>
+
+  <div class="callout">
+    <span class="label">THE EXAMINER'S FAVOURITE</span>
+    <p>If you remember nothing else: a wing always stalls at the same critical angle of attack, never at a single fixed airspeed. Say that clearly in your oral and you have answered half the aerodynamics section before the follow up arrives.</p>
+  </div>
+
+  <h2><span class="num">03</span>Load factor and the accelerated stall</h2>
+  <p>Load factor is simply how many times its own weight the aircraft is effectively supporting, expressed in G. In straight and level flight it is one G. The moment you bank and turn, the wings have to support both the weight of the aircraft and the force that curves its path, so load factor climbs.</p>
+  <p>The numbers are worth knowing because they are not linear. A level turn at 30 degrees of bank is a gentle 1.15 G. At 60 degrees of bank it doubles to 2 G, and the structural and physiological cost rises quickly beyond that. The reason this connects back to stalls is the relationship every examiner wants to hear: <strong>stall speed increases with the square root of load factor.</strong> At 2 G, the square root of two is about 1.41, so your stall speed climbs by roughly 41 percent. The wing that stalls at 50 knots straight and level will stall near 70 knots in a hard 2 G turn. That is the accelerated stall, and it is why aggressive maneuvering close to the ground is unforgiving.</p>
+
+  <h2><span class="num">04</span>The four left turning tendencies</h2>
+  <p>Single engine trainers pull left, especially at high power and high angle of attack, which is exactly the takeoff and climb. Four effects combine to cause it, and a complete answer names all four:</p>
+  <ul>
+    <li><strong>Torque reaction.</strong> The engine spins the propeller one way, so by Newton's third law the airframe is pushed to rotate the other way, loading the left main on the ground and rolling the aircraft left.</li>
+    <li><strong>Spiraling slipstream.</strong> The propeller flings air backward in a corkscrew. That spiral strikes the left side of the vertical stabilizer and pushes the tail right, which yaws the nose left.</li>
+    <li><strong>P-factor.</strong> At a high angle of attack, the descending blade on the right side takes a bigger bite of air than the ascending blade on the left, so the right side of the propeller produces more thrust and yaws the nose left.</li>
+    <li><strong>Gyroscopic precession.</strong> The spinning propeller behaves like a gyroscope, so a pitch change shows up as a yaw 90 degrees later in the direction of rotation. This one is most noticeable in tailwheel aircraft as the tail comes up.</li>
+  </ul>
+  <p>The practical takeaway is the one your instructor repeats on every climb: right rudder. Knowing the four causes is what turns that habit into understanding.</p>
+
+  <h2><span class="num">05</span>Ground effect, briefly</h2>
+  <p>Within roughly one wingspan of the surface, the ground interferes with the wingtip vortices and the downwash behind the wing. That reduces induced drag and the wing feels temporarily more efficient. It matters in two moments. On takeoff, an aircraft can lift off in ground effect below a speed that will sustain the climb, then sink back if you pull it off too early. On landing, the same effect produces the float just before touchdown. Respect it on both ends and it stops being a surprise.</p>
+
+  <div class="cta-panel">
+    <span class="eyebrow">PUT IT TO WORK</span>
+    <h2>The Checkride Oral Playbook</h2>
+    <p>Aerodynamics is one of the knowledge areas the Playbook scripts for the oral, including the stall and angle of attack explanation, load factor, and the scenario questions examiners build from them, every answer sourced and stated the way a DPE wants to hear it.</p>
+    <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">GET THE PLAYBOOK →</a><span class="price-note">$29 · INSTANT PDF</span>
+  </div>
+
+  <h2 class="faq"><span class="num">?</span>Frequently asked questions</h2>
+  <div class="faq">
+    <h3>At what airspeed does a wing stall?</h3>
+    <p>At no fixed airspeed. A wing stalls when it exceeds its critical angle of attack, which can happen at any speed or attitude. The book stall speed assumes one G, max gross weight, and unaccelerated flight.</p>
+    <h3>Why does the aircraft pull left on takeoff?</h3>
+    <p>Four tendencies acting together: torque, spiraling slipstream, P-factor, and gyroscopic precession. At high power and high angle of attack, P-factor and spiraling slipstream dominate, so you feed in right rudder.</p>
+    <h3>How does a turn change my stall speed?</h3>
+    <p>Stall speed rises with the square root of load factor. A 60 degree level turn is 2 G, which raises stall speed by about 41 percent.</p>
+    <h3>What is ground effect?</h3>
+    <p>Reduced induced drag within about one wingspan of the ground. It can let you lift off below a safe climb speed, and it causes the float on landing.</p>
+  </div>
+
+  <p style="margin-top:2.5rem">None of this requires the math behind it. It requires understanding the cause, so that when the aircraft does something you can explain why and stay ahead of it. That is exactly what the examiner is listening for.</p>
+</article>
+<footer class="site">
+  <span>© 2026 GROUNDWORK AVIATION</span>
+  <span><a href="/">HOME</a> · <a href="/guides.html">ALL GUIDES</a> · <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">CHECKRIDE ORAL PLAYBOOK</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Density Altitude & Weight and Balance Explained for Pilots (2026) | Groundwork Aviation</title>
+  <meta name="description" content="Private pilot performance made simple: what density altitude is and why high, hot, and humid hurts performance, forward versus aft CG effects, and how to calculate weight and balance with moments and arms.">
+  <link rel="canonical" href="https://groundworkaviation.com/density-altitude-weight-balance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Density Altitude and Weight & Balance, Without the Panic">
+  <meta property="og:description" content="Private pilot performance made simple: what density altitude is and why high, hot, and humid hurts performance, forward versus aft CG effects, and how to calculate weight and balance with moments and arms.">
+  <meta property="og:url" content="https://groundworkaviation.com/density-altitude-weight-balance.html">
+  <meta property="og:site_name" content="Groundwork Aviation">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Density Altitude and Weight and Balance, Without the Panic",
+    "description": "Density altitude and weight and balance explained simply: why thin air degrades performance, forward and aft CG effects, and the moment and arm calculation.",
+    "author": { "@type": "Organization", "name": "Groundwork Aviation" },
+    "publisher": { "@type": "Organization", "name": "Groundwork Aviation", "url": "https://groundworkaviation.com" },
+    "mainEntityOfPage": "https://groundworkaviation.com/density-altitude-weight-balance.html",
+    "datePublished": "2026-06-16",
+    "dateModified": "2026-06-16"
+  }
+  </script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is density altitude?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Density altitude is pressure altitude corrected for nonstandard temperature. It is the altitude the aircraft performs as though it were flying at. High elevation, high temperature, and high humidity all raise density altitude and reduce engine power, propeller efficiency, and lift." } },
+      { "@type": "Question", "name": "What happens if the center of gravity is too far aft?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An aft center of gravity reduces longitudinal stability, lowers the stall speed, lightens the control forces so the aircraft is easier to overcontrol, and can make a spin difficult or impossible to recover. It is generally the more dangerous limit to exceed." } },
+      { "@type": "Question", "name": "How much does aviation fuel weigh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Aviation gasoline weighs about 6 pounds per US gallon. Engine oil is about 7.5 pounds per gallon. These standard weights are used when computing weight and balance." } },
+      { "@type": "Question", "name": "How do you calculate the center of gravity?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiply each item's weight by its arm, which is its distance from the datum, to get its moment. Add all the weights and add all the moments, then divide total moment by total weight. The result is the center of gravity, which must fall within the limits published for the aircraft." } }
+    ]
+  }
+  </script><style>
+    :root {
+      --ink: #0f141c;
+      --ink-raise: #161d28;
+      --amber: #e8a23a;
+      --teal: #5fb0a6;
+      --cream: #f7f3ea;
+      --cream-dim: rgba(247,243,234,0.68);
+      --rule: rgba(247,243,234,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Archivo', sans-serif;
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+    a { color: var(--teal); text-decoration-color: rgba(95,176,166,0.4); text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+
+    header.site {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1060px; margin: 0 auto; padding: 1.4rem 1.5rem;
+    }
+    .wordmark { display: flex; align-items: center; gap: .7rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: .18em; font-size: .82rem; color: var(--cream); text-decoration: none; }
+    .nav a { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .14em; margin-left: 1.6rem; text-decoration: none; color: var(--cream-dim); }
+    .nav a:hover { color: var(--amber); }
+
+    .hero {
+      max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .eyebrow { font-family: 'IBM Plex Mono', monospace; color: var(--amber); letter-spacing: .3em; font-size: .78rem; text-transform: uppercase; }
+    h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.15;
+      margin: 1.2rem 0 1.4rem; letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: var(--amber); }
+    .standfirst { color: var(--cream-dim); font-size: 1.15rem; max-width: 620px; }
+    .meta { margin-top: 1.6rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em; color: rgba(247,243,234,0.4); }
+
+    article { max-width: 700px; margin: 0 auto; padding: 2.8rem 1.5rem 3rem; }
+    article h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: 1.7rem; margin: 2.8rem 0 1rem; line-height: 1.25;
+    }
+    article h2 .num { font-family: 'IBM Plex Mono', monospace; font-size: 1rem; color: var(--teal); margin-right: .8rem; letter-spacing: .1em; }
+    article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; margin: 2rem 0 .7rem; }
+    article p { margin-bottom: 1.2rem; color: var(--cream-dim); }
+    article p strong { color: var(--cream); font-weight: 600; }
+    article ul, article ol { margin: 0 0 1.4rem 1.3rem; color: var(--cream-dim); }
+    article li { margin-bottom: .55rem; }
+    article li strong { color: var(--cream); }
+
+    .reg-tag {
+      font-family: 'IBM Plex Mono', monospace; font-size: .78rem;
+      color: var(--teal); border: 1px solid rgba(95,176,166,0.35);
+      border-radius: 5px; padding: .1rem .5rem; white-space: nowrap;
+    }
+    .callout {
+      border-left: 4px solid var(--amber);
+      background: var(--ink-raise);
+      padding: 1.3rem 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+    }
+    .callout p { margin-bottom: 0; color: var(--cream); }
+    .callout .label { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .22em; color: var(--amber); display: block; margin-bottom: .6rem; }
+
+    .cta-panel {
+      margin: 3.2rem 0; padding: 2.4rem 2.2rem;
+      background: linear-gradient(160deg, var(--ink-raise), #121925);
+      border: 1px solid rgba(232,162,58,0.35); border-radius: 12px;
+    }
+    .cta-panel h2 { margin-top: 0; }
+    .cta-panel p { color: var(--cream-dim); }
+    .btn {
+      display: inline-block; margin-top: .8rem;
+      background: var(--amber); color: var(--ink);
+      font-family: 'IBM Plex Mono', monospace; letter-spacing: .12em; font-size: .85rem;
+      padding: .9rem 1.6rem; border-radius: 8px; text-decoration: none; font-weight: 500;
+    }
+    .btn:hover { background: #f0b258; color: var(--ink); }
+    .price-note { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; color: rgba(247,243,234,0.45); margin-left: 1rem; letter-spacing: .1em; }
+
+    .faq h3 { color: var(--cream); }
+    footer.site {
+      border-top: 1px solid var(--rule);
+      max-width: 1060px; margin: 2rem auto 0; padding: 2rem 1.5rem 3rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em;
+      color: rgba(247,243,234,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer.site a { color: rgba(247,243,234,0.55); text-decoration: none; }
+    footer.site a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+<header class="site">
+  <a class="wordmark" href="/">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12 L22 3 L14 21 L11.2 13.6 L2 12 Z" fill="#e8a23a"/>
+      <path d="M11.2 13.6 L22 3" stroke="#0f141c" stroke-width="1.4"/>
+    </svg>
+    GROUNDWORK AVIATION
+  </a>
+  <nav class="nav">
+    <a href="/">HOME</a>
+    <a href="/guides.html">GUIDES</a>
+    <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">PLAYBOOK</a>
+  </nav>
+</header>
+<section class="hero">
+  <span class="eyebrow">Checkride Prep · Performance</span>
+  <h1>Density Altitude and Weight &amp; Balance, <em>Without</em> the Panic</h1>
+  <p class="standfirst">The calculation heavy corner of the checkride that students dread. Density altitude, weight and balance, and takeoff numbers, broken into the few ideas that actually drive every answer.</p>
+  <p class="meta">GROUNDWORK AVIATION · UPDATED JUN 2026 · 10 MIN READ</p>
+</section>
+
+<article>
+  <p>Performance and weight and balance is where a lot of students lose confidence, because it looks like arithmetic and feels like a trap. It is neither, once you see what the numbers are really telling you. Two big ideas carry almost the whole topic: how dense the air is, and where the weight sits. Everything else is reading a chart carefully.</p>
+
+  <h2><span class="num">01</span>Density altitude: the air your aircraft actually feels</h2>
+  <p>Your aircraft does not care what the altimeter reads. It cares how many air molecules are passing over the wing and through the engine. Density altitude is the single number that captures that, and the clean definition to give an examiner is this: <strong>density altitude is pressure altitude corrected for nonstandard temperature.</strong> It is the altitude at which the air density matches what your aircraft is currently experiencing.</p>
+  <p>Three things thin the air and push density altitude up. Pilots remember them as high, hot, and humid. High field elevation means less air to begin with. High temperature spreads the molecules apart. High humidity replaces some of the air with lighter water vapor. When density altitude is high, three things suffer at once. The engine makes less power because it draws in less oxygen. The propeller produces less thrust because it has less air to bite. The wing needs a higher true airspeed to generate the same lift. The result is a longer takeoff roll, a shallower climb, and a higher groundspeed on approach. On a hot day at a high elevation strip, that combination has ended a lot of flights badly, which is precisely why the examiner cares whether you understand it.</p>
+  <p>You will not usually compute density altitude by hand on the checkride. You will be expected to know what raises it, what it does to performance, and to find your numbers in the POH charts. To do that you start from pressure altitude, which is what the altimeter shows when you set it to 29.92, then you apply temperature.</p>
+
+  <div class="callout">
+    <span class="label">THE MENTAL MODEL</span>
+    <p>High, hot, and humid all mean thinner air, and thinner air means less power, less thrust, and less lift. If you can explain why each of those three suffers, you have the whole performance discussion in hand.</p>
+  </div>
+
+  <h2><span class="num">02</span>Why weight and balance is two separate questions</h2>
+  <p>The phrase hides two different concerns. <strong>Weight</strong> asks whether the aircraft is too heavy. <strong>Balance</strong> asks whether the load sits in the right place. An aircraft can be under gross weight and still dangerously out of balance, so both have to check out.</p>
+  <p>Excess weight is the simpler of the two. A heavier aircraft needs more runway, climbs more slowly, has a higher stall speed, and a reduced useful ceiling. Stay at or below the maximum gross weight in the POH and that side is satisfied.</p>
+  <p>Balance is about the center of gravity, the point the aircraft effectively balances around, and it has to fall inside a published forward and aft range. Where it sits within that range changes how the aircraft handles.</p>
+
+  <h2><span class="num">03</span>Forward and aft CG, and which one bites</h2>
+  <p>A <strong>forward CG</strong> is the safe direction to err, but it is not free. With weight ahead of the limits the aircraft is more stable, which sounds good, but the tail has to produce more downforce to hold the nose up. That raises the effective load on the wing and therefore the stall speed, increases control forces so the aircraft feels heavy in pitch, and lengthens the takeoff roll. In the extreme you can run out of elevator authority to flare for landing.</p>
+  <p>An <strong>aft CG</strong> is the dangerous direction. As the center of gravity moves rearward the aircraft becomes less stable, the control forces lighten so it is easy to overcontrol, and the stall speed actually drops. The serious problem is recovery. With an aft CG a stall can develop into a spin that is difficult, or in the worst case impossible, to recover from, because there is not enough authority to bring the nose back down. This is why the aft limit is the one examiners treat with the most respect, and why you should too.</p>
+
+  <h2><span class="num">04</span>The actual calculation, demystified</h2>
+  <p>The math is one idea applied repeatedly. Every item of load produces a <strong>moment</strong>, which is just its weight multiplied by its <strong>arm</strong>, the distance from a fixed reference point called the datum. Heavier items and items farther from the datum produce larger moments.</p>
+  <p>To find the center of gravity you do three things. Add up all the weights to get total weight. Add up all the moments to get total moment. Divide total moment by total weight, and the answer is the center of gravity, measured as a distance from the datum. Then you confirm that both the total weight and that CG fall within the envelope the POH publishes. That is the entire procedure. A few standard weights make it quick: aviation gasoline is about 6 pounds per gallon, and engine oil about 7.5 pounds per gallon.</p>
+  <p>One detail examiners like to test is what happens as you burn fuel. Because the fuel tanks sit at a particular arm, using fuel shifts the CG, and in some aircraft a flight that starts inside the envelope can finish outside it. Checking weight and balance for both takeoff and landing, not just takeoff, is the mark of a careful pilot.</p>
+
+  <div class="cta-panel">
+    <span class="eyebrow">PUT IT TO WORK</span>
+    <h2>The Checkride Oral Playbook</h2>
+    <p>Performance and weight and balance is one of the knowledge areas the Playbook scripts for the oral, including density altitude, the forward and aft CG effects, and worked weight and balance scenarios, so you can walk the examiner through the numbers calmly instead of dreading the question.</p>
+    <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">GET THE PLAYBOOK →</a><span class="price-note">$29 · INSTANT PDF</span>
+  </div>
+
+  <h2 class="faq"><span class="num">?</span>Frequently asked questions</h2>
+  <div class="faq">
+    <h3>What is density altitude?</h3>
+    <p>Pressure altitude corrected for nonstandard temperature. It is the altitude your aircraft performs as if it were at. High, hot, and humid conditions raise it and degrade performance.</p>
+    <h3>Which is more dangerous, a forward or aft CG?</h3>
+    <p>Aft. It reduces stability, lightens controls, and can make a spin unrecoverable. A forward CG is the safer direction, though it raises stall speed and control forces.</p>
+    <h3>How much does avgas weigh?</h3>
+    <p>About 6 pounds per US gallon. Oil is about 7.5 pounds per gallon. These standard figures are used in the weight and balance calculation.</p>
+    <h3>How do I calculate CG?</h3>
+    <p>Weight times arm gives each moment. Total the weights, total the moments, then divide total moment by total weight. Confirm the result sits inside the published envelope.</p>
+  </div>
+
+  <p style="margin-top:2.5rem">Strip away the dread and the topic is two questions and one repeated calculation. Understand what thins the air and where the weight sits, read the charts with care, and check both ends of the flight. That is all the examiner is asking you to show.</p>
+</article>
+<footer class="site">
+  <span>© 2026 GROUNDWORK AVIATION</span>
+  <span><a href="/">HOME</a> · <a href="/guides.html">ALL GUIDES</a> · <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">CHECKRIDE ORAL PLAYBOOK</a></span>
+</footer>
+</body>
+</html>
