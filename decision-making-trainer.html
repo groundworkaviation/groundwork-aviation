@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Go / No-Go Trainer | Groundwork Aviation</title>
+<meta name="description" content="Eight real go/no-go briefings. Make the call, then see how a professional crew weighs the risk. A free decision-making trainer from Groundwork Aviation.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f141c;
+    --ink-2:#161d28;
+    --ink-3:#1c2531;
+    --paper:#f4efe4;
+    --amber:#e8a23a;
+    --amber-deep:#c9831f;
+    --teal:#5fb0a6;
+    --cream:#f7f3ea;
+    --muted:#8a93a3;
+    --danger:#d2674e;
+    --line:rgba(244,239,228,.14);
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Archivo',-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--ink);color:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;width:100%}
+  a{color:inherit;text-decoration:none}
+
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:500}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);background:rgba(15,20,28,.72);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:760px;margin:0 auto;padding:0 24px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-.01em;color:var(--cream)}
+  .logo .mark{width:28px;height:28px;flex:none;display:grid;place-items:center;border:1.5px solid var(--amber);border-radius:50%;color:var(--amber)}
+  .logo .mark svg{width:15px;height:15px}
+  .backlink{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+  .backlink:hover{color:var(--amber)}
+
+  main{flex:1;width:100%;padding:48px 0 64px}
+
+  /* SCREEN system: class-based toggling only, no id-based display rules */
+  .screen{display:none;animation:fade .4s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* INTRO */
+  .intro-eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:22px}
+  .intro-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(232,162,58,.18)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,52px);line-height:1.04;letter-spacing:-.02em;color:#fff}
+  h1 em{font-style:italic;color:var(--amber)}
+  .intro-sub{margin-top:22px;font-size:17.5px;line-height:1.6;color:#c2c9d3;max-width:560px}
+  .rulecard{margin-top:32px;background:linear-gradient(160deg,#12303a,#0e1a22);border:1px solid rgba(95,176,166,.22);border-radius:16px;padding:26px 28px}
+  .rulecard .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:10px}
+  .rulecard p{font-size:16px;color:#dfe4ec;line-height:1.6}
+  .rulecard p strong{color:#fff;font-weight:600}
+  .byline{margin-top:26px;display:flex;align-items:flex-start;gap:13px;font-size:14.5px;color:var(--muted);line-height:1.55}
+  .byline .pin{width:18px;height:18px;color:var(--amber);flex:none;margin-top:2px}
+  .byline strong{color:#dfe4ec;font-weight:600}
+
+  /* buttons */
+  .btn{font-family:var(--sans);font-weight:600;font-size:15px;background:var(--amber);color:var(--ink);padding:14px 26px;border-radius:9px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 8px 30px rgba(232,162,58,.22);display:inline-flex;align-items:center;gap:9px}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(232,162,58,.34)}
+  .btn-ghost{background:none;box-shadow:none;color:#cdd3dc;border:1px solid var(--line);padding:13px 24px}
+  .btn-ghost:hover{background:none;border-color:var(--amber);color:#fff;transform:translateY(-2px);box-shadow:none}
+  .startrow{margin-top:34px}
+
+  /* PROGRESS */
+  .progress{display:flex;align-items:center;gap:7px;margin-bottom:26px}
+  .progress .seg{height:4px;flex:1;border-radius:3px;background:var(--line);overflow:hidden}
+  .progress .seg.done{background:var(--amber)}
+  .progress .seg.cur{background:var(--amber-deep)}
+  .progress .count{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-left:6px;white-space:nowrap}
+
+  /* SCENARIO */
+  .sc-eyebrow{margin-bottom:12px}
+  .sc-title{font-family:var(--serif);font-weight:600;font-size:clamp(25px,3.6vw,34px);line-height:1.1;letter-spacing:-.01em;color:#fff}
+  .sc-setup{margin-top:16px;font-size:16.5px;color:#c8cfd9;line-height:1.62}
+
+  .pave{margin-top:26px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--ink-2)}
+  .pave-row{display:grid;grid-template-columns:128px 1fr;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .pave-row:last-child{border-bottom:none}
+  .pave-row .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);font-weight:500;padding-top:2px}
+  .pave-row .v{font-size:14.8px;color:#d4dae2;line-height:1.55}
+  @media(max-width:540px){.pave-row{grid-template-columns:1fr;gap:5px}}
+
+  .wx{margin-top:16px;position:relative;background:linear-gradient(160deg,#10171f,#0c1118);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px}
+  .wx-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--amber);color:var(--ink);padding:3px 9px;border-radius:20px;font-weight:600}
+  .wx-line{font-family:var(--mono);font-size:13.5px;line-height:1.85;color:#eef2f7;letter-spacing:.02em;margin-top:11px;word-break:break-word}
+  .wx-line .lab{color:var(--muted)}
+
+  .ask{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:19px;color:#fff;text-align:center}
+  .choices{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.choices{grid-template-columns:1fr}}
+  .btn-choice{font-family:var(--sans);font-weight:700;font-size:17px;letter-spacing:.04em;padding:20px;border-radius:12px;cursor:pointer;background:none;transition:transform .18s,background .18s,border-color .18s,color .18s;text-transform:uppercase}
+  .btn-choice.nogo{border:1.5px solid rgba(95,176,166,.5);color:var(--teal)}
+  .btn-choice.nogo:hover{background:rgba(95,176,166,.12);border-color:var(--teal);transform:translateY(-2px)}
+  .btn-choice.go{border:1.5px solid rgba(232,162,58,.5);color:var(--amber)}
+  .btn-choice.go:hover{background:rgba(232,162,58,.12);border-color:var(--amber);transform:translateY(-2px)}
+  .btn-choice .small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);margin-top:6px;text-transform:uppercase;font-weight:500}
+
+  /* VERDICT */
+  .verdict{margin-top:26px;border-radius:14px;padding:22px 24px;border:1px solid}
+  .verdict .vtag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:9px}
+  .verdict .vtag svg{width:16px;height:16px;flex:none}
+  .verdict h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-top:8px;line-height:1.2}
+  .verdict.good{background:rgba(95,176,166,.10);border-color:rgba(95,176,166,.4)}
+  .verdict.good .vtag,.verdict.good h3{color:var(--teal)}
+  .verdict.trap{background:rgba(210,103,78,.10);border-color:rgba(210,103,78,.45)}
+  .verdict.trap .vtag,.verdict.trap h3{color:var(--danger)}
+  .verdict.warn{background:rgba(232,162,58,.10);border-color:rgba(232,162,58,.4)}
+  .verdict.warn .vtag,.verdict.warn h3{color:var(--amber)}
+  .debrief{margin-top:14px;font-size:15.5px;color:#cdd4de;line-height:1.66}
+  .debrief p{margin-top:11px}
+  .debrief p:first-child{margin-top:0}
+  .debrief .pull{font-family:var(--serif);font-style:italic;font-size:16.5px;color:#fff;border-left:2px solid var(--amber);padding-left:15px;margin-top:15px}
+  .nextrow{margin-top:26px;display:flex;justify-content:flex-end}
+
+  /* GATE */
+  .gate{text-align:center;max-width:560px;margin:0 auto;padding-top:8px}
+  .gate h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.4vw,40px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin-top:14px}
+  .gate p{margin-top:16px;font-size:16.5px;color:#c2c9d3;line-height:1.6}
+  form.signup{margin-top:28px;display:flex;gap:10px;max-width:460px;margin-left:auto;margin-right:auto}
+  @media(max-width:480px){form.signup{flex-direction:column}}
+  form.signup input{flex:1;font-family:var(--sans);font-size:15px;padding:15px 18px;border-radius:9px;border:1px solid var(--line);background:#0c1118;color:#fff;outline:none;transition:border .2s}
+  form.signup input:focus{border-color:var(--amber)}
+  form.signup input::placeholder{color:var(--muted)}
+  form.signup button{white-space:nowrap}
+  .gate .micro{margin-top:16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted)}
+  .gate .err{margin-top:14px;color:var(--danger);font-size:13.5px;min-height:18px}
+
+  /* DONE */
+  .done{text-align:center;max-width:600px;margin:0 auto}
+  .done h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.4vw,42px);line-height:1.08;letter-spacing:-.02em;color:#fff}
+  .score{margin-top:26px;display:inline-flex;flex-direction:column;align-items:center;gap:4px;background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:24px 40px}
+  .score .big{font-family:var(--serif);font-weight:600;font-size:48px;color:var(--amber);line-height:1}
+  .score .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .done .creed{margin-top:26px;font-size:16.5px;color:#c8cfd9;line-height:1.64}
+  .done .creed strong{color:#fff;font-weight:600}
+  .cta{margin-top:36px;border-top:1px solid var(--line);padding-top:34px}
+  .cta .lead{font-family:var(--serif);font-size:21px;color:#fff;font-weight:500;line-height:1.3}
+  .cta .leadsub{margin-top:12px;font-size:15px;color:#aab2bf;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto}
+  .cta-btns{margin-top:24px;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .restart{margin-top:30px}
+  .restart button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;color:var(--muted);cursor:pointer;transition:color .2s}
+  .restart button:hover{color:var(--amber)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:26px 0;margin-top:auto}
+  .disclaimer{font-size:12.5px;color:var(--muted);line-height:1.6;text-align:center;font-style:italic;font-family:var(--serif)}
+
+  /* a11y */
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="/">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L12 22 M2 12 L22 12"/><circle cx="12" cy="12" r="6"/></svg></span>
+      Groundwork Aviation
+    </a>
+    <a class="backlink" href="/">All guides</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- INTRO -->
+    <section class="screen active" id="screen-intro">
+      <span class="eyebrow intro-eyebrow"><span class="dot"></span>Decision-Making Trainer</span>
+      <h1>Would you fly <em>today?</em></h1>
+      <p class="intro-sub">Eight real briefings. Each one hands you the same picture a pilot sees before a flight, laid out the way a professional crew reads it. You make the call. Then you see how a professional weighs the same risk, and why.</p>
+
+      <div class="rulecard">
+        <div class="lbl">The one rule</div>
+        <p>Caution is never the wrong answer. The only real mistake is choosing <strong>less caution than the day called for.</strong> A no-go on a marginal morning is never wrong. The trap is talking yourself into a go.</p>
+      </div>
+
+      <div class="byline">
+        <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>Built by an airline pilot. This is how professional crews actually think: not memorizing answers, but managing risk through frameworks like <strong>PAVE</strong>, Pilot, Aircraft, enVironment, External pressure. That habit is the difference between passing a checkride and staying alive after it.</span>
+      </div>
+
+      <div class="startrow">
+        <button class="btn" id="startBtn">Start the briefings
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENARIO -->
+    <section class="screen" id="screen-scenario">
+      <div class="progress" id="progress"></div>
+      <div id="scenarioBody"></div>
+    </section>
+
+    <!-- GATE -->
+    <section class="screen" id="screen-gate">
+      <div class="gate">
+        <span class="eyebrow">Briefing continues</span>
+        <h2>Three down. Five tougher calls are ready.</h2>
+        <p>The next five get into the decisions that catch experienced pilots: a squall line running ahead of a front, hot-and-high density altitude, the pressure to get home on a Sunday night, terrain closing under a lowering deck, and a squawk the mechanic waved off. They are free. Tell us where to send them.</p>
+        <form class="signup" id="gateForm" novalidate>
+          <input type="email" id="gateEmail" placeholder="you@email.com" autocomplete="email" aria-label="Email address">
+          <button type="submit" class="btn">Unlock the last five</button>
+        </form>
+        <div class="err" id="gateErr"></div>
+        <div class="micro">No spam. Real scenarios and the occasional note from the flight deck.</div>
+      </div>
+    </section>
+
+    <!-- DONE -->
+    <section class="screen" id="screen-done">
+      <div class="done">
+        <span class="eyebrow">Debrief complete</span>
+        <h2>That is the whole game.</h2>
+        <div class="score">
+          <span class="big" id="scoreNum">0 / 8</span>
+          <span class="lab">Professional calls</span>
+        </div>
+        <p class="creed">Notice what the score did <strong>not</strong> punish: a no-go on a marginal day was always the professional call. The only misses were the days you chose to go when the situation said stop. <strong>That asymmetry is the entire safety culture of an airline in one sentence.</strong> Caution costs you a flight. The other mistake costs more than that.</p>
+
+        <div class="cta">
+          <div class="lead">Want the frameworks behind these calls in your hands?</div>
+          <div class="leadsub">The playbooks turn this judgment into something you can study before your checkride: how examiners want you to talk through a go/no-go, and how to read weather like a decision instead of a code.</div>
+          <div class="cta-btns">
+            <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralcheckride">The Checkride Oral Playbook</a>
+            <a class="btn btn-ghost" href="https://groundworkaviation.gumroad.com/l/weatherplaybook">The Aviation Weather Playbook</a>
+          </div>
+        </div>
+        <div class="restart"><button id="restartBtn">Run the briefings again</button></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer">These scenarios are simplified for teaching and are not a substitute for an official weather briefing, the regulations, or your flight instructor. Always make your own go/no-go decision using current information.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   THE GO / NO-GO TRAINER
+   Self-contained. No external dependencies, no browser storage.
+   Email gate appears after scenario 3 and unlocks scenarios 4-8.
+   ============================================================ */
+
+/* ---- SCENARIO BANK ----
+   caution: the cautious-correct call ("nogo" on a marginal/bad day,
+   "go" on the deliberate clean day). Grading rewards matching it. */
+const SCENARIOS = [
+  {
+    tag: "Environment · the morning",
+    title: "A dawn that will not lift",
+    setup: "It is 7:00 in the morning. You planned a short cross-country to meet friends for breakfast two airports over. You are awake, fed, and keen. You walk to the airplane and the ramp is grey.",
+    pave: {
+      pilot: "Current and rested. Four hours of cross-country time total. You have never flown in reduced visibility.",
+      aircraft: "Cessna 172. Full fuel, no open squawks.",
+      environment: "WX",
+      external: "Three friends are already at the cafe waiting on you."
+    },
+    wx: {
+      metar: "KSQL 141353Z 00000KT 1/4SM FG VV002 12/12 A3015",
+      taf: "KSQL 141340Z 1414/1506 00000KT 1/4SM FG VV002 FM141700 VRB03KT 3SM BR SCT008 FM141900 28010KT P6SM SKC"
+    },
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "Never the wrong call.",
+      body: ["Coffee on the ground until it lifts. That is the answer, and it costs you nothing but an hour.",
+             "Temperature and dew point are equal, so the air is saturated. The wind is calm, which means nothing is going to mix the fog out. And fog right around sunrise often thickens before it burns off, not after. The TAF agrees: a quarter mile until late morning, then good visual conditions by 1900 Zulu.",
+             "You have no actual low-visibility experience to fall back on, which removes any argument for going up to take a look."],
+      pull: "The professionals are not braver than you. They are just on the ground, drinking coffee, watching it lift."
+    },
+    trap: {
+      tag: "Trap", title: "You launched into forming fog.",
+      body: ["This is not a wait-and-see-from-the-air situation. It is a wait-on-the-ground situation, and the difference is the whole lesson.",
+             "Equal temperature and dew point means saturated air. Calm wind means nothing clears it. Fog near sunrise frequently gets worse first. With a quarter mile of visibility and no low-visibility experience, the runway disappears behind you and there is nowhere good to put it down.",
+             "The TAF handed you the easy out: severe clear by mid-morning. The only cost of waiting was breakfast running late."],
+      pull: "Get-there-itis does not announce itself. It feels like a perfectly reasonable plan you made last night."
+    }
+  },
+  {
+    tag: "Pilot · under a perfect sky",
+    title: "The day everything outside says go",
+    setup: "Severe clear. Light winds. The kind of day you wait for. There is just one thing, and it is not in the sky.",
+    pave: {
+      pilot: "You slept about five hours. You are fighting a head cold and took an over-the-counter antihistamine last night. You feel basically fine.",
+      aircraft: "Airworthy, fueled, nothing outstanding.",
+      environment: "WX",
+      external: "You have been looking forward to this flight all week and cleared your whole afternoon for it."
+    },
+    wx: {
+      metar: "KAPA 141953Z 27009KT 10SM SKC 24/M01 A3005",
+      taf: "KAPA 141740Z 1418/1518 28010KT P6SM SKC"
+    },
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "A clear sky is not a clearance.",
+      body: ["The whole trap in this one is that everything external screams go, and the only thing holding you back is the Pilot, the leg of PAVE people quietly skip when the weather is gorgeous.",
+             "Run IMSAFE honestly. Illness: a head cold degrades you. Medication: sedating antihistamines linger far longer than people think and the FAA treats them seriously. Fatigue: five hours of sleep blunts judgment first, and you do not feel that part happening.",
+             "The conditions are perfect. You are not. Those are two separate go items, and today only one of them passes."],
+      pull: "I feel fine is exactly what an impaired pilot says, because the thing that is impaired is the part doing the judging."
+    },
+    trap: {
+      tag: "Trap", title: "You went because the weather was good.",
+      body: ["The sky had nothing to do with whether you were fit to fly, and you let the sky decide.",
+             "A head cold, a sedating antihistamine still in your system, and a sleep deficit are three separate hits to a pilot. None of them care that it is CAVOK. The reason this scenario is dangerous is precisely that there is no weather to scare you into caution.",
+             "PAVE puts Pilot first for a reason. The airplane and the air can be perfect while the one irreplaceable component is not."],
+      pull: "The good days are when pilots skip the personal checklist, because nothing on the outside is telling them to stop."
+    }
+  },
+  {
+    tag: "The clean go",
+    title: "A genuinely good day",
+    setup: "You walk out expecting to find a reason not to go. This is the briefing that teaches the other half of judgment: there is not always a catch.",
+    pave: {
+      pilot: "Current, recent, proficient, well rested. Comfortable in this airplane.",
+      aircraft: "Airworthy, full fuel, no discrepancies.",
+      environment: "WX",
+      external: "Nothing pressing. No clock, no audience, no pressure either way."
+    },
+    wx: {
+      metar: "KRHV 141947Z 31007KT 10SM FEW040 21/08 A3001",
+      taf: "KRHV 141740Z 1418/1518 32008KT P6SM FEW040"
+    },
+    caution: "go",
+    good: {
+      tag: "Good call", title: "This was a flyable day, and you saw it.",
+      body: ["Recognizing a good day is judgment too. A pilot who answers no-go to everything will never build the hours and the currency that actually make them safe.",
+             "Every leg of PAVE lines up. A rested, current pilot. A sound airplane. Light winds, high visibility, a few clouds well above your altitude, a steady forecast. No outside pressure pulling the decision either way.",
+             "Go fly. Keep your normal personal minimums as hard gates, the way a crew keeps stabilized-approach criteria, and enjoy it."],
+      pull: "Endless caution is its own failure mode. It looks safe, and it slowly grounds you into a pilot who is no longer current."
+    },
+    warn: {
+      tag: "Over-cautious", title: "Safe, and never wrong. But calibrate.",
+      body: ["You are never marked wrong for choosing no-go. That rule holds. But this is the day worth sitting with, because every leg of PAVE was green.",
+             "A rested and current pilot, a sound airplane, light winds, high visibility, a stable forecast, and zero outside pressure. If this day does not meet your bar, the bar may have quietly drifted into a place where you never fly, lose currency, and become less safe for it.",
+             "Judgment is matching the response to the situation, in both directions. Sometimes the professional call is simply: go fly."],
+      pull: "A trainer that makes every day scary teaches paralysis. Knowing a good day when you see one is the skill too."
+    }
+  },
+  {
+    tag: "Environment · convection",
+    title: "Beat the front",
+    setup: "Early afternoon. You are heading east on a 45-minute leg. A cold front is sweeping in from the west, behind you, and a line of storms is running out ahead of it.",
+    pave: {
+      pilot: "Current and proficient. No instrument rating.",
+      aircraft: "Sound, fueled, no issues.",
+      environment: "WX",
+      external: "It is just a short hop. The thought in your head is, I will be on the ground before it gets here."
+    },
+    wx: {
+      metar: "KEXX 142053Z 20013G19KT 9SM FEW250 SCT300 29/19 A2992",
+      taf: "KEXX 142010Z 1421/1518 20012G20KT P6SM SCT250 TEMPO 2122/2124 VRB30G45KT 1SM +TSRA BKN025CB"
+    },
+    note: "A Convective SIGMET is active for the line, currently about 60 nautical miles west and moving at roughly 30 knots.",
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "You do not race convection.",
+      body: ["This is the right call, and the reason is the shape of the outcomes, not the odds.",
+             "A prefrontal squall line can move faster than forecast and holds the worst of everything: severe turbulence, hail, and wind shear that can exceed the airplane's limits. The TAF already warns of gusts to 45 knots and heavy storms in a tempo group. The departure is still flyable, which is exactly what makes I will beat it feel reasonable.",
+             "Even if you would probably make it, probably is not a margin when the failure case is an inflight breakup or a forced landing. Wait it out, or go tomorrow."],
+      pull: "Beat the front is one of the oldest lines in fatal accident reports, because the line does not know it is supposed to lose the race."
+    },
+    trap: {
+      tag: "Trap", title: "You bet a short flight against a squall line.",
+      body: ["The decision assumed the weather would cooperate with your schedule. Weather does not negotiate.",
+             "Prefrontal lines can outrun the forecast and pack severe turbulence, hail, and shear past the airframe's structural limits. The tempo group in the TAF spelled it out: gusts to 45 and heavy thunderstorms. A Convective SIGMET was already published on the line.",
+             "The trap is that the departure looked fine, so the threat felt distant. The asymmetry is brutal: best case you save 30 minutes, worst case is catastrophic and irreversible."],
+      pull: "The professional question is never can I make it. It is what happens if I am wrong, and here the answer is unsurvivable."
+    }
+  },
+  {
+    tag: "Aircraft · performance",
+    title: "Hot, high, and heavy",
+    setup: "A summer afternoon at a mountain strip. Field elevation 6,500 feet. You, two friends, and bags want to head home before dark.",
+    pave: {
+      pilot: "Current. Limited mountain experience.",
+      aircraft: "Cessna 172, loaded near maximum gross weight. The favored runway is short, and the wind gives you a slight tailwind on it.",
+      environment: "WX",
+      external: "Everyone is tired, it has been a long weekend, and the group wants to get home tonight."
+    },
+    wx: {
+      metar: "KMTN 142153Z 24006KT 10SM SKC 34/04 A3020"
+    },
+    note: "At 6,500 feet and 34 degrees Celsius, density altitude works out near 9,500 feet. The airplane will perform as if the airport were nearly two miles up.",
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "Not no-go forever. No-go now.",
+      body: ["Density altitude is the quiet killer because nothing looks wrong. The sky is clear, the engine runs fine, and the airplane sits there looking perfectly capable.",
+             "Near 9,500 feet density altitude, at gross, off a short high strip, with a tailwind component, your takeoff roll balloons and your climb gradient may not clear the terrain off the end. The margins you are used to at sea level are simply gone.",
+             "The professional move is to change the inputs, not force the output. Wait for the cool of the morning when density altitude drops. Offload weight. Take half fuel and a fuel stop. Any of those buys back the margin."],
+      pull: "The airplane is not refusing to fly. It is telling you the math does not close this afternoon. Listen to the math."
+    },
+    trap: {
+      tag: "Trap", title: "You forced it on a hot afternoon.",
+      body: ["Everything looked fine, which is precisely the danger of density altitude. The threat does not show up in the windshield.",
+             "Near 9,500 feet density altitude, at maximum gross, off a short high-elevation runway, with a tailwind, the airplane needs far more runway and climbs far worse than your sea-level instincts expect. Rising terrain off the departure end turns a marginal climb into a trap with no outs.",
+             "There was an easy fix and you had all the ingredients: cooler morning air, less weight, or less fuel and a stop. Each one rebuilds the margin you just spent."],
+      pull: "Hot, high, and heavy is a checklist of three things that each erode performance. Stacking all three is how good airplanes do not clear the trees."
+    }
+  },
+  {
+    tag: "External pressure · get-home-itis",
+    title: "Work is Monday morning",
+    setup: "Sunday evening. You flew out for the weekend and you are due back. The weather is sliding from marginal toward worse, and the light is going.",
+    pave: {
+      pilot: "Current, but tired from the weekend. No instrument rating.",
+      aircraft: "Sound, fueled.",
+      environment: "WX",
+      external: "You have a major meeting first thing Monday. You already told your boss you would be there. The alternative is an expensive last-minute airline ticket or a six-hour drive."
+    },
+    wx: {
+      metar: "KEXX 150053Z 15009KT 5SM BR BKN015 OVC025 14/12 A2998",
+      taf: "KEXX 150040Z 1501/1524 16010KT 4SM BR BKN012 OVC020 TEMPO 0103/0106 2SM BR OVC008"
+    },
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "The meeting is not an aviation input.",
+      body: ["This is the most dangerous scenario in the set, because the pressure is real, not imagined. The meeting matters. The ticket is expensive. The drive is miserable. All true, and none of it belongs in the go/no-go decision.",
+             "Lowering marginal conditions, falling light, no instrument rating, and a tired pilot is a textbook profile for the accident where a visual pilot continues into instrument conditions. The TAF is trending down, not up: a tempo group puts the ceiling at 800 overcast.",
+             "You decide go or no-go on the airplane and the sky, never on the calendar. Leave the airplane. Drive, or rebook, and be late."],
+      pull: "I have to be back has killed more pilots than weather alone, because it turns a clear no-go into a maybe."
+    },
+    trap: {
+      tag: "Trap", title: "You let Monday fly the airplane.",
+      body: ["The decision got made by the meeting, the ticket price, and the long drive, none of which have any bearing on whether the flight is survivable.",
+             "Marginal conditions still dropping, fading daylight, no instrument rating, and weekend fatigue is the exact chain behind the visual-into-instrument accident. The forecast was trending down, with a tempo group at 800 overcast. There was no margin and it was shrinking.",
+             "The external pressure was legitimate, which is what makes it lethal. A drive or a rebooked ticket is an annoyance. The alternative is the most common way good VFR pilots are killed."],
+      pull: "External pressure is the P in PAVE that feels like a reason. It is the one most likely to talk you past your own limits."
+    }
+  },
+  {
+    tag: "Environment · terrain",
+    title: "The gap is closing",
+    setup: "A visual cross-country over rising ground. You are most of the way there. The ceiling has been lowering along the route, the terrain is climbing toward it, and there are showers around.",
+    pave: {
+      pilot: "Visual pilot, modest total time. No instrument rating.",
+      aircraft: "Sound, fuel adequate.",
+      environment: "WX",
+      external: "You are close to the destination. Turning back now feels like quitting with the finish line in sight."
+    },
+    wx: {
+      metar: "KTRR 142150Z 12008KT 6SM -RA BKN009 OVC015 11/09 A2990"
+    },
+    note: "Valley ceilings are running 800 to 1,200 feet. The ridgelines ahead climb into the cloud. The space between the cloud base and the rising terrain is narrowing as you go.",
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "A 180 is the most successful maneuver there is.",
+      body: ["This is the chain that kills visual pilots, and you broke it at the right link: the moment the cloud base and the terrain start converging, the decision is already made.",
+             "Pressing on to find a way through is how controlled flight into terrain happens. The valley is reporting 800 to 1,200 foot ceilings with the ridges in the cloud, in rain, with no instrument rating to fall back on. There is no version of threading that gap that has good margins.",
+             "Turn around while you still have the room to turn around, and land. Reset, wait, or find another route on the ground with a clear head."],
+      pull: "Turning back feels like failure. In the accident record it is the single most successful decision a pilot can make."
+    },
+    trap: {
+      tag: "Trap", title: "You pressed into rising terrain under a dropping deck.",
+      body: ["The destination being close became the reason to continue, and proximity is not a margin.",
+             "Ceilings at 800 to 1,200 feet, ridges buried in cloud, rain reducing what you can see, and no instrument rating is the exact setup for flight into terrain or an inadvertent entry into the cloud. As the gap between the cloud base and the rising ground closed, your options closed with it.",
+             "The 180 was available the whole time and it was free. Every mile further in made it harder and bought you nothing but a worse position."],
+      pull: "The sucker hole and the closing gap do not look deadly from the cockpit. They look like almost there."
+    }
+  },
+  {
+    tag: "Aircraft · the squawk",
+    title: "Probably just a loose connection",
+    setup: "Clear night, light winds, beautiful for flying. You are planning a two-hour night cross-country with a friend. There is one item from the last flight.",
+    pave: {
+      pilot: "Current, including night currency.",
+      aircraft: "On the previous flight the ammeter showed a discharge and the alternator light flickered on and off. The airplane flew home fine. A mechanic glanced at it, found nothing obvious, and said it is probably a loose connection and should be okay.",
+      environment: "WX",
+      external: "The airplane is loaded, your friend is excited, and it would be a shame to scrub a perfect night."
+    },
+    wx: {
+      metar: "KEXX 150253Z 14005KT 10SM SKC 11/03 A3008"
+    },
+    caution: "nogo",
+    good: {
+      tag: "Conservative", title: "An unresolved fault is a no-go until it is found.",
+      body: ["The weather is perfect, which is the trap. Your attention is on the sky when the threat is sitting in the airplane.",
+             "An intermittent, unexplained electrical fault means you could lose the alternator, then drain the battery, then lose your lights, radios, and some instruments, at night, far from home. Probably a loose connection is a hypothesis, not a repair, and should be okay is not a standard.",
+             "The professional line is simple: a discrepancy is closed when it is found and corrected, not when someone shrugs at it. Get it diagnosed first. The night sky will still be there next week."],
+      pull: "Probably fine is the most expensive phrase in maintenance. It is a guess wearing the costume of an inspection."
+    },
+    trap: {
+      tag: "Trap", title: "You bet a night cross-country on a gremlin.",
+      body: ["The clear sky did the convincing, and the actual threat was never the weather.",
+             "An unresolved, intermittent electrical fault is a live failure waiting for a trigger. Lose the alternator and the clock starts: battery drains, then lights, radios, and instruments go, in the dark, far from a familiar field. The mechanic did not fix it. He glanced at it and offered a guess.",
+             "Day visual flight around the pattern, maybe, with the field in sight. A two-hour night cross-country betting on the fault staying asleep is a different category of risk entirely."],
+      pull: "An open squawk does not care how good the weather is. It fails on its own schedule, usually at the worst possible moment."
+    }
+  }
+];
+
+/* ---- STATE ---- */
+const GATE_AFTER = 3;            // show the email gate after this many scenarios
+let idx = 0;
+let unlocked = false;
+const results = [];             // boolean per scenario: was it the professional call
+
+/* ---- ELEMENTS ---- */
+const screens = {
+  intro: document.getElementById('screen-intro'),
+  scenario: document.getElementById('screen-scenario'),
+  gate: document.getElementById('screen-gate'),
+  done: document.getElementById('screen-done')
+};
+const body = document.getElementById('scenarioBody');
+const progress = document.getElementById('progress');
+
+function show(name){
+  Object.values(screens).forEach(s => s.classList.remove('active'));
+  screens[name].classList.add('active');
+  window.scrollTo({top:0, behavior:'auto'});
+}
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function wxLine(label, raw){
+  return '<div class="wx-line"><span class="lab">'+label+'  </span>'+esc(raw)+'</div>';
+}
+
+function renderProgress(){
+  let html = '';
+  for(let i=0;i<SCENARIOS.length;i++){
+    let cls = 'seg';
+    if(i < idx) cls += ' done';
+    else if(i === idx) cls += ' cur';
+    html += '<span class="'+cls+'"></span>';
+  }
+  html += '<span class="count">'+(idx+1)+' / '+SCENARIOS.length+'</span>';
+  progress.innerHTML = html;
+}
+
+function renderScenario(){
+  const s = SCENARIOS[idx];
+  renderProgress();
+
+  let wxHtml = '';
+  if(s.wx){
+    wxHtml += '<div class="wx"><span class="wx-tag">Conditions</span>';
+    if(s.wx.metar) wxHtml += wxLine('METAR', s.wx.metar);
+    if(s.wx.taf)   wxHtml += wxLine('TAF&nbsp;&nbsp;', s.wx.taf);
+    wxHtml += '</div>';
+  }
+
+  let noteHtml = s.note ? '<div class="pave-row"><span class="k">Note</span><span class="v">'+esc(s.note)+'</span></div>' : '';
+
+  body.innerHTML =
+    '<span class="eyebrow sc-eyebrow">'+esc(s.tag)+'</span>'+
+    '<h2 class="sc-title">'+esc(s.title)+'</h2>'+
+    '<p class="sc-setup">'+esc(s.setup)+'</p>'+
+    '<div class="pave">'+
+      '<div class="pave-row"><span class="k">Pilot</span><span class="v">'+esc(s.pave.pilot)+'</span></div>'+
+      '<div class="pave-row"><span class="k">Aircraft</span><span class="v">'+esc(s.pave.aircraft)+'</span></div>'+
+      '<div class="pave-row"><span class="k">Environment</span><span class="v">'+wxHtml+'</span></div>'+
+      '<div class="pave-row"><span class="k">External</span><span class="v">'+esc(s.pave.external)+'</span></div>'+
+      noteHtml +
+    '</div>'+
+    '<div class="ask">Would you fly?</div>'+
+    '<div class="choices">'+
+      '<button class="btn-choice nogo" data-choice="nogo">No-Go<span class="small">Stand down</span></button>'+
+      '<button class="btn-choice go" data-choice="go">Go<span class="small">Make the flight</span></button>'+
+    '</div>'+
+    '<div id="verdictSlot"></div>';
+
+  body.querySelectorAll('.btn-choice').forEach(b=>{
+    b.addEventListener('click', ()=> choose(b.getAttribute('data-choice')));
+  });
+}
+
+function choose(choice){
+  const s = SCENARIOS[idx];
+  const professional = (choice === s.caution);
+  results[idx] = professional;
+
+  // pick the verdict block
+  let v;
+  if(s.caution === 'go'){
+    v = (choice === 'go') ? s.good : s.warn;
+  } else {
+    v = (choice === 'nogo') ? s.good : s.trap;
+  }
+  const cls = (v === s.good) ? 'good' : (s.warn && v === s.warn) ? 'warn' : 'trap';
+
+  const icon = cls === 'good'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>'
+    : cls === 'warn'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+  let para = v.body.map(p=>'<p>'+esc(p)+'</p>').join('');
+  let pull = v.pull ? '<p class="pull">'+esc(v.pull)+'</p>' : '';
+
+  const last = (idx === SCENARIOS.length - 1);
+  const nextLabel = last ? 'See your debrief' : 'Next briefing';
+
+  document.getElementById('verdictSlot').innerHTML =
+    '<div class="verdict '+cls+'">'+
+      '<div class="vtag">'+icon+esc(v.tag)+'</div>'+
+      '<h3>'+esc(v.title)+'</h3>'+
+      '<div class="debrief">'+para+pull+'</div>'+
+    '</div>'+
+    '<div class="nextrow"><button class="btn" id="nextBtn">'+nextLabel+
+      ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>';
+
+  // lock the choice buttons
+  body.querySelectorAll('.btn-choice').forEach(b=>{
+    b.disabled = true;
+    b.style.opacity = (b.getAttribute('data-choice') === choice) ? '1' : '.4';
+    b.style.cursor = 'default';
+    b.style.pointerEvents = 'none';
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', advance);
+  document.getElementById('verdictSlot').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function advance(){
+  const next = idx + 1;
+  if(next === GATE_AFTER && !unlocked){
+    show('gate');
+    return;
+  }
+  if(next >= SCENARIOS.length){
+    finish();
+    return;
+  }
+  idx = next;
+  renderScenario();
+  show('scenario');
+}
+
+function finish(){
+  const score = results.filter(Boolean).length;
+  document.getElementById('scoreNum').textContent = score + ' / ' + SCENARIOS.length;
+  show('done');
+}
+
+/* ---- EMAIL GATE ---- */
+const gateForm = document.getElementById('gateForm');
+const gateEmail = document.getElementById('gateEmail');
+const gateErr = document.getElementById('gateErr');
+
+function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+gateForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = gateEmail.value.trim();
+  if(!validEmail(email)){
+    gateErr.textContent = 'Enter a valid email and the last five open up.';
+    return;
+  }
+  gateErr.textContent = '';
+
+  /* === MAILERLITE HOOK ============================================
+     Send "email" to your MailerLite list here, the same one wired to
+     the homepage #join form. Two clean options:
+       1) AJAX POST to your MailerLite embedded-form endpoint, or
+       2) MailerLite's universal JS + a hidden form you submit here.
+     The unlock below runs regardless, so the trainer works before
+     this is wired. Replace the line below with your real call.
+  ============================================================ */
+  try { if (window.submitToMailerLite) { window.submitToMailerLite(email); } } catch (err) {}
+
+  unlocked = true;
+  idx = GATE_AFTER;          // proceed to scenario 4
+  renderScenario();
+  show('scenario');
+});
+
+/* ---- WIRING ---- */
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  idx = 0;
+  renderScenario();
+  show('scenario');
+});
+document.getElementById('restartBtn').addEventListener('click', ()=>{
+  idx = 0; unlocked = true; results.length = 0;   // already a subscriber, skip the gate on replay
+  renderScenario();
+  show('scenario');
+});
+</script>
+</body>
+</html>
