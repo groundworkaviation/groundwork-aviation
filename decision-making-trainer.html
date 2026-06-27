@@ -170,8 +170,8 @@
 <header>
   <nav>
     <a class="logo" href="/">
-      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L12 22 M2 12 L22 12"/><circle cx="12" cy="12" r="6"/></svg></span>
-      Groundwork Aviation
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+      Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
     </a>
     <a class="backlink" href="/">All guides</a>
   </nav>
@@ -670,15 +670,19 @@ gateForm.addEventListener('submit', function(e){
   }
   gateErr.textContent = '';
 
-  /* === MAILERLITE HOOK ============================================
-     Send "email" to your MailerLite list here, the same one wired to
-     the homepage #join form. Two clean options:
-       1) AJAX POST to your MailerLite embedded-form endpoint, or
-       2) MailerLite's universal JS + a hidden form you submit here.
-     The unlock below runs regardless, so the trainer works before
-     this is wired. Replace the line below with your real call.
-  ============================================================ */
-  try { if (window.submitToMailerLite) { window.submitToMailerLite(email); } } catch (err) {}
+  // MailerLite: send the email to account 2408888, form CZnvUI (the same list as the homepage #join form).
+  // The unlock below runs no matter what, so a MailerLite issue never traps the user.
+  (function(addr){
+    var cb = 'mlcb_' + Date.now();
+    window[cb] = function(){ try { delete window[cb]; } catch(e){} sc.remove(); };
+    var sc = document.createElement('script');
+    sc.src = 'https://assets.mailerlite.com/jsonp/2408888/forms/CZnvUI/subscribe'
+           + '?callback=' + cb
+           + '&fields[email]=' + encodeURIComponent(addr)
+           + '&ml-submit=1&anticsrf=true';
+    sc.onerror = function(){ sc.remove(); };
+    document.head.appendChild(sc);
+  })(email);
 
   unlocked = true;
   idx = GATE_AFTER;          // proceed to scenario 4
