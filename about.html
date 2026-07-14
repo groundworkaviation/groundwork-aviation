@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>About: The Airline Pilot Behind Groundwork Aviation | Groundwork Aviation</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<meta name="description" content="Who writes Groundwork Aviation, and what he is and is not qualified to teach. An Australian airline pilot with about 8,000 hours, writing about judgment and decision-making for US student pilots.">
+<link rel="canonical" href="https://groundworkaviation.com/about.html">
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="About: The Airline Pilot Behind Groundwork Aviation">
+<meta property="og:description" content="An Australian airline pilot with about 8,000 hours. Not an FAA examiner, and never pretending to be. Here is exactly what that means.">
+<meta property="og:site_name" content="Groundwork Aviation">
+<meta property="og:url" content="https://groundworkaviation.com/about.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --ink:#0f141c;--ink-2:#161d28;--paper:#f4efe4;--paper-2:#ece4d3;
+    --amber:#e8a23a;--amber-deep:#c9831f;--teal:#3f8c82;--teal-bg:#e8f1ef;
+    --cream:#f7f3ea;--muted:#8a93a3;--ink-soft:#39434f;--red:#c4604f;--line:rgba(15,20,28,.12);
+    --serif:'Fraunces',Georgia,serif;--sans:'Archivo',-apple-system,sans-serif;--mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink-soft);line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--amber-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);background:rgba(15,20,28,.92);border-bottom:1px solid rgba(244,239,228,.12)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--cream)}
+  .logo:hover{text-decoration:none}
+  .logo .mark{width:29px;height:29px;flex:none;display:grid;place-items:center;border:1.5px solid var(--amber);border-radius:50%;color:var(--amber)}
+  .logo .mark svg{width:15px;height:15px}
+  .navlinks{display:flex;gap:28px;align-items:center;font-size:14.5px;font-weight:500;color:#cdd3dc}
+  .navlinks a{color:#cdd3dc}
+  .navlinks a:hover{color:var(--amber);text-decoration:none}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{background:var(--ink);color:var(--cream);position:relative;overflow:hidden;padding:64px 0 58px}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(760px 380px at 82% -10%,rgba(232,162,58,.18),transparent 60%)}
+  .hero::after{content:"";position:absolute;inset:0;opacity:.4;background-image:linear-gradient(rgba(244,239,228,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(244,239,228,.07) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at 75% 30%,black,transparent 78%)}
+  .hero .wrap{position:relative;z-index:2;max-width:820px}
+  .crumb{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+  .crumb a{color:var(--amber)}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(31px,4.6vw,50px);line-height:1.04;letter-spacing:-.02em;color:#fff;margin:16px 0 18px}
+  .hero .standfirst{font-size:18px;color:#c2c9d3;max-width:660px;line-height:1.6}
+
+  /* ARTICLE */
+  article{max-width:720px;margin:0 auto;padding:54px 28px 30px}
+  article h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin:42px 0 14px}
+  article h3{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);margin:26px 0 8px}
+  article p{font-size:17.5px;margin-bottom:17px}
+  article strong{color:var(--ink);font-weight:600}
+  article em{font-style:italic;color:var(--amber-deep)}
+  article ul{margin:0 0 18px 4px;list-style:none}
+  article ul li{position:relative;padding-left:24px;margin-bottom:11px;font-size:17px}
+  article ul li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:var(--amber);border-radius:50%}
+
+  /* byline card: small portrait, not a hero image */
+  .byline-card{display:flex;align-items:center;gap:18px;margin:0 0 30px;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:#fff}
+  .byline-card .avatar{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--amber)}
+  .byline-card .name{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);line-height:1.2}
+  .byline-card .role{font-size:14px;color:var(--muted);line-height:1.45;margin-top:4px}
+  @media(max-width:480px){.byline-card{gap:14px;padding:16px}.byline-card .avatar{width:62px;height:62px}}
+
+  /* quick answer box */
+  .tldr{background:var(--ink);color:var(--cream);border-radius:14px;padding:26px 28px;margin:8px 0 8px}
+  .tldr .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:10px}
+  .tldr p{font-size:16.5px;color:#d4dae2;margin-bottom:0;line-height:1.65}
+  .tldr p strong{color:#fff}
+
+  /* callouts */
+  .callout{background:var(--teal-bg);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:16px 20px;margin:22px 0}
+  .callout .ct{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px}
+  .callout p{font-size:15.5px;color:#234540;margin-bottom:0}
+  .pro{background:#fbf3e3;border-left-color:var(--amber)}
+  .pro .ct{color:var(--amber-deep)}.pro p{color:#5a4a2c}
+
+  /* the honest ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 8px}
+  @media(max-width:640px){.ledger{grid-template-columns:1fr}}
+  .ledger .col{border-radius:13px;padding:22px 24px;border:1px solid var(--line);background:#fff}
+  .ledger .col.is{border-top:3px solid var(--teal)}
+  .ledger .col.isnt{border-top:3px solid var(--red)}
+  .ledger .col h3{margin:0 0 12px;font-size:18px}
+  .ledger .col.is h3{color:var(--teal)}
+  .ledger .col.isnt h3{color:var(--red)}
+  .ledger ul{margin:0}
+  .ledger ul li{font-size:15.5px;padding-left:20px;margin-bottom:9px;line-height:1.5}
+  .ledger ul li::before{width:6px;height:6px;top:9px;left:0}
+  .ledger .col.is ul li::before{background:var(--teal)}
+  .ledger .col.isnt ul li::before{background:var(--red)}
+
+  /* CTA */
+  .cta{background:var(--ink);color:var(--cream);margin-top:50px;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 50% 0%,rgba(232,162,58,.16),transparent 65%)}
+  .cta .wrap{position:relative;z-index:2;max-width:640px;text-align:center;padding:58px 28px}
+  .cta .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600}
+  .cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);line-height:1.08;color:#fff;margin:14px 0 12px;letter-spacing:-.01em}
+  .cta p{font-size:17px;color:#c2c9d3;margin-bottom:6px}
+  .cta .btn{display:inline-block;margin-top:24px;font-family:var(--sans);font-weight:600;font-size:15px;background:var(--amber);color:var(--ink);padding:15px 30px;border-radius:9px;box-shadow:0 8px 30px rgba(232,162,58,.22)}
+  .cta .btn:hover{text-decoration:none;background:#f0b04a}
+  .cta .note{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+  /* FOOTER */
+  footer{background:#0b1016;color:var(--muted);padding:46px 0 34px;border-top:1px solid rgba(244,239,228,.1)}
+  footer .wrap{max-width:760px;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:16px}
+  .disclaimer{font-size:12.5px;line-height:1.6;max-width:680px;margin:0 auto 18px}
+  .copy{font-size:12.5px}
+
+  /* ---- DARK MODE ---- */
+  @media (prefers-color-scheme: dark){
+    body{background:#10151c;color:#c3ccd6}
+    a{color:#f0b65a}
+    article h2,article h3{color:#f2f5f8}
+    article p,article ul li{color:#c3ccd6}
+    article strong{color:#ffffff}
+    article em{color:#f0b65a}
+    .callout{background:#16242a;border-left-color:#6fc3b8}
+    .callout .ct{color:#7fd0c4}
+    .callout p{color:#cfdbd8}
+    .pro{background:#241d10;border-left-color:var(--amber)}
+    .pro .ct{color:#f0b65a}
+    .pro p{color:#e8d7ae}
+    .byline-card{background:#141b24;border-color:rgba(244,239,228,.14)}
+    .byline-card .name{color:#f2f5f8}
+    .byline-card .role{color:#9098a4}
+    .ledger .col{background:#141b24;border-color:rgba(244,239,228,.14)}
+    .ledger .col.is h3{color:#7fd0c4}
+    .ledger .col.isnt h3{color:#e0806c}
+    .ledger .col.is ul li::before{background:#7fd0c4}
+    .ledger .col.isnt ul li::before{background:#e0806c}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="/">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+      Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
+    </a>
+    <div class="navlinks">
+      <a href="/#cover">What we cover</a>
+      <a href="/#guides">Guides</a>
+      <a href="/about.html">About</a>
+      <a href="/decision-making-trainer.html">Free trainer</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/">Groundwork Aviation</a> · About</div>
+    <h1>The pilot behind Groundwork</h1>
+    <p class="standfirst">I fly for a living. I am not an FAA examiner and I will never pretend to be one. Here is exactly what I am, what I am not, and why I think the difference works in your favour.</p>
+  </div>
+</section>
+
+<article>
+
+  <div class="byline-card">
+    <img class="avatar" src="data:image/jpeg;base64,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" alt="Chris, founder of Groundwork Aviation" width="76" height="76">
+    <div>
+      <div class="name">Chris</div>
+      <div class="role">Founder, Groundwork Aviation<br>Australian airline pilot, roughly 8,000 hours</div>
+    </div>
+  </div>
+
+  <p>Most aviation study material is written by people who teach flying. This is written by someone who <strong>does</strong> the flying, day after day, in an airline operation where a bad decision is not a discussion topic. That is the entire premise of Groundwork, and it is worth being precise about what it does and does not mean.</p>
+
+  <div class="tldr">
+    <div class="lbl">The short version</div>
+    <p>I am an <strong>Australian airline First Officer</strong> with about <strong>8,000 hours</strong>. I was a flight instructor in Australia, and I have flown business jets in the United States. I have <strong>never held a US CFI certificate and I have never been a Designated Pilot Examiner.</strong> I do not teach you what your examiner will ask. I teach you how a professional crew decides.</p>
+  </div>
+
+  <h2>The honest ledger</h2>
+
+  <p>The fastest way to lose your trust would be to blur this line, so I will draw it myself, plainly, before anyone else does it for me.</p>
+
+  <div class="ledger">
+    <div class="col is">
+      <h3>What I am</h3>
+      <ul>
+        <li>An airline pilot currently flying the line, roughly 8,000 hours</li>
+        <li>A former flight instructor, in Australia</li>
+        <li>Experienced on US business jets</li>
+        <li>Trained, checked and re-checked in crew resource management, threat and error management, and standard operating procedures</li>
+        <li>Someone who makes real go/no-go calls, with real consequences, on a schedule that does not care how I feel that morning</li>
+      </ul>
+    </div>
+    <div class="col isnt">
+      <h3>What I am not</h3>
+      <ul>
+        <li>A US Certificated Flight Instructor. I have never held one</li>
+        <li>A Designated Pilot Examiner. I have never been one</li>
+        <li>Able to tell you what your DPE will ask you, and anyone who promises that is guessing</li>
+        <li>A substitute for your CFI, who knows you, your aircraft and your local conditions</li>
+        <li>A regulator. Verify everything against the current FAR/AIM and ACS</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>If that second column disqualifies me in your eyes, I would rather you know it on this page than discover it later. But I would ask you to consider what the first column is actually worth, because I think the industry has undervalued it for a long time.</p>
+
+  <h2>Why an airline pilot is writing for student pilots</h2>
+
+  <p>Here is the statistic that started this: roughly <strong>eight out of ten student pilots never finish.</strong> They do not wash out on a checkride. Most simply fade. The logbook goes quiet, the lessons stop, and one day they realise they are not going back.</p>
+
+  <p>Ask why, and the answer is almost never a lack of talent. It is confidence collapsing under a decision they never felt equipped to make. Should I go today? Is that cloud a problem? Am I being sensible or am I being soft? Nobody hands a student a framework for that, and so they carry it alone until the weight of it quietly ends their flying.</p>
+
+  <div class="callout">
+    <div class="ct">The thing airlines figured out first</div>
+    <p>Decades ago the airline industry worked out that its crashes were not being caused by pilots who could not fly. They were being caused by good pilots making poor decisions under pressure. The response was crew resource management: teaching judgment as an explicit, trainable skill rather than something you were supposed to absorb by osmosis. That training is the water I swim in.</p>
+  </div>
+
+  <p>Flight school teaches you to fly the aircraft. It is very good at that. What it rarely has time for is the part that decides whether you have a long, safe flying life or a short one: how to think, how to weigh a threat, how to say no when everything in you wants to say yes. That gap is where Groundwork lives.</p>
+
+  <h2>What the guides actually are</h2>
+
+  <p>I want to be as careful here as I was above. The playbooks are <strong>researched study guides.</strong> They are built from primary sources, the FAR/AIM, the ACS, and FAA advisory material, written in plain English rather than regulator prose, and I do an accuracy pass on every factual claim before anything goes on sale.</p>
+
+  <p>They are not insider knowledge from an examiner's desk. They are structure: the material organised the way a professional would organise it, with the judgment layer that most study material leaves out. If you want a bank of exam questions, plenty of excellent US companies sell you that, and some of them are very good. What they do not sell you is a way of thinking.</p>
+
+  <div class="callout pro">
+    <div class="ct">The accent question</div>
+    <p>Yes, I am Australian, and yes, I am writing for American student pilots. The regulations differ. Judgment does not. Weather does not negotiate based on which country issued your certificate, and neither does a hot, high, heavy runway on a summer afternoon. Where something is FAA-specific I say so and I cite it. Where it is universal airmanship, it is universal.</p>
+  </div>
+
+  <h2>Independence</h2>
+
+  <p>Groundwork Aviation is an independent aviation education resource. It is not affiliated with, sponsored by, or endorsed by any airline, flight school, examiner, or regulator, and nothing published here represents the views of my employer. It exists because I think the most important thing in flying is the least taught, and I would like to do something about that.</p>
+
+  <p>If you want to argue with me about any of it, I would genuinely rather hear it. You can reach me at <a href="mailto:hello@groundworkaviation.com">hello@groundworkaviation.com</a>.</p>
+
+</article>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="eyebrow">Start here</div>
+    <h2>Would you fly today?</h2>
+    <p>Eight real briefings. You make the call, then you see how a professional crew weighs the same risk. It is free, and it is the fastest way to see whether the way I think is useful to you.</p>
+    <a class="btn" href="/decision-making-trainer.html">Try the go/no-go trainer</a>
+    <p class="note">No cost. No catch.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+      Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
+    </a>
+    <p class="disclaimer">FAA-focused, written for student pilots. An independent aviation education resource. Not affiliated with or endorsed by any airline, flight school, examiner, or regulator. This page supports, and never replaces, instruction from your certified flight instructor. Regulations change: always verify against the current 14 CFR (FAR/AIM) and follow your CFI's guidance and your own personal minimums before flight.</p>
+    <p class="copy">© 2026 Groundwork Aviation. All rights reserved. · <a href="mailto:hello@groundworkaviation.com">hello@groundworkaviation.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
