@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Oral Exam Program: Complete Checkride Oral Prep | Groundwork Aviation</title>
+  <meta name="description" content="Checkride oral prep built on examiner question chains, not flashcards. Every ACS Area I task for land airplanes, an aircraft profile workbook, and six full mock orals. Built on FAA-S-ACS-6C.">
+  <link rel="canonical" href="https://groundworkaviation.com/oral-exam-program.html">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="The Oral Exam Program | Groundwork Aviation">
+  <meta property="og:description" content="You cannot practice a conversation by watching a video. Examiner question chains for every ACS Area I task that applies to a land airplane, written and vetted by a working airline pilot.">
+  <meta property="og:url" content="https://groundworkaviation.com/oral-exam-program.html">
+  <meta property="og:site_name" content="Groundwork Aviation">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f141c;
+      --ink-raise: #161d28;
+      --amber: #e8a23a;
+      --amber-deep: #c9831f;
+      --teal: #5fb0a6;
+      --cream: #f7f3ea;
+      --cream-dim: rgba(247,243,234,0.68);
+      --rule: rgba(247,243,234,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Archivo', sans-serif;
+      line-height: 1.75;
+      font-size: 1.05rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--teal); text-decoration-color: rgba(95,176,166,0.4); text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    header.site {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      max-width: 1080px; margin: 0 auto; padding: 20px 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .wordmark {
+      display: flex; align-items: center; gap: 9px;
+      font-family: 'IBM Plex Mono', monospace; font-size: .74rem;
+      letter-spacing: .18em; color: var(--cream); text-decoration: none;
+    }
+    .nav { display: flex; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .14em; }
+    .nav a { color: var(--cream-dim); text-decoration: none; }
+    .nav a:hover { color: var(--amber); }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace; font-size: .68rem;
+      letter-spacing: .2em; color: var(--amber); text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+      font-size: clamp(2.1rem, 6vw, 3.3rem); line-height: 1.08;
+      letter-spacing: -.02em; margin: 18px 0 0; text-wrap: balance;
+    }
+    h2 {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+      font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.15;
+      letter-spacing: -.015em; margin: 0 0 14px; text-wrap: balance;
+    }
+    h3 { font-size: 1.02rem; font-weight: 600; margin: 0 0 6px; }
+    p { margin: 0 0 18px; max-width: 62ch; }
+    .lede { font-size: 1.22rem; color: var(--cream-dim); margin-top: 22px; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+    section.hero { padding: 72px 0 64px; }
+
+    .btn {
+      display: inline-block; background: var(--amber); color: var(--ink);
+      font-weight: 600; font-size: 1rem; padding: 15px 30px;
+      border-radius: 3px; text-decoration: none; border: 0; cursor: pointer;
+      font-family: 'Archivo', sans-serif;
+    }
+    .btn:hover { background: var(--amber-deep); color: var(--ink); }
+    .btn-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 28px; }
+    .fineprint { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--cream-dim); letter-spacing: .04em; }
+
+    /* Chain demo */
+    .chain { border: 1px solid var(--rule); border-radius: 4px; background: var(--ink-raise); overflow: hidden; margin-top: 28px; }
+    .chain-head {
+      padding: 14px 20px; border-bottom: 1px solid var(--rule);
+      font-family: 'IBM Plex Mono', monospace; font-size: .68rem;
+      letter-spacing: .16em; color: var(--cream-dim); text-transform: uppercase;
+    }
+    .step { border-bottom: 1px solid var(--rule); }
+    .step:last-child { border-bottom: 0; }
+    .q { padding: 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .lvl {
+      font-family: 'IBM Plex Mono', monospace; font-size: .66rem;
+      color: var(--amber); border: 1px solid rgba(232,162,58,.4);
+      border-radius: 2px; padding: 2px 7px; white-space: nowrap; margin-top: 3px;
+    }
+    .q p { margin: 0; font-size: 1.06rem; }
+    .reveal {
+      background: none; border: 1px solid var(--rule); color: var(--cream-dim);
+      font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .12em;
+      padding: 7px 14px; border-radius: 3px; cursor: pointer; margin: 0 20px 20px 20px;
+    }
+    .reveal:hover { border-color: var(--amber); color: var(--amber); }
+    .answer { padding: 0 20px 20px; display: none; }
+    .answer.open { display: block; }
+    .answer p { font-size: .98rem; color: var(--cream-dim); }
+    .answer .why {
+      border-left: 2px solid var(--teal); padding-left: 14px; margin-top: 14px;
+      font-size: .93rem; color: var(--cream-dim);
+    }
+    .cite { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; color: var(--teal); letter-spacing: .04em; }
+
+    ul.ticks { list-style: none; margin: 0 0 18px; }
+    ul.ticks li { padding-left: 26px; position: relative; margin-bottom: 10px; max-width: 62ch; }
+    ul.ticks li::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-family: 'IBM Plex Mono', monospace; }
+
+    .modules { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin-top: 24px; }
+    .mod { display: grid; grid-template-columns: 62px 1fr; gap: 0 16px; padding: 15px 20px; border-bottom: 1px solid var(--rule); align-items: start; }
+    .mod:last-child { border-bottom: 0; }
+    .mod .code { font-family: 'IBM Plex Mono', monospace; font-size: .74rem; color: var(--amber); padding-top: 3px; }
+    .mod p { margin: 2px 0 0; font-size: .93rem; color: var(--cream-dim); }
+
+    .price-box { border: 1px solid var(--rule); border-radius: 4px; background: var(--ink-raise); padding: 32px; margin-top: 28px; }
+    .price { font-family: 'Fraunces', Georgia, serif; font-size: 3rem; line-height: 1; }
+    .price s { color: var(--cream-dim); font-size: 1.5rem; margin-right: 12px; }
+    .compare { margin-top: 24px; border-top: 1px solid var(--rule); padding-top: 20px; }
+    .compare table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .compare td { padding: 6px 0; color: var(--cream-dim); }
+    .compare td:last-child { text-align: right; font-family: 'IBM Plex Mono', monospace; }
+    .compare tr.us td { color: var(--cream); font-weight: 600; }
+    .compare tr.us td:last-child { color: var(--amber); }
+
+    .note {
+      border-left: 2px solid var(--amber); padding: 4px 0 4px 18px;
+      color: var(--cream-dim); font-size: .95rem; margin: 24px 0;
+    }
+
+    footer.site {
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      max-width: 1080px; margin: 0 auto; padding: 28px 24px 48px;
+      font-family: 'IBM Plex Mono', monospace; font-size: .68rem;
+      letter-spacing: .12em; color: var(--cream-dim);
+    }
+    footer.site a { color: var(--cream-dim); text-decoration: none; }
+    footer.site a:hover { color: var(--amber); }
+    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+    @media (max-width: 560px) { .q { flex-direction: column; gap: 10px; } }
+  </style>
+</head>
+<body>
+
+<header class="site">
+  <a class="wordmark" href="/">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12 L22 3 L14 21 L11.2 13.6 L2 12 Z" fill="#e8a23a"/>
+      <path d="M11.2 13.6 L22 3" stroke="#0f141c" stroke-width="1.4"/>
+    </svg>
+    GROUNDWORK AVIATION
+  </a>
+  <nav class="nav">
+    <a href="/">HOME</a>
+    <a href="/guides.html">GUIDES</a>
+    <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">PLAYBOOK</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <span class="eyebrow">The Oral Exam Program</span>
+    <h1>You cannot practice a conversation by watching a video.</h1>
+    <p class="lede">Ground school sells you lectures and a multiple-choice bank. Then the examiner sits down, asks you to explain something, and follows up on whatever you just said. Recognizing an answer and producing one are different skills, and only one of them gets tested that day.</p>
+    <p>This is the program that does. Examiner question chains for every ACS Area I task that applies to a land airplane, three levels deep, with the reasoning behind every follow-up made visible.</p>
+    <div class="btn-row">
+      <a class="btn" href="#waitlist">Join the waitlist</a>
+      <span class="fineprint">Founding price $149 · $199 at launch</span>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">The mechanic</span>
+    <h2>Examiners do not ask questions. They ask chains.</h2>
+    <p>One question is a warm-up. The examiner is listening to your answer to find the next question. They keep going until they reach the edge of what you actually understand, and that edge is the thing being tested.</p>
+    <p>Here is one chain from Module 2, adapted from the program. Answer it in your head before you reveal anything.</p>
+
+    <div class="chain">
+      <div class="chain-head">Module 2 · ACS I.B Airworthiness Requirements · Chain 02</div>
+
+      <div class="step">
+        <div class="q">
+          <span class="lvl">LEVEL 1</span>
+          <p>What documents must be on board this aircraft?</p>
+        </div>
+        <button class="reveal" data-t="a1" aria-expanded="false" aria-controls="a1">Reveal model answer</button>
+        <div class="answer" id="a1">
+          <p>Most students say <strong>ARROW</strong> and stop. The answer that holds up separates where each item actually comes from, because "under which regulation?" is the natural next question.</p>
+          <p><strong>A</strong>irworthiness certificate and <strong>R</strong>egistration certificate are the two <em>certificates</em> &sect;&nbsp;91.203 requires to be in the aircraft. The airworthiness certificate must also be <em>displayed</em> at the cabin or cockpit entrance, legible to passengers or crew.</p>
+          <p class="cite">14 CFR 91.203(a)(1), (a)(2), 91.203(b)</p>
+          <p><strong>O</strong>perating limitations come from a different section entirely.</p>
+          <p class="cite">14 CFR 91.9(b)</p>
+          <p>The second <strong>R</strong> is not an FAA requirement at all. The radio station license is an FCC matter, and for a domestic flight in a US aircraft not required to carry a radio, the station is <em>licensed by rule</em> and needs no individual license. You only need one for international flights or international communications.</p>
+          <p class="cite">47 CFR 87.18(b)</p>
+          <p>And the <strong>W</strong> is not a separate certificate. Weight and balance information arrives with the operating limitations rather than alongside them: for an aircraft with an approved flight manual it is in that manual, and otherwise it sits in the approved manual material. Which is exactly what the next question is about.</p>
+          <p class="cite">14 CFR 91.9(b), 21.5(b)(1)</p>
+          <div class="why"><strong>Why they asked:</strong> everyone has the mnemonic. The examiner is listening for whether you know where each item comes from, because that is what the follow-up tests.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="q">
+          <span class="lvl">LEVEL 2</span>
+          <p>Show me the operating limitations on this airplane.</p>
+        </div>
+        <button class="reveal" data-t="a2" aria-expanded="false" aria-controls="a2">Reveal model answer</button>
+        <div class="answer" id="a2">
+          <p>This is where most students reach for the POH and stop. The operating limitations are not one document. They are the approved Airplane Flight Manual <em>together with</em> the markings and the placards, and for aircraft that do not require an AFM, an approved flight manual, approved manual material, markings and placards, in any combination.</p>
+          <p class="cite">14 CFR 91.9(a) and 91.9(b)(2)</p>
+          <div class="why"><strong>Why they asked:</strong> they want to know whether you learned a mnemonic or learned the regulation. Pointing at the POH alone answers the letter and misses the rule.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="q">
+          <span class="lvl">LEVEL 3</span>
+          <p>This placard by the fuel selector is faded and you cannot read it. Are you legal to fly?</p>
+        </div>
+        <button class="reveal" data-t="a3" aria-expanded="false" aria-controls="a3">Reveal model answer</button>
+        <div class="answer" id="a3">
+          <p>No, and the reasoning matters more than the answer.</p>
+          <p>If that placard is required, it is part of the operating limitations you must comply with. If you cannot read it, you cannot comply with it.</p>
+          <p class="cite">14 CFR 91.9(a)</p>
+          <p>And the call is yours. No person may operate an aircraft unless it is in an airworthy condition, and the pilot in command is the one responsible for determining whether it is in condition for safe flight. Not the owner, and not whoever told you it was fine.</p>
+          <p class="cite">14 CFR 91.7(a) and 91.7(b)</p>
+          <div class="why"><strong>Why they asked:</strong> this is the real question, and the first two existed to set it up. It tests whether you can get from "I cannot read it" to "therefore not airworthy" without being led there. Handle it, and the next one is who is allowed to replace it.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">Every chain is built this way and carries its primary source, so you can check it yourself. Nothing is sourced from another course. These are teaching scenarios: an airworthiness call on a real airplane goes to your CFI and your mechanic, not to a study guide.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">What is inside</span>
+    <h2>The tasks the oral is built around</h2>
+    <p>Area I, Preflight Preparation, is where most of the oral lives. These are its tasks for single- and multi-engine land airplanes, plus the two Area II tasks examiners routinely fold in. Seaplane applicants have one further task, Area I Task I, which this program does not cover. The examiner can also ask knowledge questions from any Area of Operation, and does so throughout the test.</p>
+    <p>Built on <strong>FAA-S-ACS-6C</strong>, the current Private Pilot ACS, which supersedes 6B. Worth checking which revision your other study material is built on.</p>
+
+    <div class="modules">
+      <div class="mod"><span class="code">I.A</span><div><h3>Pilot Qualifications</h3><p>Currency against proficiency, and the paperwork everyone half-knows.</p></div></div>
+      <div class="mod"><span class="code">I.B</span><div><h3>Airworthiness Requirements</h3><p>Inspections, inoperative equipment and required documents, where the mnemonics run out fastest.</p></div></div>
+      <div class="mod"><span class="code">I.C</span><div><h3>Weather Information</h3><p>The subject that keeps making decisions for you long after you have passed the written.</p></div></div>
+      <div class="mod"><span class="code">I.D</span><div><h3>Cross-Country Flight Planning</h3><p>The spine the examiner hangs most of the scenario questions on.</p></div></div>
+      <div class="mod"><span class="code">I.E</span><div><h3>National Airspace System</h3><p>Crammed for the written, forgotten by the checkride. Rebuilt so it stays.</p></div></div>
+      <div class="mod"><span class="code">I.F</span><div><h3>Performance and Limitations</h3><p>Weight and balance and density altitude, worked slowly, without the panic.</p></div></div>
+      <div class="mod"><span class="code">I.G</span><div><h3>Operation of Systems</h3><p>The examiner asks about your airplane, not a diagram. So this module is built around yours.</p></div></div>
+      <div class="mod"><span class="code">I.H</span><div><h3>Human Factors</h3><p>The part most people skim, and the part with the shortest answers.</p></div></div>
+      <div class="mod"><span class="code">II</span><div><h3>Preflight Procedures</h3><p>Preflight assessment and flight deck management, which examiners fold into the oral.</p></div></div>
+    </div>
+
+    <h2 style="margin-top:48px">And three things you will not get from a lecture course</h2>
+    <ul class="ticks">
+      <li><strong>The Aircraft Profile Workbook.</strong> You fill it in for the airplane you will actually fly: V-speeds, fuel and electrical systems, weight and balance envelope, equipment list, inspection status. The examiner is not asking about a generic trainer. They are asking about the one on the ramp.</li>
+      <li><strong>Six full mock orals,</strong> start to finish, in the examiner's voice, with the reasoning behind each follow-up shown in the margin.</li>
+      <li><strong>An ACS self-check</strong> that maps what you have covered against every code in the standard, so you can see your own gaps instead of guessing at them.</li>
+    </ul>
+
+    <p class="note">The self-check shows you what you have and have not covered. It does not tell you that you are ready for your checkride. That call belongs to your CFI. This program is not a substitute for your flight instructor, the regulations, or the ACS itself.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Price</span>
+    <h2>What this costs, and what everything else costs</h2>
+
+    <div class="price-box">
+      <div class="price">$149</div>
+      <p class="fineprint" style="margin-top:8px">FOUNDING PRICE · FIRST 100 BUYERS · $199 AT LAUNCH</p>
+      <p style="margin-top:18px">Lifetime access, and free updates whenever the ACS changes. One payment.</p>
+      <div class="compare">
+        <table>
+          <tbody>
+            <tr><td>King Schools</td><td>~$600</td></tr>
+            <tr><td>Sporty's</td><td>~$249&ndash;299</td></tr>
+            <tr><td>Gold Seal</td><td>$229/yr or $299 lifetime</td></tr>
+            <tr><td>Rod Machado</td><td>$199</td></tr>
+            <tr class="us"><td>The Oral Exam Program</td><td>$149 founding / $199 at launch</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:20px;font-size:.95rem;color:var(--cream-dim)">Those are knowledge-test ground schools. This is not one. It is built for the oral: question chains rather than a question bank, and answers you have to produce rather than recognize. Competitor prices checked August 2026.</p>
+    </div>
+  </section>
+
+  <section id="waitlist">
+    <span class="eyebrow">Not yet built</span>
+    <h2>The waitlist is open. Here is the honest version.</h2>
+    <p>The program is in production now. Module 2, the airworthiness chains you just tried, is written and is being checked against the regulations before it ships. The rest are being built the same way, each one checked against the regulation itself before it ships.</p>
+    <p>Join the waitlist and you get the founding price when it opens, and a module as it is finished, so you can judge the work before paying for it.</p>
+
+    <div class="ml-embedded" data-form="Zva7cL"></div>
+    <p class="fineprint" style="margin-top:12px">Free forever. Unsubscribe anytime. We'll never share your address.</p>
+
+    <div class="btn-row">
+      <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">Or start with the $29 playbook</a>
+    </div>
+    <p class="fineprint" style="margin-top:16px">The Checkride Oral Playbook is the short version of the method. If it is not the clearest checkride prep you have read, do not buy the program.</p>
+  </section>
+
+  <section style="border-bottom:0">
+    <span class="eyebrow">Who wrote it</span>
+    <h2>A current airline pilot, 8,000+ hours</h2>
+    <p>Every chain, every model answer and every citation is written and vetted by a working airline pilot, and checked against the regulation, the AIM or the ACS itself. Not against another course, and not from memory.</p>
+    <p>Groundwork exists because ground theory is taught badly almost everywhere, and because the oral is where that finally catches up with people.</p>
+  </section>
+
+</div>
+
+<footer class="site">
+  <span>&copy; 2026 GROUNDWORK AVIATION</span>
+  <span><a href="/">HOME</a> &middot; <a href="/guides.html">ALL GUIDES</a> &middot; <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">CHECKRIDE ORAL PLAYBOOK</a> &middot; <a href="/privacy.html">PRIVACY</a></span>
+</footer>
+
+<script>
+  document.querySelectorAll('.reveal').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = document.getElementById(b.dataset.t);
+      var open = t.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.textContent = open ? 'Hide answer' : 'Reveal model answer';
+    });
+  });
+</script>
+
+<!-- MailerLite Universal -->
+<script>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2408888');
+</script>
+<!-- End MailerLite Universal -->
+</body>
+</html>
