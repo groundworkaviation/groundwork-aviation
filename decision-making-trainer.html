@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Go / No-Go Trainer | Groundwork Aviation</title>
 <link rel="canonical" href="https://groundworkaviation.com/decision-making-trainer">
+<meta property="og:image" content="https://groundworkaviation.com/images/pilot-tablet-chart-ga-cockpit-banner-1800.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://groundworkaviation.com/images/pilot-tablet-chart-ga-cockpit-banner-1800.jpg">
+<meta name="theme-color" content="#0f141c">
+
 <meta name="description" content="Eight real go/no-go briefings. Make the call, then see how a professional crew weighs the risk. A free decision-making trainer from Groundwork Aviation.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -173,6 +178,48 @@
   .gate .ml-form-embedSubmit button{font-family:var(--sans)!important;font-weight:600!important;font-size:15px!important;background:var(--amber)!important;color:var(--ink)!important;border:0!important;border-radius:9px!important;padding:14px 26px!important;margin-top:12px!important;cursor:pointer!important;box-shadow:none!important}
   .gate .ml-form-successContent>h4{display:none!important}
   .gate .ml-form-successContent>p{color:#c2c9d3!important;font-family:var(--sans)!important}
+
+    /* ---- shared visual system, added on top of this page's own styles ---- */
+    img{max-width:100%;display:block}
+    picture{display:block}
+    .gw-band-media picture,.gw-figure picture{width:100%;height:100%}
+    :focus-visible{outline:2px solid #e8a23a;outline-offset:3px;border-radius:4px}
+
+    .headshell{position:sticky;top:0;z-index:100;background:rgba(15,20,28,.72);
+      border-bottom:1px solid rgba(247,243,234,.12);backdrop-filter:blur(10px);
+      transition:background .3s,box-shadow .3s}
+    .headshell.stuck{background:rgba(11,16,22,.94);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+    /* full-bleed photograph behind a page title */
+    .gw-band{position:relative;overflow:hidden;isolation:isolate}
+    .gw-band-media{position:absolute;inset:0;z-index:0}
+    .gw-band-media img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
+    .gw-band-scrim{position:absolute;inset:0;z-index:1;
+      background:linear-gradient(90deg,rgba(10,14,20,.9) 0%,rgba(10,14,20,.7) 44%,rgba(10,14,20,.34) 100%),
+                 linear-gradient(180deg,rgba(15,20,28,.5) 0%,rgba(15,20,28,.12) 42%,rgba(15,20,28,.88) 100%)}
+    .gw-band-grid{position:absolute;inset:0;z-index:2;opacity:.45;pointer-events:none;
+      background-image:linear-gradient(rgba(247,243,234,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(247,243,234,.12) 1px,transparent 1px);
+      background-size:58px 58px;
+      -webkit-mask-image:radial-gradient(circle at 72% 40%,black,transparent 76%);
+              mask-image:radial-gradient(circle at 72% 40%,black,transparent 76%)}
+    .gw-band > *:not(.gw-band-media):not(.gw-band-scrim):not(.gw-band-grid){position:relative;z-index:4}
+
+    /* contained banner, for pages whose hero sits inside a max-width wrapper */
+    .gw-figure{position:relative;margin:2rem 0 0;border-radius:16px;overflow:hidden;
+      box-shadow:0 18px 40px rgba(0,0,0,.35);aspect-ratio:2.8/1}
+    .gw-figure img{width:100%;height:100%;object-fit:cover}
+    .gw-figure::after{content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(15,20,28,.08),rgba(15,20,28,.42))}
+
+    .footshell{position:relative;overflow:hidden;background:#0b1016}
+    .footshell .fgraphic{position:absolute;right:-50px;bottom:-34px;width:420px;max-width:55%;color:#e8a23a;opacity:.07;pointer-events:none}
+    .footshell > footer{position:relative;z-index:2}
+
+    .gw-rise{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+    .gw-rise.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .gw-rise{opacity:1;transform:none;transition:none}
+    }
 </style>
 <!-- MailerLite Universal -->
 <script>
@@ -184,6 +231,7 @@ ml('account', '2408888');
 </head>
 <body>
 
+<div class="headshell">
 <header>
   <nav>
     <a class="logo" href="/">
@@ -193,6 +241,7 @@ ml('account', '2408888');
     <a class="backlink" href="/">All guides</a>
   </nav>
 </header>
+</div>
 
 <main>
   <div class="wrap">
@@ -213,7 +262,8 @@ ml('account', '2408888');
         <span>Built by an airline pilot. This is how professional crews actually think: not memorizing answers, but managing risk through frameworks like <strong>PAVE</strong>, Pilot, Aircraft, enVironment, External pressure. That habit is the difference between passing a checkride and staying alive after it.</span>
       </div>
 
-      <div class="startrow">
+      <figure class="gw-figure gw-rise" style="margin-bottom:1.8rem"><picture><source type="image/avif" srcset="/images/pilot-tablet-chart-ga-cockpit-banner-900.avif 900w, /images/pilot-tablet-chart-ga-cockpit-banner-1800.avif 1800w" sizes="(max-width:1060px) 92vw, 900px"><img src="/images/pilot-tablet-chart-ga-cockpit-banner-1800.jpg" srcset="/images/pilot-tablet-chart-ga-cockpit-banner-900.jpg 900w, /images/pilot-tablet-chart-ga-cockpit-banner-1800.jpg 1800w" sizes="(max-width:1060px) 92vw, 900px" width="1800" height="643" alt="A pilot holding a tablet showing a navigation chart in a light aircraft cockpit." fetchpriority="high" decoding="async"></picture></figure>
+        <div class="startrow">
         <button class="btn" id="startBtn">Start the briefings
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
@@ -263,12 +313,15 @@ ml('account', '2408888');
   </div>
 </main>
 
+<div class="footshell">
+<svg class="fgraphic" viewBox="0 0 400 200" fill="none" aria-hidden="true"><path d="M0 168 C 90 150, 150 92, 250 70 S 372 34, 400 22" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 8"/><circle cx="90" cy="150" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="250" cy="70" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M300 128l58-20-20 58-9-23-29-15z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M20 20h60M20 34h34" stroke="currentColor" stroke-width="1.4"/></svg>
 <footer>
   <div class="wrap">
     <p class="disclaimer">These scenarios are simplified for teaching and are not a substitute for an official weather briefing, the regulations, or your flight instructor. Always make your own go/no-go decision using current information.</p>
     <p class="disclaimer">© 2026 Groundwork Aviation · <a href="/privacy">Privacy</a> · <a href="mailto:hello@groundworkaviation.com">hello@groundworkaviation.com</a></p>
   </div>
 </footer>
+</div>
 
 <script>
 /* ============================================================
@@ -706,6 +759,25 @@ document.getElementById('restartBtn').addEventListener('click', ()=>{
   renderScenario();
   show('scenario');
 });
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var shell = document.querySelector('.headshell');
+  if (shell) {
+    var s = function(){ shell.classList.toggle('stuck', window.scrollY > 12); };
+    s(); window.addEventListener('scroll', s, {passive:true});
+  }
+  var t = document.querySelectorAll('.gw-rise');
+  if (reduce || !('IntersectionObserver' in window)) {
+    t.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.1});
+    t.forEach(function(el){ io.observe(el); });
+  }
+})();
 </script>
 </body>
 </html>

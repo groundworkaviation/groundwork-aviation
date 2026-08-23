@@ -11,6 +11,12 @@
   <meta property="og:description" content="The ATOMATOFLAMES and FLAPS mnemonics fully decoded: every 91.205 day and night VFR equipment item, the qualifiers examiners probe, and the 91.213 inoperative equipment flow.">
   <meta property="og:url" content="https://groundworkaviation.com/required-equipment-atomatoflames">
   <meta property="og:site_name" content="Groundwork Aviation">
+  <meta property="og:image" content="https://groundworkaviation.com/images/cessna-172-grass-airfield-banner-1800.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="643">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://groundworkaviation.com/images/cessna-172-grass-airfield-banner-1800.jpg">
+  <meta name="theme-color" content="#0f141c">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" href="/favicon-180.png">
@@ -47,99 +53,247 @@
     :root {
       --ink: #0f141c;
       --ink-raise: #161d28;
+      --ink-3: #1b2431;
       --amber: #e8a23a;
+      --amber-deep: #c9831f;
       --teal: #5fb0a6;
       --cream: #f7f3ea;
       --cream-dim: rgba(247,243,234,0.68);
       --rule: rgba(247,243,234,0.12);
+      --rule-2: rgba(247,243,234,0.07);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Archivo', -apple-system, sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+      --shadow-2: 0 18px 40px rgba(0,0,0,.35);
+      --shadow-3: 0 34px 80px rgba(0,0,0,.5);
+      --ease: cubic-bezier(.22,.61,.36,1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--ink);
       color: var(--cream);
-      font-family: 'Archivo', sans-serif;
+      font-family: var(--sans);
       line-height: 1.75;
       font-size: 1.05rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; display: block; }
+    picture { display: block; }
+    /* picture is an inline wrapper: it must be told to fill or img height:100% collapses */
+    .heroband-media picture, .capture-media picture, .cov-bg picture { width: 100%; height: 100%; }
     a { color: var(--teal); text-decoration-color: rgba(95,176,166,0.4); text-underline-offset: 3px; }
     a:hover { color: var(--amber); }
+    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
 
+    /* film grain, same as the homepage */
+    body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .tickrule { height: 12px; width: 100%; opacity: .5;
+      background-image: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 34px);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+              mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent); }
+
+    /* ---------- HEADER ---------- */
     header.site {
+      position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      max-width: 1060px; margin: 0 auto; padding: 1.4rem 1.5rem;
+      max-width: 1060px; margin: 0 auto; padding: 1.15rem 1.5rem;
+      backdrop-filter: blur(10px);
+      transition: padding .3s var(--ease);
     }
-    .wordmark { display: flex; align-items: center; gap: .7rem; font-family: 'IBM Plex Mono', monospace; letter-spacing: .18em; font-size: .82rem; color: var(--cream); text-decoration: none; }
-    .nav a { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .14em; margin-left: 1.6rem; text-decoration: none; color: var(--cream-dim); }
+    .headshell { position: sticky; top: 0; z-index: 100; background: rgba(15,20,28,.72);
+      border-bottom: 1px solid var(--rule); backdrop-filter: blur(10px); transition: background .3s, box-shadow .3s; }
+    .headshell.stuck { background: rgba(11,16,22,.94); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    .headshell header.site { position: static; backdrop-filter: none; }
+    .wordmark { display: flex; align-items: center; gap: .7rem; font-family: var(--mono); letter-spacing: .18em; font-size: .82rem; color: var(--cream); text-decoration: none; }
+    .wordmark svg { transition: transform .4s var(--ease); }
+    .wordmark:hover svg { transform: rotate(-18deg); }
+    .nav a { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; margin-left: 1.6rem; text-decoration: none; color: var(--cream-dim); position: relative; padding-bottom: 3px; }
+    .nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--amber); transition: right .28s var(--ease); }
     .nav a:hover { color: var(--amber); }
+    .nav a:hover::after { right: 0; }
+    @media (max-width: 520px) {
+      header.site { padding: 1rem 1.1rem; }
+      .wordmark { font-size: .72rem; gap: .5rem; }
+      .nav a { margin-left: .9rem; font-size: .68rem; letter-spacing: .1em; }
+    }
+
+    /* ---------- HERO BAND (photograph behind the title) ---------- */
+    .heroband { position: relative; overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--rule); }
+    .heroband-media { position: absolute; inset: 0; z-index: 0; }
+    .heroband-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
+    .heroband-scrim { position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(10,14,20,.9) 0%, rgba(10,14,20,.7) 44%, rgba(10,14,20,.34) 100%),
+        linear-gradient(180deg, rgba(15,20,28,.5) 0%, rgba(15,20,28,.12) 42%, rgba(15,20,28,.86) 100%); }
+    .heroband-grid { position: absolute; inset: 0; z-index: 2; opacity: .45; pointer-events: none;
+      background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+      background-size: 58px 58px;
+      -webkit-mask-image: radial-gradient(circle at 72% 40%, black, transparent 76%);
+              mask-image: radial-gradient(circle at 72% 40%, black, transparent 76%); }
 
     .hero {
-      max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem;
-      border-bottom: 1px solid var(--rule);
+      position: relative; z-index: 4;
+      max-width: 760px; margin: 0 auto; padding: 4.6rem 1.5rem 3.4rem;
     }
-    .eyebrow { font-family: 'IBM Plex Mono', monospace; color: var(--amber); letter-spacing: .3em; font-size: .78rem; text-transform: uppercase; }
+    .eyebrow { font-family: var(--mono); color: var(--amber); letter-spacing: .3em; font-size: .78rem; text-transform: uppercase; }
     h1 {
-      font-family: 'Fraunces', serif; font-weight: 600;
+      font-family: var(--serif); font-weight: 600;
       font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.15;
       margin: 1.2rem 0 1.4rem; letter-spacing: -0.01em;
+      text-shadow: 0 2px 30px rgba(0,0,0,.55);
     }
     h1 em { font-style: italic; color: var(--amber); }
-    .standfirst { color: var(--cream-dim); font-size: 1.15rem; max-width: 620px; }
-    .meta { margin-top: 1.6rem; font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em; color: rgba(247,243,234,0.4); }
+    .standfirst { color: #d2d8e0; font-size: 1.15rem; max-width: 620px; }
+    .meta { margin-top: 1.6rem; font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; color: rgba(247,243,234,0.5); }
 
-    article { max-width: 700px; margin: 0 auto; padding: 2.8rem 1.5rem 3rem; }
+    /* ---------- ARTICLE ---------- */
+    article { max-width: 700px; margin: 0 auto; padding: 3.2rem 1.5rem 3rem; }
     article h2 {
-      font-family: 'Fraunces', serif; font-weight: 600;
-      font-size: 1.7rem; margin: 2.8rem 0 1rem; line-height: 1.25;
+      font-family: var(--serif); font-weight: 600;
+      font-size: 1.7rem; margin: 3rem 0 1rem; line-height: 1.25;
+      scroll-margin-top: 90px;
     }
-    article h2 .num { font-family: 'IBM Plex Mono', monospace; font-size: 1rem; color: var(--teal); margin-right: .8rem; letter-spacing: .1em; }
-    article h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.25rem; margin: 2rem 0 .7rem; }
+    article h2 .num { font-family: var(--mono); font-size: 1rem; color: var(--teal); margin-right: .8rem; letter-spacing: .1em; }
+    article h3 { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; margin: 2rem 0 .7rem; }
     article p { margin-bottom: 1.2rem; color: var(--cream-dim); }
     article p strong { color: var(--cream); font-weight: 600; }
     article ul, article ol { margin: 0 0 1.4rem 1.3rem; color: var(--cream-dim); }
     article li { margin-bottom: .55rem; }
     article li strong { color: var(--cream); }
+    article > p:first-of-type { font-size: 1.14rem; color: #dfe4ea; }
 
     .reg-tag {
-      font-family: 'IBM Plex Mono', monospace; font-size: .78rem;
+      font-family: var(--mono); font-size: .78rem;
       color: var(--teal); border: 1px solid rgba(95,176,166,0.35);
       border-radius: 5px; padding: .1rem .5rem; white-space: nowrap;
+      background: rgba(95,176,166,.07);
     }
-    .callout {
-      border-left: 4px solid var(--amber);
-      background: var(--ink-raise);
-      padding: 1.3rem 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
-    }
-    .callout p { margin-bottom: 0; color: var(--cream); }
-    .callout .label { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .22em; color: var(--amber); display: block; margin-bottom: .6rem; }
 
-    .cta-panel {
-      margin: 3.2rem 0; padding: 2.4rem 2.2rem;
-      background: linear-gradient(160deg, var(--ink-raise), #121925);
-      border: 1px solid rgba(232,162,58,0.35); border-radius: 12px;
+    /* ---------- CALLOUT ---------- */
+    .callout {
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(232,162,58,.28);
+      border-left: 4px solid var(--amber);
+      background: linear-gradient(150deg, var(--ink-raise), #111823);
+      padding: 1.5rem 1.6rem; margin: 2.4rem 0; border-radius: 0 12px 12px 0;
+      box-shadow: var(--shadow-2);
     }
-    .cta-panel h2 { margin-top: 0; }
-    .cta-panel p { color: var(--cream-dim); }
+    .callout::before { content: ""; position: absolute; width: 190px; height: 190px; top: -80px; right: -70px;
+      background: radial-gradient(circle, rgba(232,162,58,.16), transparent 70%); pointer-events: none; }
+    .callout p { margin-bottom: 0; color: var(--cream); position: relative; }
+    .callout .label { font-family: var(--mono); font-size: .72rem; letter-spacing: .22em; color: var(--amber); display: block; margin-bottom: .6rem; position: relative; }
+
+    /* ---------- CTA PANEL as a product card ---------- */
+    .cta-panel {
+      position: relative; overflow: hidden;
+      margin: 3.4rem 0; padding: 2.3rem 2.1rem;
+      background: linear-gradient(160deg, var(--ink-raise), #121925);
+      border: 1px solid rgba(232,162,58,0.35); border-radius: 16px;
+      box-shadow: var(--shadow-2);
+      display: grid; grid-template-columns: 1fr 190px; gap: 1.8rem; align-items: center;
+    }
+    .cta-panel::before { content: ""; position: absolute; width: 320px; height: 320px; top: -140px; right: -90px;
+      background: radial-gradient(circle, rgba(232,162,58,.14), transparent 70%); pointer-events: none; }
+    .cta-panel > * { position: relative; }
+    .cta-panel h2 { margin-top: 0; margin-bottom: .6rem; font-size: 1.55rem; }
+    .cta-panel p { color: var(--cream-dim); margin-bottom: .4rem; }
     .btn {
       display: inline-block; margin-top: .8rem;
       background: var(--amber); color: var(--ink);
-      font-family: 'IBM Plex Mono', monospace; letter-spacing: .12em; font-size: .85rem;
+      font-family: var(--mono); letter-spacing: .12em; font-size: .85rem;
       padding: .9rem 1.6rem; border-radius: 8px; text-decoration: none; font-weight: 500;
+      box-shadow: 0 8px 26px rgba(232,162,58,.24);
+      transition: transform .2s var(--ease), box-shadow .25s var(--ease), background .2s;
     }
-    .btn:hover { background: #f0b258; color: var(--ink); }
-    .price-note { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; color: rgba(247,243,234,0.45); margin-left: 1rem; letter-spacing: .1em; }
+    .btn:hover { background: #f0b258; color: var(--ink); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(232,162,58,.36); }
+    .btn:active { transform: translateY(0); }
+    /* keep "$29 · INSTANT PDF" together: wrap it as a unit, never mid-phrase */
+    .price-note { font-family: var(--mono); font-size: .75rem; color: rgba(247,243,234,0.45); margin-left: 1rem; letter-spacing: .1em;
+      display: inline-block; white-space: nowrap; }
+    @media (max-width: 900px) { .price-note { margin-left: 0; margin-top: .5rem; } }
+    @media (max-width: 640px) { .cta-panel { grid-template-columns: 1fr; padding: 1.8rem 1.4rem; } .cta-mock { display: none; } }
 
+    /* drawn PDF cover */
+    .cta-mock { perspective: 1000px; display: grid; place-items: center; }
+    .mock { position: relative; width: 165px; aspect-ratio: 1/1.34; transform-style: preserve-3d;
+      transform: rotateY(-16deg) rotateX(4deg) rotateZ(-1.4deg); transition: transform .7s var(--ease); }
+    .cta-panel:hover .mock { transform: rotateY(-8deg) rotateX(2deg) translateY(-5px); }
+    .mock .page { position: absolute; inset: 0; border-radius: 2px 7px 7px 2px; background: linear-gradient(90deg, #d9d2c4 0 6px, #fbf8f1 6px); box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+    .mock .page.p1 { transform: translate(8px,-6px) rotate(1.6deg); }
+    .mock .page.p2 { transform: translate(4px,-3px) rotate(.7deg); }
+    .mock .cover { position: absolute; inset: 0; border-radius: 2px 8px 8px 2px; overflow: hidden;
+      box-shadow: var(--shadow-3), inset 0 0 0 1px rgba(255,255,255,.09);
+      display: flex; flex-direction: column; justify-content: space-between; padding: 16px 13px; }
+    .mock .cover::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; z-index: 3;
+      background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.1) 60%, transparent); }
+    .mock .cover::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(112deg, transparent 30%, rgba(255,255,255,.12) 46%, transparent 62%); }
+    .mock .cov-bg { position: absolute; inset: 0; z-index: 0; }
+    .mock .cov-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .mock .cov-tint { position: absolute; inset: 0; z-index: 1; }
+    .mock .cov-top, .mock .cov-bottom { position: relative; z-index: 4; }
+    .mock .cov-brand { display: flex; align-items: center; gap: 5px; font-family: var(--serif); font-size: 8.5px; font-weight: 600; color: rgba(255,255,255,.94); letter-spacing: .01em; line-height: 1.2; }
+    .mock .cov-brand svg { flex: none; }
+    .mock .cov-title { font-family: var(--serif); font-weight: 600; font-size: 14px; line-height: 1.1; letter-spacing: -.01em; color: #fff; margin-top: 8px; text-shadow: 0 2px 14px rgba(0,0,0,.6); }
+    .mock .cov-rule { height: 1px; background: linear-gradient(90deg, var(--amber), transparent); margin: 9px 0 0; }
+    .mock .cov-ticks { display: flex; gap: 2px; }
+    .mock .cov-ticks i { width: 1.5px; height: 7px; background: rgba(255,255,255,.4); display: block; }
+    .mock .cov-ticks i:nth-child(4n+1) { height: 11px; background: var(--amber); }
+    .mock .pricechip { position: absolute; z-index: 6; right: -12px; top: -10px; background: var(--amber); color: var(--ink);
+      font-family: var(--sans); font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 7px;
+      box-shadow: 0 10px 24px rgba(232,162,58,.4); transform: rotate(3deg); }
+
+    /* ---------- FAQ ---------- */
     .faq h3 { color: var(--cream); }
+    div.faq { border-top: 1px solid var(--rule); padding-top: .4rem; }
+    div.faq h3 { position: relative; padding-left: 1.35rem; margin-top: 1.8rem; }
+    div.faq h3::before { content: "?"; position: absolute; left: 0; top: .05em; font-family: var(--mono); font-size: .82rem; color: var(--amber); }
+    div.faq p { padding-left: 1.35rem; border-left: 1px solid var(--rule-2); }
+
+    /* ---------- EMAIL CAPTURE BAND ---------- */
+    .capture-band { position: relative; overflow: hidden; isolation: isolate; border-top: 1px solid var(--rule); }
+    .capture-media { position: absolute; inset: 0; z-index: 0; }
+    .capture-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+    .capture-scrim { position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(22,29,40,.93), rgba(22,29,40,.88) 45%, rgba(15,20,28,.96)),
+                  radial-gradient(560px 300px at 50% 6%, rgba(232,162,58,.15), transparent 66%); }
+    .capture-in { position: relative; z-index: 3; max-width: 640px; margin: 0 auto; padding: 60px 24px; text-align: center; }
+    .capture-in .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+    .capture-in h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px,3.4vw,34px); line-height: 1.1; color: var(--cream); margin: 14px 0 12px; letter-spacing: -.01em; }
+    .capture-in p.lede { font-size: 16.5px; color: #c2c9d3; margin: 0 auto; max-width: 52ch; }
+    .capture-in .ml-embedded { max-width: 460px; margin: 26px auto 0; }
+    .capture-in .fineprint { font-family: var(--mono); font-size: 12px; color: #8a93a3; margin-top: 14px; }
+
+    /* ---------- FOOTER ---------- */
     footer.site {
       border-top: 1px solid var(--rule);
-      max-width: 1060px; margin: 2rem auto 0; padding: 2rem 1.5rem 3rem;
-      font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .12em;
+      max-width: 1060px; margin: 0 auto; padding: 2.2rem 1.5rem 3rem;
+      font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
       color: rgba(247,243,234,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     }
-    footer.site a { color: rgba(247,243,234,0.55); text-decoration: none; }
+    .footshell { position: relative; overflow: hidden; background: #0b1016; }
+    .footshell .fgraphic { position: absolute; right: -50px; bottom: -34px; width: 420px; max-width: 55%; color: var(--amber); opacity: .07; pointer-events: none; }
+    footer.site a { color: rgba(247,243,234,0.55); text-decoration: none; transition: color .2s; }
     footer.site a:hover { color: var(--amber); }
+
+    /* ---------- MOTION ---------- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .mock, .cta-panel:hover .mock { transform: none; }
+      .btn:hover { transform: none; }
+      * { scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
+<div class="headshell">
 <header class="site">
   <a class="wordmark" href="/">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -154,12 +308,19 @@
     <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">PLAYBOOK</a>
   </nav>
 </header>
+</div>
+<main>
+<div class="heroband">
+  <div class="heroband-media" aria-hidden="true"><picture><source type="image/avif" srcset="/images/cessna-172-grass-airfield-banner-900.avif 900w, /images/cessna-172-grass-airfield-banner-1800.avif 1800w" sizes="100vw"><img src="/images/cessna-172-grass-airfield-banner-1800.jpg" srcset="/images/cessna-172-grass-airfield-banner-900.jpg 900w, /images/cessna-172-grass-airfield-banner-1800.jpg 1800w" sizes="100vw" width="1800" height="643" alt="" fetchpriority="high" decoding="async"></picture></div>
+  <div class="heroband-scrim" aria-hidden="true"></div>
+  <div class="heroband-grid" aria-hidden="true"></div>
 <section class="hero">
   <span class="eyebrow">Checkride Prep · Aircraft Systems</span>
   <h1>ATOMATOFLAMES: Required Equipment, <em>Decoded</em></h1>
   <p class="standfirst">The mnemonic every student chants and half misapply. Here's what each letter actually requires, the night-flying additions, and the inoperative-equipment question your examiner is really asking.</p>
   <p class="meta">GROUNDWORK AVIATION · UPDATED JUN 2026 · 7 MIN READ</p>
 </section>
+</div>
 
 <article>
   <p>Somewhere in your oral exam, the examiner will point at something in the cockpit, a fuel gauge, a beacon, the panel clock, and ask: <strong>"Can we fly without that today?"</strong> The answer lives in <span class="reg-tag">14 CFR 91.205</span>, and the industry's favourite way to memorize it is a tomato-based tongue-twister.</p>
@@ -196,11 +357,28 @@
   <p>Here's the part that separates a pass from a struggle. When the examiner asks about a dead clock or an inop autopilot, they're not testing the mnemonic. They're testing whether you know the <strong>inoperative equipment decision path</strong> of <span class="reg-tag">14 CFR 91.213</span>. Without a minimum equipment list, the flow is: is the item required by 91.205? By the aircraft's equipment list or kinds-of-operations list? By an AD? If no to all, the item must be <strong>deactivated or removed, and placarded "INOPERATIVE"</strong>, and then you, as pilot in command, still make the final call that the aircraft is safe for <em>this</em> flight.</p>
   <p>Walk that flow out loud in the oral, rule, source, decision, and you've demonstrated exactly the airmanship the <a href="/checkride-oral-exam-guide">oral exam</a> is built to find.</p>
 
-  <div class="cta-panel">
+  <div class="cta-panel reveal"><div class="cta-copy">
     <span class="eyebrow">THE PAID GUIDE</span>
     <h2>The Checkride Oral Playbook</h2>
     <p>ATOMATOFLAMES is one of every required mnemonic the Playbook decodes, with the qualifiers examiners probe, the 91.213 decision flow scripted step-by-step, and worked scenarios for the 'can we fly without it?' question.</p>
     <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">GET THE PLAYBOOK →</a><span class="price-note">$29 · INSTANT PDF</span>
+  </div>
+    <div class="cta-mock" aria-hidden="true">
+      <div class="mock">
+        <span class="pricechip">$29</span>
+        <div class="page p1"></div><div class="page p2"></div>
+        <div class="cover">
+          <div class="cov-bg"><picture><source type="image/avif" srcset="/images/ga-cockpit-panel-checklist-460.avif"><img src="/images/ga-cockpit-panel-checklist-460.jpg" width="460" height="288" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="cov-tint" style="background:linear-gradient(160deg,rgba(46,32,12,.86),rgba(12,9,5,.96))"></div>
+          <div class="cov-top">
+            <div class="cov-brand"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12 L22 3 L14 21 L11.2 13.6 L2 12 Z" fill="#e8a23a"/><path d="M11.2 13.6 L22 3" stroke="#0f141c" stroke-width="1.4"/></svg>Groundwork Aviation</div>
+            <div class="cov-title">The Checkride Oral Playbook</div>
+            <div class="cov-rule"></div>
+          </div>
+          <div class="cov-bottom"><div class="cov-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <h2 class="faq"><span class="num">?</span>Frequently asked questions</h2>
@@ -216,20 +394,26 @@
   <p style="margin-top:2.5rem">Learn the list, but more importantly learn its qualifiers and the 91.213 flow behind it. The mnemonic gets you to the answer; the regulation is the answer.</p>
 </article>
 
-<section style="border-top:1px solid rgba(247,243,234,.12);background:#161d28">
-  <div style="max-width:640px;margin:0 auto;padding:56px 24px;text-align:center">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e8a23a;font-weight:600">FREE &middot; NO SPAM</span>
-    <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);line-height:1.1;color:#f7f3ea;margin:14px 0 12px;letter-spacing:-.01em">Equipment sorted. Now the weather.</h2>
-    <p style="font-size:16.5px;color:#c2c9d3;margin:0 auto;max-width:52ch">Knowing the airplane is legal is step one. Reading the weather that decides the flight is step two. The free guide decodes it, slot by slot.</p>
-    <div class="ml-embedded" data-form="CZnvUI" style="max-width:460px;margin:26px auto 0"></div>
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a93a3;margin-top:14px">Free forever. Unsubscribe anytime. We'll never share your address.</p>
+<section class="capture-band">
+  <div class="capture-media" aria-hidden="true"><picture><source type="image/avif" srcset="/images/ga-aircraft-line-propellers-banner-900.avif 900w, /images/ga-aircraft-line-propellers-banner-1800.avif 1800w" sizes="100vw"><img src="/images/ga-aircraft-line-propellers-banner-1800.jpg" srcset="/images/ga-aircraft-line-propellers-banner-900.jpg 900w, /images/ga-aircraft-line-propellers-banner-1800.jpg 1800w" sizes="100vw" width="1800" height="643" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="capture-scrim" aria-hidden="true"></div>
+  <div class="capture-in reveal">
+    <span class="kicker">FREE &middot; NO SPAM</span>
+    <h2>Equipment sorted. Now the weather.</h2>
+    <p class="lede">Knowing the airplane is legal is step one. Reading the weather that decides the flight is step two. The free guide decodes it, slot by slot.</p>
+    <div class="ml-embedded" data-form="CZnvUI"></div>
+    <p class="fineprint">Free forever. Unsubscribe anytime. We'll never share your address.</p>
   </div>
 </section>
+</main>
 
+<div class="footshell">
+<svg class="fgraphic" viewBox="0 0 400 200" fill="none" aria-hidden="true"><path d="M0 168 C 90 150, 150 92, 250 70 S 372 34, 400 22" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 8"/><circle cx="90" cy="150" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="250" cy="70" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M300 128l58-20-20 58-9-23-29-15z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M20 20h60M20 34h34" stroke="currentColor" stroke-width="1.4"/></svg>
 <footer class="site">
   <span>© 2026 GROUNDWORK AVIATION</span>
   <span><a href="/">HOME</a> · <a href="/guides">ALL GUIDES</a> · <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">CHECKRIDE ORAL PLAYBOOK</a> &middot; <a href="/privacy">PRIVACY</a></span>
 </footer>
+</div>
 <!-- MailerLite Universal -->
 <script>
   (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
@@ -239,5 +423,24 @@
   ml('account', '2408888');
 </script>
 <!-- End MailerLite Universal -->
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var shell = document.querySelector('.headshell');
+  if (shell) {
+    var onScroll = function(){ shell.classList.toggle('stuck', window.scrollY > 12); };
+    onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  }
+  var targets = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.1});
+    targets.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>
