@@ -106,15 +106,16 @@
   .nav-cta{font-family:var(--sans);font-weight:600;font-size:14px;background:var(--amber);color:var(--ink);padding:9px 17px;border-radius:7px;white-space:nowrap;flex:none;transition:transform .2s,background .2s,box-shadow .2s}
   .nav-cta:hover{background:var(--cream);transform:translateY(-1px);box-shadow:0 8px 20px rgba(232,162,58,.28)}
   .nav-cta:active{transform:translateY(0)}
-  /* tablet range: the wordmark, links and CTA all fit, but only just —
-     tighten them so they do not collide at ~768px */
-  @media(max-width:1000px){
+  /* Six nav items now. They stop fitting well below ~1200px, so tighten
+     early and drop the link list entirely once the wordmark and CTA need
+     the room to themselves. */
+  @media(max-width:1200px){
     .logo{font-size:18px}
     .logo .mark{width:27px;height:27px}
-    .navlinks{gap:20px;font-size:13.5px}
+    .navlinks{gap:18px;font-size:13.5px}
     .nav-cta{padding:9px 15px;font-size:13.5px}
   }
-  @media(max-width:760px){.navlinks{display:none}}
+  @media(max-width:1010px){.navlinks{display:none}}
   /* small screens: keep the wordmark and the CTA on one line */
   @media(max-width:560px){
     .wrap{padding:0 20px}
@@ -377,6 +378,36 @@
   .paidcard .pc-scrim{position:absolute;inset:0;z-index:1}
   .paidcard .pc-in{position:relative;z-index:2}
 
+  /* ---- FLAGSHIP: the Oral Exam Program ---- */
+  .flagship{position:relative;overflow:hidden;border-radius:22px;isolation:isolate;
+    border:1px solid rgba(232,162,58,.4);box-shadow:var(--shadow-3)}
+  .fl-photo{position:absolute;inset:0;z-index:0}
+  .fl-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+  .fl-photo picture{width:100%;height:100%}
+  .fl-scrim{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg,rgba(9,13,19,.96) 0%,rgba(9,13,19,.9) 48%,rgba(9,13,19,.66) 100%),
+               radial-gradient(620px 420px at 88% 8%,rgba(232,162,58,.2),transparent 64%)}
+  .fl-in{position:relative;z-index:3;display:grid;grid-template-columns:1.35fr .65fr;gap:38px;align-items:center;padding:44px 46px}
+  @media(max-width:860px){.fl-in{grid-template-columns:1fr;gap:26px;padding:32px 24px}}
+  .fl-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-.02em;color:#fff;margin-top:14px}
+  .fl-copy p.lede{margin-top:16px;font-size:16.5px;color:#c8d0da;line-height:1.6;max-width:56ch}
+  .fl-facts{list-style:none;margin:22px 0 26px;display:flex;flex-direction:column;gap:10px}
+  .fl-facts li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:#d4dae2;line-height:1.5}
+  .fl-facts svg{width:17px;height:17px;color:var(--amber);flex:none;margin-top:3px}
+  .fl-note{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  /* price plate, styled like an instrument bezel */
+  .fl-price{display:grid;place-items:center}
+  .fl-plate{position:relative;width:100%;max-width:230px;text-align:center;padding:26px 20px;border-radius:16px;
+    background:linear-gradient(160deg,rgba(24,32,44,.92),rgba(12,17,24,.96));
+    border:1px solid rgba(232,162,58,.34);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .fl-plate .amt{font-family:var(--serif);font-weight:600;font-size:52px;line-height:1;color:var(--amber);letter-spacing:-.03em}
+  .fl-plate .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .fl-plate .then{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#7d8794;margin-top:6px}
+  .fl-plate .ticks{display:flex;justify-content:center;gap:3px;margin-top:14px}
+  .fl-plate .ticks i{width:2px;height:8px;background:rgba(255,255,255,.28);display:block}
+  .fl-plate .ticks i:nth-child(4n+1){height:12px;background:var(--amber)}
+  @media(max-width:860px){.fl-price{justify-items:start}.fl-plate{max-width:100%}}
+
   /* BUNDLE */
   .bundle{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(232,162,58,.3);
     background:linear-gradient(135deg,#1a2230,#12171f);box-shadow:var(--shadow-2)}
@@ -481,6 +512,7 @@
       <a href="#cover">What we cover</a>
       <a href="#guides">Guides</a>
       <a href="#why">Why us</a>
+      <a href="/oral-exam-program">Oral program</a>
       <a href="/decision-making-trainer">Free trainer</a>
       <a href="https://program.groundworkaviation.com/activate">Open the program</a>
     </div>
@@ -753,6 +785,41 @@
     </div>
   </div>
 
+  <!-- FLAGSHIP: The Oral Exam Program -->
+  <div class="wrap" id="program" style="margin-top:86px">
+    <div class="flagship reveal">
+      <div class="fl-photo" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="/images/flight-deck-two-pilots-banner-900.avif 900w, /images/flight-deck-two-pilots-banner-1800.avif 1800w" sizes="100vw">
+          <img src="/images/flight-deck-two-pilots-banner-1800.jpg" srcset="/images/flight-deck-two-pilots-banner-900.jpg 900w, /images/flight-deck-two-pilots-banner-1800.jpg 1800w" sizes="100vw" width="1800" height="643" alt="" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="fl-scrim" aria-hidden="true"></div>
+      <div class="fl-in">
+        <div class="fl-copy">
+          <span class="eyebrow">New · The Oral Exam Program</span>
+          <h2>You cannot practice a conversation by watching a video.</h2>
+          <p class="lede">A spoken mock oral: the examiner asks, you answer out loud, and it follows up on what you actually said &mdash; probing when you are close, leading you toward it when you are stuck.</p>
+          <ul class="fl-facts">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>All nine modules live: 94 topics, 261 question levels</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Question chains rather than a question bank, and answers you have to produce rather than recognize</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Lifetime access, and free updates whenever the ACS changes</li>
+          </ul>
+          <a class="btn-primary" href="/oral-exam-program">See the program · $149 →</a>
+          <p class="fl-note">Founding price · $199 at launch · one payment</p>
+        </div>
+        <div class="fl-price">
+          <div class="fl-plate">
+            <div class="amt">$149</div>
+            <div class="lbl">Founding price</div>
+            <div class="then">$199 at launch</div>
+            <div class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- PAID: Checkride Oral Playbook -->
   <div class="wrap product" id="playbook" style="margin-top:86px">
     <div class="copy reveal">
@@ -939,6 +1006,7 @@
       </div>
       <div class="foot-col">
         <h6>Guides</h6>
+        <a href="/oral-exam-program">The Oral Exam Program</a>
         <a href="/decision-making-trainer">Free go/no-go trainer</a>
         <a href="#join">Free weather decoder</a>
         <a href="https://groundworkaviation.gumroad.com/l/oralcheckride" target="_blank" rel="noopener">Checkride Oral Playbook</a>
@@ -978,6 +1046,20 @@
       "url": "https://groundworkaviation.com/",
       "name": "Groundwork Aviation",
       "publisher": { "@id": "https://groundworkaviation.com/#org" }
+    },
+    {
+      "@type": "Product",
+      "name": "The Oral Exam Program",
+      "description": "A spoken mock oral for the private pilot checkride. You answer out loud and it follows up on what you said.",
+      "brand": { "@id": "https://groundworkaviation.com/#org" },
+      "url": "https://groundworkaviation.com/oral-exam-program",
+      "offers": {
+        "@type": "Offer",
+        "price": "149",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://groundworkaviation.gumroad.com/l/oralexamprogram"
+      }
     },
     {
       "@type": "Product",
