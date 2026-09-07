@@ -496,6 +496,31 @@
     .pillar:hover{transform:none}
     *{scroll-behavior:auto!important}
   }
+
+    /* ---- discount code ---- */
+    .promo{margin-top:16px;font-family:var(--sans,'Archivo',sans-serif)}
+    .promo-toggle{background:none;border:0;padding:0;cursor:pointer;
+      font-family:var(--mono,'IBM Plex Mono',monospace);font-size:11.5px;letter-spacing:.1em;
+      text-transform:uppercase;color:#8a93a3;border-bottom:1px dashed rgba(138,147,163,.5);
+      transition:color .2s,border-color .2s}
+    .promo-toggle:hover{color:#e8a23a;border-color:rgba(232,162,58,.6)}
+    .promo-body{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .promo-body[hidden]{display:none}
+    .promo-input{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:13px;letter-spacing:.08em;
+      text-transform:uppercase;padding:10px 12px;border-radius:8px;width:150px;
+      border:1px solid rgba(247,243,234,.2);background:rgba(10,14,20,.6);color:#f7f3ea;outline:none}
+    .promo-input:focus{border-color:#e8a23a}
+    .promo-input::placeholder{color:#6f7885;letter-spacing:.06em}
+    .promo-apply{font-family:var(--sans,'Archivo',sans-serif);font-weight:600;font-size:13px;
+      padding:10px 16px;border-radius:8px;border:1px solid rgba(232,162,58,.55);cursor:pointer;
+      background:rgba(232,162,58,.14);color:#e8a23a;transition:background .2s,transform .15s}
+    .promo-apply:hover{background:rgba(232,162,58,.24)}
+    .promo-apply:active{transform:translateY(1px)}
+    .promo-msg{width:100%;margin:2px 0 0;font-size:12.5px;color:#8a93a3;line-height:1.5}
+    .promo-msg.ok{color:#5fb0a6}
+    .promo-msg.warn{color:#e8a23a}
+    .promo-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -512,11 +537,10 @@
       <a href="#cover">What we cover</a>
       <a href="#guides">Guides</a>
       <a href="#why">Why us</a>
-      <a href="/oral-exam-program">Oral program</a>
       <a href="/decision-making-trainer">Free trainer</a>
       <a href="https://program.groundworkaviation.com/activate">Open the program</a>
     </div>
-    <a class="nav-cta" href="/decision-making-trainer">Start free</a>
+    <a class="nav-cta" href="/oral-exam-program">Oral Exam Program · $149</a>
   </nav>
 </header>
 
@@ -635,6 +659,52 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- FLAGSHIP: The Oral Exam Program — answers the written-vs-oral problem above -->
+<section class="block" style="padding-top:86px;padding-bottom:0">
+<div class="wrap" id="program">
+  <div class="flagship reveal">
+    <div class="fl-photo" aria-hidden="true">
+      <picture>
+        <source type="image/avif" srcset="/images/flight-deck-two-pilots-banner-900.avif 900w, /images/flight-deck-two-pilots-banner-1800.avif 1800w" sizes="100vw">
+        <img src="/images/flight-deck-two-pilots-banner-1800.jpg" srcset="/images/flight-deck-two-pilots-banner-900.jpg 900w, /images/flight-deck-two-pilots-banner-1800.jpg 1800w" sizes="100vw" width="1800" height="643" alt="" loading="lazy" decoding="async">
+      </picture>
+    </div>
+    <div class="fl-scrim" aria-hidden="true"></div>
+    <div class="fl-in">
+      <div class="fl-copy">
+        <span class="eyebrow">New · The Oral Exam Program</span>
+        <h2>You cannot practice a conversation by watching a video.</h2>
+        <p class="lede">A spoken mock oral: the examiner asks, you answer out loud, and it follows up on what you actually said &mdash; probing when you are close, leading you toward it when you are stuck.</p>
+        <ul class="fl-facts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>All nine modules live: 94 topics, 261 question levels</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Question chains rather than a question bank, and answers you have to produce rather than recognize</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Lifetime access, and free updates whenever the ACS changes</li>
+        </ul>
+        <a class="btn-primary" href="/oral-exam-program">See the program · $149 →</a>
+        <p class="fl-note">Founding price · $199 at launch · one payment</p>
+        <div class="promo" data-promo>
+          <button type="button" class="promo-toggle" aria-expanded="false">Have a discount code?</button>
+          <div class="promo-body" hidden>
+            <label class="promo-sr" for="promo-program">Discount code</label>
+            <input class="promo-input" id="promo-program" type="text" placeholder="Code" autocomplete="off" spellcheck="false" maxlength="40">
+            <button type="button" class="promo-apply">Apply</button>
+            <p class="promo-msg" role="status"></p>
+          </div>
+        </div>
+      </div>
+      <div class="fl-price">
+        <div class="fl-plate">
+          <div class="amt">$149</div>
+          <div class="lbl">Founding price</div>
+          <div class="then">$199 at launch</div>
+          <div class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- PILLARS -->
@@ -785,40 +855,6 @@
     </div>
   </div>
 
-  <!-- FLAGSHIP: The Oral Exam Program -->
-  <div class="wrap" id="program" style="margin-top:86px">
-    <div class="flagship reveal">
-      <div class="fl-photo" aria-hidden="true">
-        <picture>
-          <source type="image/avif" srcset="/images/flight-deck-two-pilots-banner-900.avif 900w, /images/flight-deck-two-pilots-banner-1800.avif 1800w" sizes="100vw">
-          <img src="/images/flight-deck-two-pilots-banner-1800.jpg" srcset="/images/flight-deck-two-pilots-banner-900.jpg 900w, /images/flight-deck-two-pilots-banner-1800.jpg 1800w" sizes="100vw" width="1800" height="643" alt="" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <div class="fl-scrim" aria-hidden="true"></div>
-      <div class="fl-in">
-        <div class="fl-copy">
-          <span class="eyebrow">New · The Oral Exam Program</span>
-          <h2>You cannot practice a conversation by watching a video.</h2>
-          <p class="lede">A spoken mock oral: the examiner asks, you answer out loud, and it follows up on what you actually said &mdash; probing when you are close, leading you toward it when you are stuck.</p>
-          <ul class="fl-facts">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>All nine modules live: 94 topics, 261 question levels</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Question chains rather than a question bank, and answers you have to produce rather than recognize</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>Lifetime access, and free updates whenever the ACS changes</li>
-          </ul>
-          <a class="btn-primary" href="/oral-exam-program">See the program · $149 →</a>
-          <p class="fl-note">Founding price · $199 at launch · one payment</p>
-        </div>
-        <div class="fl-price">
-          <div class="fl-plate">
-            <div class="amt">$149</div>
-            <div class="lbl">Founding price</div>
-            <div class="then">$199 at launch</div>
-            <div class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- PAID: Checkride Oral Playbook -->
   <div class="wrap product" id="playbook" style="margin-top:86px">
@@ -938,6 +974,15 @@
             <span class="now">$49</span>
           </div>
           <a class="btn-primary" href="https://groundworkaviation.gumroad.com/l/checkridebundle" target="_blank" rel="noopener" style="white-space:nowrap">Get both · $49 →</a>
+          <div class="promo" data-promo>
+            <button type="button" class="promo-toggle" aria-expanded="false">Have a discount code?</button>
+            <div class="promo-body" hidden>
+              <label class="promo-sr" for="promo-bundle">Discount code</label>
+              <input class="promo-input" id="promo-bundle" type="text" placeholder="Code" autocomplete="off" spellcheck="false" maxlength="40">
+              <button type="button" class="promo-apply">Apply</button>
+              <p class="promo-msg" role="status"></p>
+            </div>
+          </div>
         </div>
         <div class="bundle-mocks" aria-hidden="true">
           <div class="bm a">
@@ -1156,5 +1201,88 @@
     ml('account', '2408888');
 </script>
 <!-- End MailerLite Universal -->
+<script>
+/* Gumroad has no discount-code field at checkout; codes travel in the URL as
+   /l/<product>/<CODE>. Collect the code here and rewrite the buy links. The
+   code is not verified on this page — Gumroad rejects a bad one at checkout. */
+(function(){
+  var HOST = 'groundworkaviation.gumroad.com';
+  var KEY  = 'gw_promo';
+
+  function buyLinks(){
+    return [].slice.call(document.querySelectorAll('a[href*="' + HOST + '/l/"]'));
+  }
+  function baseHref(href){
+    // keep scheme+host+/l/<slug>, drop any code already appended
+    var m = href.match(/^(https?:\/\/[^\/]+\/l\/[^\/?#]+)/);
+    return m ? m[1] : href;
+  }
+  function apply(code){
+    var links = buyLinks();
+    links.forEach(function(a){
+      var base = baseHref(a.getAttribute('href'));
+      a.setAttribute('href', code ? base + '/' + encodeURIComponent(code) : base);
+    });
+    return links.length;
+  }
+  function clean(v){ return (v || '').trim().toUpperCase().replace(/[^A-Z0-9_-]/g, ''); }
+
+  function message(box, text, kind){
+    var el = box.querySelector('.promo-msg');
+    el.textContent = text;
+    el.className = 'promo-msg' + (kind ? ' ' + kind : '');
+  }
+
+  var boxes = [].slice.call(document.querySelectorAll('[data-promo]'));
+  if (!boxes.length) return;
+
+  function setAll(code, announce){
+    var n = apply(code);
+    boxes.forEach(function(b){
+      b.querySelector('.promo-input').value = code || '';
+      if (announce) {
+        message(b, code
+          ? 'Code ' + code + ' added to your checkout link. Gumroad shows the discount, or rejects the code, on the payment page.'
+          : 'Code cleared.', code ? 'ok' : '');
+      }
+    });
+    try { code ? sessionStorage.setItem(KEY, code) : sessionStorage.removeItem(KEY); } catch (e) {}
+    return n;
+  }
+
+  boxes.forEach(function(box){
+    var toggle = box.querySelector('.promo-toggle');
+    var body   = box.querySelector('.promo-body');
+    var input  = box.querySelector('.promo-input');
+    var apply1 = box.querySelector('.promo-apply');
+
+    toggle.addEventListener('click', function(){
+      var open = body.hasAttribute('hidden');
+      body.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) input.focus();
+    });
+    function submit(){
+      var code = clean(input.value);
+      if (!code) { setAll('', false); message(box, 'Enter a code, or leave it blank to buy at the normal price.', 'warn'); return; }
+      setAll(code, true);
+    }
+    apply1.addEventListener('click', submit);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+  });
+
+  /* a code entered on one page carries to the other pages that sell */
+  var saved = '';
+  try { saved = sessionStorage.getItem(KEY) || ''; } catch (e) {}
+  if (saved) {
+    setAll(clean(saved), false);
+    boxes.forEach(function(b){
+      b.querySelector('.promo-body').hidden = false;
+      b.querySelector('.promo-toggle').setAttribute('aria-expanded', 'true');
+      message(b, 'Code ' + clean(saved) + ' will be applied at checkout.', 'ok');
+    });
+  }
+})();
+</script>
 </body>
 </html>

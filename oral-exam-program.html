@@ -216,6 +216,31 @@
     @media (prefers-reduced-motion: reduce){
       .gw-rise{opacity:1;transform:none;transition:none}
     }
+
+    /* ---- discount code ---- */
+    .promo{margin-top:16px;font-family:var(--sans,'Archivo',sans-serif)}
+    .promo-toggle{background:none;border:0;padding:0;cursor:pointer;
+      font-family:var(--mono,'IBM Plex Mono',monospace);font-size:11.5px;letter-spacing:.1em;
+      text-transform:uppercase;color:#8a93a3;border-bottom:1px dashed rgba(138,147,163,.5);
+      transition:color .2s,border-color .2s}
+    .promo-toggle:hover{color:#e8a23a;border-color:rgba(232,162,58,.6)}
+    .promo-body{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .promo-body[hidden]{display:none}
+    .promo-input{font-family:var(--mono,'IBM Plex Mono',monospace);font-size:13px;letter-spacing:.08em;
+      text-transform:uppercase;padding:10px 12px;border-radius:8px;width:150px;
+      border:1px solid rgba(247,243,234,.2);background:rgba(10,14,20,.6);color:#f7f3ea;outline:none}
+    .promo-input:focus{border-color:#e8a23a}
+    .promo-input::placeholder{color:#6f7885;letter-spacing:.06em}
+    .promo-apply{font-family:var(--sans,'Archivo',sans-serif);font-weight:600;font-size:13px;
+      padding:10px 16px;border-radius:8px;border:1px solid rgba(232,162,58,.55);cursor:pointer;
+      background:rgba(232,162,58,.14);color:#e8a23a;transition:background .2s,transform .15s}
+    .promo-apply:hover{background:rgba(232,162,58,.24)}
+    .promo-apply:active{transform:translateY(1px)}
+    .promo-msg{width:100%;margin:2px 0 0;font-size:12.5px;color:#8a93a3;line-height:1.5}
+    .promo-msg.ok{color:#5fb0a6}
+    .promo-msg.warn{color:#e8a23a}
+    .promo-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -333,10 +358,10 @@
 
     <h2 style="margin-top:48px">And three things you will not get from a lecture course</h2>
     <ul class="ticks">
-      <li><span class="tag">In production</span> <strong>The Aircraft Profile Workbook.</strong> You fill it in for the airplane you will actually fly: V-speeds, fuel and electrical systems, weight and balance envelope, equipment list, inspection status. The examiner is not asking about a generic trainer. They are asking about the one on the ramp.</li>
+      <li><span class="tag now">Available now</span> <strong>The Aircraft Profile Workbook.</strong> Fourteen sections you fill in for the airplane you will actually fly: V-speeds, fuel and electrical systems, weight and balance envelope, equipment list, inspection status. It never supplies a number, because a workbook that filled in 61 knots for you would be teaching you the wrong airplane. Every regulatory row carries its citation, and a blank row is the finding.</li>
       <li><span class="tag now">Available now</span> <strong>Full mock orals, as many as you want.</strong> Sit a complete oral sampled across every area the way an examiner runs one &mdash; or the same oral built around a cross-country you are actually planning, since a good examiner asks about the route in front of you. The written answers, and the reasoning behind each follow-up, come afterwards rather than before.</li>
       <li><span class="tag now">Available now</span> <strong>Your own handbook.</strong> Hold up a page from the POH of the airplane you fly and be questioned on that chart, not a generic one. The photograph is read once and never stored.</li>
-      <li><span class="tag">In production</span> <strong>An ACS self-check</strong> that maps what you have covered against every code in the standard, so you can see your own gaps instead of guessing at them.</li>
+      <li><span class="tag now">Available now</span> <strong>An ACS self-check</strong> that maps what you have covered against all 206 codes in the standard for the areas this program covers &mdash; which ones it teaches and in which topic, and which ones you have actually been examined on. It shows you your own gaps instead of leaving you to guess at them.</li>
     </ul>
 
     <p class="note">The self-check shows you what you have and have not covered. It does not tell you that you are ready for your checkride. That call belongs to your CFI. This program is not a substitute for your flight instructor, the regulations, or the ACS itself.</p>
@@ -372,12 +397,21 @@
     <span class="eyebrow">What is finished, and what is not</span>
     <h2>Here is the honest version of what you are buying.</h2>
     <p><strong>All nine modules are live: 94 topics, 263 question levels.</strong> Every task in ACS Area&nbsp;I that applies to a land airplane, plus Area&nbsp;II, Preflight Procedures. Every regulatory answer is checked against the current 14&nbsp;CFR, the AIM, or the ACS itself before it ships, and each one carries the citation so you can check it rather than trust it.</p>
-    <p><strong>Two things are still being built:</strong> the aircraft profile workbook and the ACS self-check. You get both at no extra cost when they land.</p>
+    <p><strong>Everything described above is built and live.</strong> The workbook and the ACS self-check landed last, and every module has been through independent technical review against the primary sources before shipping.</p>
     <p>There are also items the ACS lists that a spoken oral cannot test &mdash; inspecting an airplane against a checklist, taxiing it, operating a system with your hands. Those are flight skills and they belong with your instructor. Each module says which ones it does not cover rather than leaving you to find out.</p>
     <p>That is what the founding price is for. You are paying before the whole thing exists, and the lower price is the trade. If that is not a trade you want to make, wait &mdash; the price goes up when it is finished, not before.</p>
     <div class="btn-row">
       <a class="btn" href="https://groundworkaviation.gumroad.com/l/oralexamprogram" target="_blank" rel="noopener">Get it for $149</a>
       <span class="fineprint">Lifetime access · free updates · one payment</span>
+    </div>
+    <div class="promo" data-promo>
+      <button type="button" class="promo-toggle" aria-expanded="false">Have a discount code?</button>
+      <div class="promo-body" hidden>
+        <label class="promo-sr" for="promo-oral">Discount code</label>
+        <input class="promo-input" id="promo-oral" type="text" placeholder="Code" autocomplete="off" spellcheck="false" maxlength="40">
+        <button type="button" class="promo-apply">Apply</button>
+        <p class="promo-msg" role="status"></p>
+      </div>
     </div>
     <p class="fineprint" style="margin-top:14px">Already bought it? <a href="https://program.groundworkaviation.com/activate">Open the program</a> and paste the license key from your Gumroad receipt.</p>
     <p style="margin-top:34px">Not ready to pay for something unfinished? Fair. Join the list and I will send each module as it ships, so you can judge the work first.</p>
@@ -444,6 +478,89 @@
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
     }, {rootMargin:'0px 0px -8% 0px', threshold:0.1});
     t.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+<script>
+/* Gumroad has no discount-code field at checkout; codes travel in the URL as
+   /l/<product>/<CODE>. Collect the code here and rewrite the buy links. The
+   code is not verified on this page — Gumroad rejects a bad one at checkout. */
+(function(){
+  var HOST = 'groundworkaviation.gumroad.com';
+  var KEY  = 'gw_promo';
+
+  function buyLinks(){
+    return [].slice.call(document.querySelectorAll('a[href*="' + HOST + '/l/"]'));
+  }
+  function baseHref(href){
+    // keep scheme+host+/l/<slug>, drop any code already appended
+    var m = href.match(/^(https?:\/\/[^\/]+\/l\/[^\/?#]+)/);
+    return m ? m[1] : href;
+  }
+  function apply(code){
+    var links = buyLinks();
+    links.forEach(function(a){
+      var base = baseHref(a.getAttribute('href'));
+      a.setAttribute('href', code ? base + '/' + encodeURIComponent(code) : base);
+    });
+    return links.length;
+  }
+  function clean(v){ return (v || '').trim().toUpperCase().replace(/[^A-Z0-9_-]/g, ''); }
+
+  function message(box, text, kind){
+    var el = box.querySelector('.promo-msg');
+    el.textContent = text;
+    el.className = 'promo-msg' + (kind ? ' ' + kind : '');
+  }
+
+  var boxes = [].slice.call(document.querySelectorAll('[data-promo]'));
+  if (!boxes.length) return;
+
+  function setAll(code, announce){
+    var n = apply(code);
+    boxes.forEach(function(b){
+      b.querySelector('.promo-input').value = code || '';
+      if (announce) {
+        message(b, code
+          ? 'Code ' + code + ' added to your checkout link. Gumroad shows the discount, or rejects the code, on the payment page.'
+          : 'Code cleared.', code ? 'ok' : '');
+      }
+    });
+    try { code ? sessionStorage.setItem(KEY, code) : sessionStorage.removeItem(KEY); } catch (e) {}
+    return n;
+  }
+
+  boxes.forEach(function(box){
+    var toggle = box.querySelector('.promo-toggle');
+    var body   = box.querySelector('.promo-body');
+    var input  = box.querySelector('.promo-input');
+    var apply1 = box.querySelector('.promo-apply');
+
+    toggle.addEventListener('click', function(){
+      var open = body.hasAttribute('hidden');
+      body.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) input.focus();
+    });
+    function submit(){
+      var code = clean(input.value);
+      if (!code) { setAll('', false); message(box, 'Enter a code, or leave it blank to buy at the normal price.', 'warn'); return; }
+      setAll(code, true);
+    }
+    apply1.addEventListener('click', submit);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+  });
+
+  /* a code entered on one page carries to the other pages that sell */
+  var saved = '';
+  try { saved = sessionStorage.getItem(KEY) || ''; } catch (e) {}
+  if (saved) {
+    setAll(clean(saved), false);
+    boxes.forEach(function(b){
+      b.querySelector('.promo-body').hidden = false;
+      b.querySelector('.promo-toggle').setAttribute('aria-expanded', 'true');
+      message(b, 'Code ' + clean(saved) + ' will be applied at checkout.', 'ok');
+    });
   }
 })();
 </script>
