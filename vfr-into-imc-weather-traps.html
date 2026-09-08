@@ -292,7 +292,40 @@
       .btn:hover { transform: none; }
       * { scroll-behavior: auto !important; }
     }
-  </style>
+  
+    /* ---- mobile ergonomics ----
+       iOS Safari zooms the page whenever a focused input is under 16px, which
+       throws the layout off mid-signup. Force 16px on every field at phone
+       widths, including the MailerLite embed we do not control. Tap targets
+       get real height at the same time. */
+    @media (max-width: 760px) {
+      input, select, textarea,
+      .ml-embedded input, .ml-embedded select, .ml-embedded textarea,
+      .promo-input { font-size: 16px !important; }
+      .ml-embedded button, .ml-embedded input[type=submit] { min-height: 48px; font-size: 16px !important; }
+      .promo-input { width: 100%; max-width: 220px; min-height: 48px; }
+      .promo-apply { min-height: 48px; padding-left: 20px; padding-right: 20px; }
+      .promo-toggle { display: inline-block; padding: 10px 0; }
+      /* MailerLite's own stylesheet is more specific than a bare
+         `.ml-embedded input`, so match its actual structure to win. */
+      .ml-embedded .ml-form-embedBody .ml-form-fieldRow input.form-control,
+      .ml-embedded form.ml-block-form input.form-control,
+      .ml-embedded input.form-control,
+      .ml-embedded input[type=email],
+      .ml-embedded input[type=text] { font-size: 16px !important; line-height: 1.4 !important; }
+      .ml-embedded button.primary,
+      .ml-embedded .ml-form-embedSubmit button { min-height: 48px !important; font-size: 16px !important; }
+
+      footer a, footer.site a { display: inline-block; padding: 7px 0; }
+      .foot-col a { padding: 9px 0; }
+    }
+
+    @media (max-width: 760px) {
+      header.site { flex-wrap: wrap; row-gap: .4rem; }
+      .nav { display: flex; flex-wrap: wrap; }
+      .nav a { margin-left: 0; margin-right: 1.15rem; padding: 11px 0; min-height: 44px; display: inline-flex; align-items: center; }
+    }
+</style>
 </head>
 <body>
 <div class="headshell">
@@ -430,6 +463,26 @@
     }, {rootMargin:'0px 0px -8% 0px', threshold:0.1});
     targets.forEach(function(el){ io.observe(el); });
   }
+})();
+</script>
+<script>
+/* MailerLite scopes its styles with an id selector, which outranks any class
+   rule we can write, so the embed keeps its 14px field and iOS Safari zooms
+   the page the moment someone taps it. Inline + !important is the only thing
+   that wins, and the form is injected asynchronously, so watch for it. */
+(function(){
+  var mq = window.matchMedia('(max-width: 760px)');
+  var host = document.querySelector('.ml-embedded');
+  if (!host) return;
+  function fix(){
+    if (!mq.matches) return;
+    host.querySelectorAll('input, textarea, select').forEach(function(el){
+      el.style.setProperty('font-size', '16px', 'important');
+    });
+  }
+  fix();
+  if (window.MutationObserver) new MutationObserver(fix).observe(host, {childList:true, subtree:true});
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(fix);
 })();
 </script>
 </body>
