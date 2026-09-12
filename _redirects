@@ -1,0 +1,9 @@
+# The weather decoder is the lead magnet. It sat in the public root at
+# /weather-decoder.pdf, HTTP 200, no email required — so the one asset on the
+# site designed to trade value for an address gave the value away for free.
+# The homepage copy already promised "drop your email, we'll send the guide";
+# this makes that true. The file now lives in the main repo at
+# content/assets/ and is delivered by MailerLite after signup.
+#
+# Anyone holding the old URL lands on the opt-in instead of a 404.
+/weather-decoder.pdf  /#join  302
