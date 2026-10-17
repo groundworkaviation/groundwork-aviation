@@ -580,6 +580,35 @@
       footer a, footer.site a { display: inline-block; padding: 7px 0; }
       .foot-col a { padding: 9px 0; }
     }
+
+  /* Product-led homepage */
+  .hero{padding:88px 0 84px}
+  .hero .wrap{grid-template-columns:1.05fr 1fr;gap:64px}
+  .hero h1{font-size:clamp(44px,5.2vw,68px);line-height:1.04;letter-spacing:-.04em}
+  .hero .sub{font-size:18px;line-height:1.75;max-width:48ch}
+  .skyband-scrim{background:linear-gradient(100deg,rgba(10,14,20,.96),rgba(10,14,20,.79)),linear-gradient(0deg,#0f141c,transparent)}
+  .examiner-preview{border:1px solid rgba(247,243,234,.2);border-radius:22px;background:#141e29;box-shadow:0 32px 80px #0006;overflow:hidden;transform:rotate(1deg)}
+  .preview-top,.preview-bottom{display:flex;align-items:center;gap:9px;padding:18px 22px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:#c2c9d3;border-bottom:1px solid #ffffff14}
+  .preview-top>span:last-child{margin-left:auto;color:var(--teal);font-size:9px}
+  .preview-dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .preview-body{display:grid;grid-template-columns:1fr 180px;gap:22px;padding:26px;align-items:center}
+  .preview-copy h2{font-family:var(--serif);font-size:32px;line-height:1.15;font-weight:500;margin:16px 0}
+  .preview-copy p{font-size:14px;line-height:1.7;color:#b7c4d1;margin-bottom:18px}
+  .preview-copy a{font-size:13px;color:var(--amber)}
+  .preview-body video{width:100%;height:auto;border-radius:13px;border:1px solid #ffffff21;background:#0f141c;box-shadow:0 12px 28px #0005}
+  .preview-bottom{justify-content:space-between;border-top:1px solid #ffffff14;border-bottom:0;letter-spacing:0;font-size:10px}
+  .practice-path{padding:38px 0;background:#131c26;border-bottom:1px solid #ffffff14}
+  .practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
+  .practice-step{display:flex;gap:16px;align-items:flex-start}
+  .practice-step>span{font-family:var(--mono);font-size:12px;color:var(--amber);padding-top:4px}
+  .practice-step h2{font-size:17px;margin-bottom:7px;font-weight:500}
+  .practice-step p{font-size:14px;line-height:1.65;color:#abb8c7}
+  .strip{display:none}
+  .navlinks a:last-child{color:var(--amber)}
+  @media(max-width:1100px){.hero .wrap{gap:30px}.preview-body{grid-template-columns:1fr 150px;padding:20px;gap:15px}.preview-copy h2{font-size:27px}}
+  @media(max-width:860px){.hero{padding:52px 0}.hero .wrap{grid-template-columns:1fr;gap:40px}.examiner-preview{transform:none;max-width:560px;width:100%;margin:auto}.preview-body{grid-template-columns:1fr 180px}.practice-grid{grid-template-columns:1fr;gap:24px}.hero h1{font-size:clamp(42px,9vw,62px)}}
+  @media(max-width:400px){.preview-body{grid-template-columns:1fr 135px;padding:17px}.preview-copy h2{font-size:25px}.preview-top{padding:15px 12px;font-size:8px}.preview-bottom{padding:15px 12px;font-size:9px}}
+
 </style>
 </head>
 <body>
@@ -600,7 +629,7 @@
       <a href="#guides">Guides</a>
       <a href="#why">Why us</a>
       <a href="/decision-making-trainer">Free trainer</a>
-      <a href="https://program.groundworkaviation.com/activate">Open the program</a>
+      <a href="https://program.groundworkaviation.com/program/oral">Examiner login</a>
     </div>
     <a class="nav-cta" href="/oral-exam-program">Oral Exam Program · $149</a>
   </nav>
@@ -627,39 +656,23 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <div class="h-eyebrow reveal d1"><span class="dot"></span><span class="eyebrow">Ground theory · demystified</span></div>
-      <h1 class="reveal d2">Flight school teaches you to fly.<br>We teach you to <em>understand it.</em></h1>
-      <p class="sub reveal d3">Plain-English ground school for the topics that actually fail people: weather, airspace, performance, the checkride oral. Written and vetted by a current airline pilot with 8,000+ hours on the flight deck. No jargon walls. No AI filler.</p>
+      <div class="h-eyebrow reveal d1"><span class="dot"></span><span class="eyebrow">Private pilot oral practice</span></div>
+      <h1 class="reveal d2">Know the material.<br>Practice <em>saying it out loud.</em></h1>
+      <p class="sub reveal d3">Practice a spoken mock oral with an AI examiner that follows up on your answers. Explore the program, watch a real session, or use our free guides to work through the ground theory.</p>
       <div class="cta-row reveal d4">
-        <a class="btn-primary" href="/decision-making-trainer">Try the free go/no-go trainer →</a>
-        <a class="btn-ghost" href="#join">Get the weather decoder</a>
+        <a class="btn-primary" href="/oral-exam-program?utm_source=website&amp;utm_medium=hero&amp;utm_campaign=examiner">Meet the AI oral examiner →</a>
+        <a class="btn-ghost" href="/oral-exam-program#demo">Watch a real session</a>
       </div>
+      <p style="margin-top:20px;font-size:15px">Already bought the program? <a href="https://program.groundworkaviation.com/program/oral" style="color:var(--amber);text-decoration:underline">Go straight to your examiner →</a></p>
     </div>
 
-    <!-- METAR decode card -->
-    <div class="metar reveal d4" aria-label="Example METAR decoded">
-      <span class="tag">The #1 thing students fail</span>
-      <p class="mlabel">// DECODE THE SCARY STRING</p>
-      <div class="raw">
-        <span class="tok tok-a" data-k="KSFO">KSFO</span>
-        <span class="tok" data-k="301853Z">301853Z</span>
-        <span class="tok tok-a" data-k="28012KT">28012KT</span>
-        <span class="tok" data-k="10SM">10SM</span>
-        <span class="tok tok-t" data-k="FEW015">FEW015</span>
-        <span class="tok" data-k="18/12">18/12</span>
-        <span class="tok tok-a" data-k="A3001">A3001</span>
+    <div class="examiner-preview reveal d4">
+      <div class="preview-top"><span class="preview-dot"></span> THE ORAL EXAM PROGRAM <span>REAL SESSION</span></div>
+      <div class="preview-body">
+        <div class="preview-copy"><span class="eyebrow">Hear the difference</span><h2>A question.<br>Your answer.<br>The follow-up.</h2><p>See the actual examiner in a recorded practice session.</p><a href="/oral-exam-program#demo">Explore how it works →</a></div>
+        <video controls playsinline preload="none" poster="/images/demo-flight-review-poster.jpg" width="540" height="960" aria-label="Watch a real recorded session with the AI oral examiner"><source src="/media/reel1.mp4" type="video/mp4"></video>
       </div>
-      <div class="divide"></div>
-      <div class="decode">
-        <span class="k" data-k="KSFO">KSFO</span><span class="v" data-k="KSFO">San Francisco Intl, the reporting station</span>
-        <span class="k" data-k="301853Z">301853Z</span><span class="v" data-k="301853Z">30th, 18:53 UTC (“Zulu”)</span>
-        <span class="k" data-k="28012KT">28012KT</span><span class="v" data-k="28012KT">Wind from 280° at 12 knots</span>
-        <span class="k" data-k="10SM">10SM</span><span class="v" data-k="10SM">Visibility 10 statute miles</span>
-        <span class="k" data-k="FEW015">FEW015</span><span class="v" data-k="FEW015">Few clouds at 1,500 ft AGL</span>
-        <span class="k" data-k="18/12">18/12</span><span class="v" data-k="18/12">Temp 18°C / dewpoint 12°C</span>
-        <span class="k" data-k="A3001">A3001</span><span class="v" data-k="A3001">Altimeter 30.01 inHg</span>
-      </div>
-      <p class="foot">Once you can read one, you can read them all. That's the whole free guide.</p>
+      <div class="preview-bottom"><span>Speak your answer</span><span>Work through the follow-up</span></div>
     </div>
   </div>
 </section>
@@ -685,6 +698,12 @@
   </div>
 </section>
 </div><!-- /skyband -->
+
+<section class="practice-path" aria-label="How practice works"><div class="wrap practice-grid">
+  <div class="practice-step"><span>01</span><div><h2>Choose a topic</h2><p>Focus your practice on the ground theory you want to work through.</p></div></div>
+  <div class="practice-step"><span>02</span><div><h2>Say it out loud</h2><p>Explain your answer in your own words, as a conversation.</p></div></div>
+  <div class="practice-step"><span>03</span><div><h2>Go one question deeper</h2><p>Work through the follow-up, then review the written explanation.</p></div></div>
+</div></section>
 
 <!-- MARQUEE -->
 <div class="strip" aria-hidden="true">
