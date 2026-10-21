@@ -27,7 +27,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/images/ga-cockpit-sunset-cloud-deck-1500.avif" type="image/avif" imagesrcset="/images/ga-cockpit-sunset-cloud-deck-640.avif 640w, /images/ga-cockpit-sunset-cloud-deck-1000.avif 1000w, /images/ga-cockpit-sunset-cloud-deck-1500.avif 1500w" imagesizes="100vw" fetchpriority="high">
 <style>
   :root{
@@ -610,28 +610,23 @@
   @media(max-width:400px){.preview-body{grid-template-columns:1fr 135px;padding:17px}.preview-copy h2{font-size:25px}.preview-top{padding:15px 12px;font-size:8px}.preview-bottom{padding:15px 12px;font-size:9px}}
 
 </style>
+<link rel="icon" type="image/svg+xml" href="/images/groundwork-mark.svg">
+<link rel="stylesheet" href="/site-chrome.css">
+<script src="/site-chrome.js" defer></script>
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <a class="logo" href="#">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg>
-      </span>
-      <span class="logo-text">Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Menu">
-      <span class="nav-bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    </button>
-    <div class="navlinks" id="navlinks">
-      <a href="#cover">What we cover</a>
-      <a href="#guides">Guides</a>
-      <a href="/about">About Chris</a>
-      <a href="/decision-making-trainer">Free trainer</a>
+<header class="gw-header" data-gw-header>
+  <nav class="gw-header-inner" aria-label="Main navigation">
+    <a class="gw-brand" href="/" aria-label="Groundwork Aviation home"><img class="gw-brand-mark" src="/images/groundwork-mark.svg" width="33" height="33" alt="" aria-hidden="true"><span class="gw-brand-name">Groundwork <span>Aviation</span></span></a>
+    <button class="gw-menu-toggle" type="button" aria-controls="gw-main-links" aria-expanded="false">Menu <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></button>
+    <div class="gw-header-links" id="gw-main-links">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/guides">Guides</a>
+      <a href="/about">About</a>
       <a href="https://program.groundworkaviation.com/program/oral">Examiner login</a>
+      <a class="gw-header-cta" href="/oral-exam-program">The Oral Exam Program <span aria-hidden="true">↗</span></a>
     </div>
-    <a class="nav-cta" href="/oral-exam-program">Oral Exam Program · $149</a>
   </nav>
 </header>
 
@@ -1117,10 +1112,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="logo" href="#" style="color:var(--cream)">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
-          Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
-        </a>
+        <a class="gw-brand" href="/" aria-label="Groundwork Aviation home"><img class="gw-brand-mark" src="/images/groundwork-mark.svg" width="33" height="33" alt="" aria-hidden="true"><span class="gw-brand-name">Groundwork <span>Aviation</span></span></a>
         <p>Plain-English ground school for student pilots. Written and vetted by a working airline pilot, because the theory deserves better than a wall of jargon.</p>
       </div>
       <div class="foot-col">

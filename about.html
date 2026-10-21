@@ -18,26 +18,27 @@
   <meta name="theme-color" content="#0f141c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/about.css">
+<link rel="icon" type="image/svg+xml" href="/images/groundwork-mark.svg">
+<link rel="stylesheet" href="/site-chrome.css">
+<script src="/site-chrome.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <nav class="wrap navigation" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="Groundwork Aviation home">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 12 22 4 15 22 12 15 2 12Z"/><path d="m12 15 10-11"/></svg></span>
-        <span class="brand-name">Groundwork <span>Aviation</span></span>
-      </a>
-      <button class="menu-button" type="button" aria-controls="main-links" aria-expanded="false">Menu <span aria-hidden="true">+</span></button>
-      <div class="nav-links" id="main-links">
-        <a href="/guides">Free guides</a>
-        <a href="/about" aria-current="page">About Chris</a>
-        <a href="https://program.groundworkaviation.com/program/oral">Examiner login</a>
-      </div>
-      <a class="nav-cta" href="/oral-exam-program">Explore the program <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
+  <header class="gw-header" data-gw-header>
+  <nav class="gw-header-inner" aria-label="Main navigation">
+    <a class="gw-brand" href="/" aria-label="Groundwork Aviation home"><img class="gw-brand-mark" src="/images/groundwork-mark.svg" width="33" height="33" alt="" aria-hidden="true"><span class="gw-brand-name">Groundwork <span>Aviation</span></span></a>
+    <button class="gw-menu-toggle" type="button" aria-controls="gw-main-links" aria-expanded="false">Menu <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></button>
+    <div class="gw-header-links" id="gw-main-links">
+      <a href="/">Home</a>
+      <a href="/guides">Guides</a>
+      <a href="/about" aria-current="page">About</a>
+      <a href="https://program.groundworkaviation.com/program/oral">Examiner login</a>
+      <a class="gw-header-cta" href="/oral-exam-program">The Oral Exam Program <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+</header>
 
   <main id="main">
     <section class="hero wrap" aria-labelledby="intro-title">
@@ -127,8 +128,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="brand" href="/">Groundwork <span>Aviation</span></a><nav aria-label="Footer"><a href="/guides">Free guides</a><a href="/about" aria-current="page">About Chris</a><a href="https://www.instagram.com/groundworkaviation/" target="_blank" rel="noopener">Instagram</a><a href="mailto:hello@groundworkaviation.com">Contact</a><a href="/privacy">Privacy</a></nav></div><div class="footer-bottom"><span>© 2026 Groundwork Aviation.</span><p>An independent aviation education resource. Not affiliated with, or endorsed by, any airline, flight school, or regulator. Our material supports, and never replaces, instruction from your certified flight instructor and official regulatory sources.</p></div></div></footer>
-  <script src="/about.js" defer></script>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="gw-brand" href="/" aria-label="Groundwork Aviation home"><img class="gw-brand-mark" src="/images/groundwork-mark.svg" width="33" height="33" alt="" aria-hidden="true"><span class="gw-brand-name">Groundwork <span>Aviation</span></span></a><nav aria-label="Footer"><a href="/guides">Free guides</a><a href="/about" aria-current="page">About Chris</a><a href="https://www.instagram.com/groundworkaviation/" target="_blank" rel="noopener">Instagram</a><a href="mailto:hello@groundworkaviation.com">Contact</a><a href="/privacy">Privacy</a></nav></div><div class="footer-bottom"><span>© 2026 Groundwork Aviation.</span><p>An independent aviation education resource. Not affiliated with, or endorsed by, any airline, flight school, or regulator. Our material supports, and never replaces, instruction from your certified flight instructor and official regulatory sources.</p></div></div></footer>
   <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account','2408888');

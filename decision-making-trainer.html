@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0f141c;
@@ -262,21 +262,25 @@
 ml('account', '2408888');
 </script>
 <!-- End MailerLite Universal -->
+<link rel="icon" type="image/svg+xml" href="/images/groundwork-mark.svg">
+<link rel="stylesheet" href="/site-chrome.css">
+<script src="/site-chrome.js" defer></script>
 </head>
 <body>
 
-<div class="headshell">
-<header>
-  <nav>
-    <a class="logo" href="/">
-      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
-      Groundwork<span style="color:var(--amber);font-weight:400"> Aviation</span>
-    </a>
-    <a class="backlink" href="/oral-exam-program">Oral program</a>
-    <a class="backlink" href="/">All guides</a>
+<header class="gw-header" data-gw-header>
+  <nav class="gw-header-inner" aria-label="Main navigation">
+    <a class="gw-brand" href="/" aria-label="Groundwork Aviation home"><img class="gw-brand-mark" src="/images/groundwork-mark.svg" width="33" height="33" alt="" aria-hidden="true"><span class="gw-brand-name">Groundwork <span>Aviation</span></span></a>
+    <button class="gw-menu-toggle" type="button" aria-controls="gw-main-links" aria-expanded="false">Menu <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v14M3 10h14"/></svg></button>
+    <div class="gw-header-links" id="gw-main-links">
+      <a href="/">Home</a>
+      <a href="/guides">Guides</a>
+      <a href="/about">About</a>
+      <a href="https://program.groundworkaviation.com/program/oral">Examiner login</a>
+      <a class="gw-header-cta" href="/oral-exam-program">The Oral Exam Program <span aria-hidden="true">↗</span></a>
+    </div>
   </nav>
 </header>
-</div>
 
 <main>
   <div class="wrap">
