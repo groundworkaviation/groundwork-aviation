@@ -40,6 +40,11 @@
           element.style.setProperty('font-family', family, 'important');
         }
       });
+      // Inline important styles also beat the embed's ID-scoped mobile rules.
+      host.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]),select,textarea,button').forEach(element => {
+        element.style.setProperty('font-size', '16px', 'important');
+        element.style.setProperty('min-height', '48px', 'important');
+      });
     };
     applyFonts();
     if (window.MutationObserver) {

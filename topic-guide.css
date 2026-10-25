@@ -5,3 +5,6 @@
 @media(max-width:480px){.site-width{padding-left:18px;padding-right:18px}.guide-header nav a{font-size:10px}.guide-header .button{padding:10px 8px}.hero-actions{gap:12px}.hero-description{line-height:1.7}.concept-grid,.related-guides,.model-results{grid-template-columns:1fr}.concept-card{padding:20px}.teaching-figure figcaption{padding:15px;font-size:11px}.practice-cta{padding:25px}.practice-cta h2{font-size:29px}.knowledge-check summary,.knowledge-check>div{padding:20px}.loading-model{padding:20px}.number-pair{padding:20px;gap:20px}.number-pair strong{font-size:35px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{.guide-header,.contents,.topic-strip,.newsletter,.practice-cta,.guide-footer,.hero-photo,.hero-actions{display:none}.topic-hero{background:#fff;color:#111;padding:15px 0}.hero-description{color:#333}.guide-layout{display:block;padding-top:10px}.knowledge-check>div{display:block}.teaching-figure{break-inside:avoid}body{background:#fff}}
+
+/* Keep teaching diagrams available at their original size on a small screen. */
+.teaching-figure .diagram-open{display:flex;align-items:center;gap:8px;min-height:44px;width:fit-content;font-size:13px;font-weight:600;text-underline-offset:3px;margin-top:8px}
